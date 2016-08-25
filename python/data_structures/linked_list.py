@@ -12,7 +12,7 @@ class Node:
         self.next = next
     
     def __str__(self):
-        return str(data)
+        return str(self.data)
 
 class LinkedList:
     """Simple implementation of a linked list.
@@ -74,10 +74,11 @@ class LinkedList:
             return
         cur = self.head
         last = cur
-        while cur:
+        while cur.next:
             last = cur
             cur = cur.next
         last.next = None
+        self.size -= 1
 
     def contains(self, data):
         cur = self.head
