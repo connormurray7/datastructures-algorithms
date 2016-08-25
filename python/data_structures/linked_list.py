@@ -72,6 +72,10 @@ class LinkedList:
     def remove_back(self):
         if self.head is None:
             return
+        if self.head.next is None:
+            self.head = None
+            self.size -= 1
+            return
         cur = self.head
         last = cur
         while cur.next:
