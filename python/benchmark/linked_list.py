@@ -1,3 +1,5 @@
+import os, sys
+sys.path.append(os.path.join(os.getcwd(), os.path.pardir))
 from linked_list import LinkedList
 from linked_list import Node
 import time
