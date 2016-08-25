@@ -10,6 +10,9 @@ class Node:
     def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
+    
+    def __str__(self):
+        return str(data)
 
 class LinkedList:
     """Simple implementation of a linked list.
@@ -25,12 +28,12 @@ class LinkedList:
 
     def print_list(self):
         node = self.head
-        datas = []
+        node_data = []
         while node:
-            datas += node.data
+            node_data.append(str(node.data))
             node = node.next
-        out_str = ''.join("LinkedList [", [str(d) for d in datas ],"]")
-        print(out_str)
+        out_str = ' '.join([d for d in node_data])
+        print("LinkedList [" + out_str + "]")
 
     def size(self):
         return self.size
@@ -76,20 +79,27 @@ class LinkedList:
             cur = cur.next
         last.next = None
 
-    def exists(self, data):
+    def contains(self, data):
         cur = self.head
         while cur:
             if cur.data == data:
-                return true
+                return True
             cur = cur.next
-        return false
+        return False
     
     def delete(self, data):
+        if self.head is None:
+            return
+        if self.head.data == data:
+            self.head = self.head.next
+            self.size -= 1
+            return
         cur = self.head
         last = cur
         while cur:
             if cur.data == data:
                 last.next = cur.next
+                self.size -= 1
                 return
             last = cur
             cur = cur.next

@@ -15,24 +15,58 @@ class LinkedListTest(unittest.TestCase):
         l.append(2)
         l.append(3)
         
-        self.assertEqual(l.front().data,1) 
+        self.assertEqual(l.front().data, 1) 
 
         l.remove_front()
-        self.assertEqual(l.front().data,2)
+        self.assertEqual(l.front().data, 2)
 
         l.remove_front()
-        self.assertEqual(l.front().data,3)
+        self.assertEqual(l.front().data, 3)
 
         l.remove_front()
-        self.assertEqual(l.front(),None)
+        self.assertEqual(l.front(), None)
 
     def test_prepend(self):
         print("Testing prepend")
+        l = LinkedList()
+        
+        l.prepend(1)
+        l.prepend(2)
+        l.prepend(3)
+        
+        self.assertEqual(l.front().data, 3) 
+
+        l.remove_front()
+        self.assertEqual(l.front().data, 2)
+
+        l.remove_front()
+        self.assertEqual(l.front().data, 1)
+
+        l.remove_front()
+        self.assertEqual(l.front(), None)
 
 
     def test_delete(self):
         print("Testing delete")
+        l = LinkedList()
+        
+        l.prepend(1)
+        l.prepend(2)
+        l.prepend(3)
+        l.prepend(4)
+        
+        self.assertEqual(l.contains(4), True) 
+        l.delete(4)
+        self.assertEqual(l.contains(4), False)
 
+        self.assertEqual(l.contains(2), True) 
+        l.delete(2)
+        self.assertEqual(l.contains(2), False)
+
+        l.delete(1)
+        l.delete(3)
+        self.assertEqual(l.size, 0)
+        self.assertEqual(l.front(), None)
 
     def test_size(self):
         print("Testing size")
