@@ -2,7 +2,6 @@
 
 """
 
-
 class Array:
     """Implemented with a statically sized array.
 
@@ -12,17 +11,17 @@ class Array:
     def __init__(self):
         self.index = 0
         self.array = []
-        self.buffer = INITIAL_SIZE
+        self.buffer = self.INITIAL_SIZE
         
     def __getitem__(self, index):
-        if i >= 0 and i < self.buffer:
+        if index >= 0 and index < self.buffer:
             return self.array[index]
         else:
             return None
         
     def append(self, item):
         self.index += 1
-        if index == self.buffer:
+        if self.index == self.buffer:
             self.buffer *= 2
 
         self.array.append(item)
@@ -33,6 +32,6 @@ class Array:
         return item
 
     def remove(self,index):
-        if i < 0 or i >= self.buffer:
+        if index < 0 or index >= self.buffer:
             return
         self.array.pop(index)
