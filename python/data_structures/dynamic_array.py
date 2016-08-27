@@ -11,7 +11,6 @@ class Array:
     Uses a ring buffer to get objects.
 
     Attributes:
-        INITIAL_SIZE: integer, "size" of the static array
         index: current element that the ring buffer is on, wraps at buffer size
         array: python list that holds the data
         buffer: current maximum size of the array
