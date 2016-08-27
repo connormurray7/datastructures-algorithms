@@ -17,12 +17,11 @@ class Array:
         buffer: current maximum size of the array
 
     """
-    INITIAL_SIZE = 16
 
-    def __init__(self, size=INITIAL_SIZE):
+    def __init__(self, init_size=16):
         self.index = 0
         self.array = []
-        self.buffer = size
+        self.buffer = init_size
         
     def __getitem__(self, index):
         """Overloads operator [] for random access if exists."""
