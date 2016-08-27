@@ -33,8 +33,10 @@ class HashSet:
                 keys.append(b)
         out_str = ' '.join([str(k) for k in keys])
         return "Hashset [" + out_str + "]"
-            
 
+    def __getitem__(self,key):
+        return self.buckets[self.hash(key)]
+            
     def grow(self):
         self.max_size *= 2
         tmp = self.buckets
@@ -43,10 +45,16 @@ class HashSet:
         for k in tmp:
             self.add(k)
 
-    def add(self,key):
+    def add(self, key):
         if self.size/self.max_size > self.load_factor:
             self.grow()
         b = self.hash(key)
         if self.buckets[b] is None:
             self.size += 1
         self.buckets[b] = key
+
+    def remove(self, key):
+        b = self.hash(key)
+        if self.buckets[b] is not None:
+            self.buckets[b] = None
+            self.size -= 1
