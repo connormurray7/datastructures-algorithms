@@ -23,6 +23,7 @@ class HashMapTest(unittest.TestCase):
         #Chaining
         h.add(17,"foobar")
         self.assertEquals(h.get(17),"foobar")
+        self.assertEquals(h.get(1),"foo")
 
     def test_remove(self):
         print("Testing remove")
