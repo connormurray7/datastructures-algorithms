@@ -39,8 +39,12 @@ class HashSet:
 
     def __getitem__(self,key):
         """Overloads operator [] for O(1) access"""
+        return self.get(key)
+
+    def get(self,key):
+        """Overloads operator [] for O(1) access"""
         return self.buckets[self.hash(key)]
-            
+
     def grow(self):
         """Doubles size of container"""
         self.max_size *= 2
