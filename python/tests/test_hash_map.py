@@ -20,6 +20,10 @@ class HashMapTest(unittest.TestCase):
         self.assertEquals(h.get(3),"baz")
         self.assertEquals(h.get(0),None)
 
+        #Chaining
+        h.add(17,"foobar")
+        self.assertEquals(h.get(17),"foobar")
+
     def test_remove(self):
         print("Testing remove")
         h = HashSet()
