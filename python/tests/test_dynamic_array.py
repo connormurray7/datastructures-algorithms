@@ -9,7 +9,7 @@ class ArrayTest(unittest.TestCase):
     
     def test_append_and_get(self):
         print("Testing append and get")
-        a = Array(3)
+        a = Array()
 
         a.append(1)
         a.append(2)
