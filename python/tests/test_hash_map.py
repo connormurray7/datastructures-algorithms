@@ -3,13 +3,13 @@ import sys
 import unittest
 sys.path.append(os.path.join(os.getcwd(), os.path.pardir))
 
-from data_structures.hash_set import HashSet
+from data_structures.hash_map import HashMap
 
 class HashMapTest(unittest.TestCase):
     
     def test_add(self):
         print("Testing add")
-        h = HashSet()
+        h = HashMap()
 
         h.add(1,"foo")
         h.add(2,"bar")
@@ -26,7 +26,7 @@ class HashMapTest(unittest.TestCase):
 
     def test_remove(self):
         print("Testing remove")
-        h = HashSet()
+        h = HashMap()
 
         h.add(1,"foo")
         h.add(2,"bar")
@@ -46,7 +46,7 @@ class HashMapTest(unittest.TestCase):
 
     def test_operator_get(self):
         print("Testing operator[] get")
-        h = HashSet()
+        h = HashMap()
 
         h.add(1,"foo")
         h.add(2,"bar")
@@ -59,7 +59,7 @@ class HashMapTest(unittest.TestCase):
 
     def test_size(self):
         print("Testing size")
-        h = HashSet()
+        h = HashMap()
 
         self.assertEquals(h.size,0)
         h.add(1,"foo")
