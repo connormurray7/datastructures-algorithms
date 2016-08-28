@@ -64,9 +64,16 @@ class HashMap:
         if self.size/self.max_size > self.load_factor:
             self.grow()
         b = self.hash(key)
-        if self.buckets[b] is None:
-            self.size += 1
-        self.buckets[b] = Node((key,val))
+        if self.buckets[b] is not None:
+            node = self.buckets[b]
+            while node:
+                last = node
+                node = node.next #Get to the end of the chain
+            last.next = self.Node((key,val))
+        else:
+            self.buckets[b] = self.Node((key,val))
+        self.size += 1
+
 
     def remove(self, key):
         """Amortized O(1) removal of key-val pair, O(n) worst case """
@@ -86,4 +93,14 @@ class HashMap:
         b = self.hash(key)
         if self.buckets[b] is None:
             return None
-        return self.buckets[b].data[1]
+        node = self.buckets[b]
+        while node:
+            if node.data[0] == key:
+                return node.data[1]
+            node = node.next
+        return None
+
+
+
+
+
