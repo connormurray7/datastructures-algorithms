@@ -18,9 +18,8 @@ class BinaryHeap:
     def __init__(self, init_size=1, comp=None):
         self.heap = init_size*[None]
         self.size = 0
-        self.max_size = init_size
         if comp is None:
-            self.comp = lambda x, y : x < y
+            self.comp = lambda x, y : x > y
         else:
             self.comp = comp
 
@@ -34,12 +33,11 @@ class BinaryHeap:
         return "Binary Heap [" + out_str + "]"
 
     def fix_up(self, idx):
-        cur = idx
         parent = idx // 2
         while parent:
-            if self.heap[cur] < self.heap[parent]:
-                self.swap(cur,parent)
-            cur = parent
+            if self.comp(self.heap[idx], self.heap[parent]):
+                self.swap(idx,parent)
+            idx = parent
             parent = parent // 2
 
     def fix_down(self, idx):
@@ -51,7 +49,7 @@ class BinaryHeap:
         child = self.left(idx)
         while child <= self.size:
             child = self.min_child(cur)
-            if self.heap[cur] > self.heap[child]:
+            if self.comp(self.heap[child], self.heap[cur]):
                 self.swap(cur,child)
             cur = child
             child = self.left(child)
@@ -61,16 +59,14 @@ class BinaryHeap:
         r = self.right(idx)
         if r > self.size:
             return l
-        elif self.heap[l] < self.heap[r]:
+        elif self.comp(self.heap[l], self.heap[r]):
             return l
         return r
 
     def build_heap(self, array):
         self.size = len(array)
-        self.max_size = len(array)
         self.heap = array
         self.heap.insert(0, None)
-        print("The size of the array is: " + str(len(self.heap)))
         for i in range(len(self.heap)//2,0,-1):
             self.fix_down(i)
 
@@ -91,19 +87,10 @@ class BinaryHeap:
         self.heap.append(val)
         self.fix_up(self.size)
 
-    def grow(self):
-        self.max_size *= 2
-        old = self.heap
-        self.heap = [None]*self.max_size
-        for i in range(1,len(old)):
-            self.heap[i] = old[i]
-
     def left(self, idx):
         return idx * 2
     def right(self, idx):
         return idx * 2 + 1
-    def parent(self, idx):
-        return self.heap[idx // 2]
     def swap(self, i, j):
         tmp = self.heap[i]
         self.heap[i] = self.heap[j]
