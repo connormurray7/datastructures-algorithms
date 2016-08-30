@@ -7,33 +7,33 @@ from data_structures.binary_heap import BinaryHeap
 
 class ArrayTest(unittest.TestCase):
 
-    """def test_insert(self):
+    def test_push(self):
         print("Testing insert")
         h = BinaryHeap()
 
-        h.insert(1)
+        h.push(1)
         self.assertEqual(h.peek(), 1)
 
-        h.insert(2)
+        h.push(2)
         self.assertEqual(h.peek(), 2)
 
-        h.insert(0)
+        h.push(0)
         self.assertEqual(h.peek(), 2)
 
     def test_pop(self):
         print("Testing pop")
         h = BinaryHeap()
 
-        h.insert(0)
-        h.insert(1)
-        h.insert(2)
+        h.push(0)
+        h.push(1)
+        h.push(2)
 
         self.assertEqual(h.pop(), 2)
         self.assertEqual(h.pop(), 1)
         self.assertEqual(h.pop(), 0)
-        self.assertEqual(h.pop(),None)"""
+        self.assertEqual(h.pop(),None)
 
-    def test_build_heap(self):
+    """def test_build_heap(self):
         print("Testing build heap")
         h = BinaryHeap()
         list1 = [0, 12, 3, 1, 15, 2, 4]
@@ -59,15 +59,15 @@ class ArrayTest(unittest.TestCase):
         self.assertEqual(h.pop(), 45)
         self.assertEqual(h.pop(), 10)
         self.assertEqual(h.pop(), 3)
-        self.assertEqual(h.pop(), None)
+        self.assertEqual(h.pop(), None)"""
 
-    """def test_(self):
+    def test_(self):
         print("")
         h = BinaryHeap()
 
     def test_(self):
         print("")
-        h = BinaryHeap()"""
+        h = BinaryHeap()
 
 if __name__ == '__main__':
     unittest.main()

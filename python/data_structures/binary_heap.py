@@ -15,7 +15,7 @@ class BinaryHeap:
        comp: comparator function that dictates the heap ordering property
     """
 
-    def __init__(self, init_size=16, comp=None):
+    def __init__(self, init_size=1, comp=None):
         self.heap = init_size*[None]
         self.size = 0
         self.max_size = init_size
@@ -34,28 +34,36 @@ class BinaryHeap:
         return "Binary Heap [" + out_str + "]"
 
     def fix_up(self, idx):
-        i = idx
-        while(i > 1 and self.comp(self.parent(i), self.heap[i])):
-            self.swap(i,i//2)
-            i = i // 2
+        cur = idx
+        parent = idx // 2
+        while parent:
+            if self.heap[cur] < self.heap[parent]:
+                self.swap(cur,parent)
+            cur = parent
+            parent = parent // 2
 
     def fix_down(self, idx):
         """Ensures that the heap property is maintained.
 
-        Recursize strategy given by Introduction to Algorithms.
-        Iterative version will also be written
+        Rewritten as an iterative algorithm
         """
+        cur = idx
+        child = self.left(idx)
+        while child <= self.size:
+            child = self.min_child(cur)
+            if self.heap[cur] > self.heap[child]:
+                self.swap(cur,child)
+            cur = child
+            child = self.left(child)
+
+    def min_child(self, idx):
         l = self.left(idx)
         r = self.right(idx)
-        if l <= self.size and self.heap[l] > self.heap[r]:
-            largest = l
-        else:
-            largest = idx
-        if r <= self.size and self.heap[r] > self.heap[largest]:
-            largest = r
-        if largest != idx:
-            self.swap(idx, largest)
-            self.fix_down(largest)
+        if r > self.size:
+            return l
+        elif self.heap[l] < self.heap[r]:
+            return l
+        return r
 
     def build_heap(self, array):
         self.size = len(array)
@@ -73,15 +81,14 @@ class BinaryHeap:
             return None
         val = self.heap[1]
         self.swap(1,self.size)
+        self.heap.pop()
         self.size -= 1
         self.fix_down(1)
         return val
 
-    def insert(self, val):
-        if self.size == self.max_size:
-            self.grow()
+    def push(self, val):
         self.size += 1
-        self.heap[self.size] = val
+        self.heap.append(val)
         self.fix_up(self.size)
 
     def grow(self):
@@ -92,9 +99,9 @@ class BinaryHeap:
             self.heap[i] = old[i]
 
     def left(self, idx):
-        return idx*2
+        return idx * 2
     def right(self, idx):
-        return idx*2 + 1
+        return idx * 2 + 1
     def parent(self, idx):
         return self.heap[idx // 2]
     def swap(self, i, j):
