@@ -8,7 +8,7 @@ Simple Python implementation of a Hash map with chaining.
 class HashMap:
     """Simple implementation of a Hash map with chaining.
 
-    There is the possibility of collisions, in which case the 
+    There is the possibility of collisions, in which case the
     class chains together nodes
 
     Attributes:
@@ -44,12 +44,12 @@ class HashMap:
 
     def __getitem__(self,key):
         """Overloads operator [] for amortized O(1) access, O(n) worst case"""
-        return self.get(key) 
+        return self.get(key)
 
     def __setitem__(self,key,val):
         """Overloads operator [] for amortized O(1) insertion, O(n) worst case"""
         self.add(key,val)
-            
+
     def grow(self):
         """Doubles size of container, O(n)"""
         self.max_size *= 2
@@ -99,8 +99,3 @@ class HashMap:
                 return node.data[1]
             node = node.next
         return None
-
-
-
-
-
