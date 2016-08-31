@@ -2,11 +2,11 @@
 Created by Connor Murray (connormurray7@gmail.com)
 8/27/2016
 
-Simple Python implementation of a Hash map with chaining.
+Python implementation of a Hash map with chaining.
 """
 
 class HashMap:
-    """Simple implementation of a Hash map with chaining.
+    """Python implementation of a Hash map with chaining.
 
     There is the possibility of collisions, in which case the
     class chains together nodes
@@ -90,6 +90,7 @@ class HashMap:
                 node = node.next
 
     def get(self,key):
+        """Amortized O(1) retrieval of key-val pair, O(n) worst case """
         b = self.hash(key)
         if self.buckets[b] is None:
             return None

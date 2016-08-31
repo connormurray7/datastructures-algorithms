@@ -2,13 +2,13 @@
 Created by Connor Murray (connormurray7@gmail.com)
 8/27/2016
 
-Simple Python implementation of a Hash set.
+Python implementation of a Hash set.
 """
 
 class HashSet:
-    """Simple implementation of a Hash set.
+    """Python implementation of a Hash set.
 
-    There is the possibility of collisions, in which case the 
+    There is the possibility of collisions, in which case the
     class overwrites the old value with the new.
 
     Attributes:

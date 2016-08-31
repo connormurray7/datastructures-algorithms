@@ -2,10 +2,10 @@
 Created by Connor Murray (connormurray7@gmail.com)
 8/27/2016
 
-Simple Python implementation of a binary heap.
+Python implementation of a binary heap.
 """
 
-class BinaryHeap:
+class BinaryHeap(object):
     """Binary max heap, array as underlying data structure
 
     Attributes:

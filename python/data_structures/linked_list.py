@@ -2,7 +2,7 @@
 Created by Connor Murray (connormurray7@gmail.com)
 8/21/2016
 
-Simple Python implementation of a linked list
+Python implementation of a linked list
 """
 
 class Node:
@@ -10,13 +10,13 @@ class Node:
     def __init__(self, data=None, next=None):
         self.data = data
         self.next = next
-    
+
     def __str__(self):
         return str(self.data)
 
 class LinkedList:
-    """Simple implementation of a linked list.
-    
+    """Python implementation of a linked list.
+
     Attributes:
         head: first node in the list
         size: length of the list
@@ -27,6 +27,7 @@ class LinkedList:
         self.size = size
 
     def print_list(self):
+        """ O(n) time and O(n) extra memory """
         node = self.head
         node_data = []
         while node:
@@ -39,9 +40,11 @@ class LinkedList:
         return self.size
 
     def front(self):
+        """O(1) to get front of list """
         return self.head
 
     def prepend(self, data):
+        """ O(1) insertion in front of list """
         node = Node(data)
         if self.head is not None:
             node.next = self.head
@@ -49,6 +52,7 @@ class LinkedList:
         self.size += 1
 
     def append(self, data):
+        """ O(n) insertion at end of list """
         self.size += 1
         if self.head is None:
             self.head = Node(data)
@@ -61,6 +65,7 @@ class LinkedList:
         last.next = Node(data)
 
     def remove_front(self):
+        """ O(1) removal of front of list """
         if self.head is None:
             return
         if self.head.next is None:
@@ -70,6 +75,7 @@ class LinkedList:
         self.size -= 1
 
     def remove_back(self):
+        """ O(n) removal of back of list """
         if self.head is None:
             return
         if self.head.next is None:
@@ -85,14 +91,16 @@ class LinkedList:
         self.size -= 1
 
     def contains(self, data):
+        """ Returns boolean, runs in O(n) time """
         cur = self.head
         while cur:
             if cur.data == data:
                 return True
             cur = cur.next
         return False
-    
+
     def delete(self, data):
+        """ O(n) removal by value of element """
         if self.head is None:
             return
         if self.head.data == data:
@@ -108,4 +116,3 @@ class LinkedList:
                 return
             last = cur
             cur = cur.next
-
