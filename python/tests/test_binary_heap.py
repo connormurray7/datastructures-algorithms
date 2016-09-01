@@ -31,7 +31,7 @@ class ArrayTest(unittest.TestCase):
         self.assertEqual(h.pop(), 2)
         self.assertEqual(h.pop(), 1)
         self.assertEqual(h.pop(), 0)
-        self.assertEqual(h.pop(),None)
+        self.assertEqual(h.pop(), None)
 
     def test_build_heap(self):
         print("Testing build heap")
@@ -55,13 +55,21 @@ class ArrayTest(unittest.TestCase):
         self.assertEqual(h.pop(), 3)
         self.assertEqual(h.pop(), None)
 
-    def test_(self):
-        print("")
+    def test_peek(self):
+        print("Testing peek")
         h = BinaryHeap()
 
-    def test_(self):
-        print("")
-        h = BinaryHeap()
+        h.push(0)
+        h.push(1)
+        h.push(2)
+
+        self.assertEqual(h.peek(), 2)
+        h.pop()
+        self.assertEqual(h.peek(), 1)
+        h.pop()
+        self.assertEqual(h.peek(), 0)
+        h.pop()
+        self.assertEqual(h.peek(), None)
 
 if __name__ == '__main__':
     unittest.main()

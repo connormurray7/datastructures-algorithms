@@ -91,7 +91,6 @@ class BinaryHeap:
         self.heap.append(val)
         self.fix_up(self.size)
 
-
     @staticmethod
     def left(idx):
         """Returns index of left child"""
