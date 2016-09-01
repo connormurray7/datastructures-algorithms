@@ -19,8 +19,12 @@ class BinarySearchTree(object):
         self.head = None
 
     def __getitem__(self, key):
-        """Operator [] overloaded"""
+        """Operator [] overloaded, O(log n) to get"""
         return self.get(key)
+
+    def __setitem__(self, key, val):
+        """Operator [] overloaded, O(log n) to set"""
+        self.put(key, val)
 
     def get(self, key):
         """Returns the value for the key given O(log n)"""
