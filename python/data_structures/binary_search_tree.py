@@ -4,11 +4,12 @@ on 08/30/2016.
 A simple binary search tree with NO self-balancing.
 """
 
-class BinarySearchTree:
+class BinarySearchTree(object):
     """A simple binary search tree with no self-balancing."""
 
-    class Node:
-        def __init(self, key, val):
+    class Node(object):
+        """Node as internal data structure"""
+        def __init__(self, key, val):
             self.key = key
             self.val = val
             self.left = None
@@ -17,7 +18,12 @@ class BinarySearchTree:
     def __init__(self):
         self.head = None
 
+    def __getitem__(self, key):
+        """Operator [] overloaded"""
+        return self.get(key)
+
     def get(self, key):
+        """Returns the value for the key given O(log n)"""
         if self.head is None:
             return None
         if self.head.key == key:
@@ -31,6 +37,17 @@ class BinarySearchTree:
         return cur
 
     def put(self, key, val):
+        """Constructs a node and places it in the tree O(log n)"""
         if self.head is None:
-            self.head = self.Node(key,val)
-        if self.head
+            self.head = self.Node(key, val)
+        cur = self.head
+        while cur:
+            last = cur
+            if key < cur.key:
+                cur = cur.left
+            else:
+                cur = cur.right
+        if key < last.key:
+            last.left = self.Node(key, val)
+        else:
+            last.right = self.Node(key, val)

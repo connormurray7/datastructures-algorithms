@@ -7,9 +7,9 @@ Python implementation of a linked list
 
 class Node:
     """Every element in linked list is a Node """
-    def __init__(self, data=None, next=None):
+    def __init__(self, data=None):
         self.data = data
-        self.next = next
+        self.next = None
 
     def __str__(self):
         return str(self.data)
@@ -35,9 +35,6 @@ class LinkedList:
             node = node.next
         out_str = ' '.join([d for d in node_data])
         print("LinkedList [" + out_str + "]")
-
-    def size(self):
-        return self.size
 
     def front(self):
         """O(1) to get front of list """
