@@ -1,9 +1,8 @@
 import os
 import sys
 import unittest
-sys.path.append(os.path.join(os.getcwd(),  os.path.pardir))
-
 from data_structures.hash_set import HashSet
+sys.path.append(os.path.join(os.getcwd(),  os.path.pardir))
 
 class HashSetTest(unittest.TestCase):
 

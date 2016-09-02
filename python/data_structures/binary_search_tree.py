@@ -44,6 +44,7 @@ class BinarySearchTree(object):
         """Constructs a node and places it in the tree O(log n)"""
         if self.head is None:
             self.head = self.Node(key, val)
+            return
         cur = self.head
         while cur:
             last = cur
