@@ -1,8 +1,9 @@
 import os
 import sys
 import unittest
-from data_structures.binary_heap import BinaryHeap
 sys.path.append(os.path.join(os.getcwd(), os.path.pardir))
+
+from data_structures.binary_heap import BinaryHeap
 
 class ArrayTest(unittest.TestCase):
 

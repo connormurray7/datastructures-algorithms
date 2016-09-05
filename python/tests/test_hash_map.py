@@ -1,8 +1,9 @@
 import os
 import sys
 import unittest
-from data_structures.hash_map import HashMap
 sys.path.append(os.path.join(os.getcwd(), os.path.pardir))
+
+from data_structures.hash_map import HashMap
 
 class HashMapTest(unittest.TestCase):
 

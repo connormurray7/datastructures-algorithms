@@ -1,8 +1,9 @@
 import os
 import sys
 import unittest
-from data_structures.dynamic_array import Array
 sys.path.append(os.path.join(os.getcwd(),  os.path.pardir))
+
+from data_structures.dynamic_array import Array
 
 class ArrayTest(unittest.TestCase):
 

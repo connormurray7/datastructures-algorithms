@@ -1,8 +1,9 @@
 import os
 import sys
 import unittest
-from data_structures.linked_list import LinkedList
 sys.path.append(os.path.join(os.getcwd(), os.path.pardir))
+
+from data_structures.linked_list import LinkedList
 
 class LinkedListTest(unittest.TestCase):
 

@@ -1,8 +1,9 @@
 import os
 import sys
 import unittest
-from data_structures.binary_search_tree import BinarySearchTree
 sys.path.append(os.path.join(os.getcwd(), os.path.pardir))
+
+from data_structures.binary_search_tree import BinarySearchTree
 
 class HashMapTest(unittest.TestCase):
 
@@ -10,9 +11,13 @@ class HashMapTest(unittest.TestCase):
         print("Testing add")
         b = BinarySearchTree()
 
+        print(str(b))
         b.put(2, "bar")
+        print(str(b))
         b.put(1, "foo")
+        print(str(b))
         b.put(3, "baz")
+        print(str(b))
 
         self.assertEqual(b.get(1), "foo")
         self.assertEqual(b.get(2), "bar")

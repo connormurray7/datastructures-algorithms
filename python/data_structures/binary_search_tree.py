@@ -3,6 +3,7 @@ on 08/30/2016.
 
 A simple binary search tree with NO self-balancing.
 """
+from collections import deque
 
 class BinarySearchTree(object):
     """A simple binary search tree with no self-balancing."""
@@ -33,12 +34,12 @@ class BinarySearchTree(object):
         if self.head.key == key:
             return self.head.val
         cur = self.head
-        while cur and cur != key:
+        while cur and cur.key != key:
             if key < cur.key:
                 cur = cur.left
             else:
                 cur = cur.right
-        return cur
+        return cur.val
 
     def put(self, key, val):
         """Constructs a node and places it in the tree O(log n)"""
@@ -56,3 +57,16 @@ class BinarySearchTree(object):
             last.left = self.Node(key, val)
         else:
             last.right = self.Node(key, val)
+
+    def __str__(self):
+        d = deque()
+        d.append(self.head)
+        vals = []
+        while(len(d) > 0):
+            cur = d.popleft()
+            if cur is not None:
+                vals.append(str(cur.val))
+                d.append(cur.left)
+                d.append(cur.right)
+        out_str = ' '.join([val for val in vals])
+        print("BST [" + out_str + "]")
