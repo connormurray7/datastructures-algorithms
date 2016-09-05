@@ -11,7 +11,6 @@ class HashMapTest(unittest.TestCase):
         print("Testing add")
         b = BinarySearchTree()
 
-        print(str(b))
         b.put(2, "bar")
         print(str(b))
         b.put(1, "foo")

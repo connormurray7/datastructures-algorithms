@@ -39,7 +39,7 @@ class BinarySearchTree(object):
                 cur = cur.left
             else:
                 cur = cur.right
-        return cur.val
+        return None if cur is None else cur.val
 
     def put(self, key, val):
         """Constructs a node and places it in the tree O(log n)"""
@@ -69,4 +69,4 @@ class BinarySearchTree(object):
                 d.append(cur.left)
                 d.append(cur.right)
         out_str = ' '.join([val for val in vals])
-        print("BST [" + out_str + "]")
+        return "BST [" + out_str + "]"
