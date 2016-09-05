@@ -12,7 +12,7 @@ class Trie:
     m denotes the length of the string key.
 
     Attributes:
-
+        head: Top level node whose children are the first char in a key
 
     """
 
@@ -34,7 +34,7 @@ class Trie:
         self.set(key,val)
 
     def get(self, key):
-        """Finds val associated with string key, O(m) time"""
+        """Finds val associated with string key, O(m) time."""
         cur = self.head
 
         for char in key:
@@ -46,6 +46,10 @@ class Trie:
         return cur.val
 
     def set(self, key, val):
+        """Sets val associated with string key, O(m) time.
+        
+        If no path exists, constructs nodes along path
+        """
         cur = self.head
 
         for char in key:
@@ -55,6 +59,8 @@ class Trie:
         cur.val = val
 
     def has_prefix(self, prefix):
+        """If prefix in tree, returns true else false, O(m) time."""
+
         cur = self.head
         for char in prefix:
             if char in cur.children:
