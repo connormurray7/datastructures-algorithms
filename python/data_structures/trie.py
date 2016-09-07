@@ -28,9 +28,11 @@ class Trie:
         self.head = self.Node()
 
     def __getitem__(self, key):
+        """Finds val associated with string key, O(m) time."""
         return self.get(key)
 
     def __setitem__(self, key, val):
+        """Sets val associated with string key, O(m) time."""
         self.set(key,val)
 
     def get(self, key):
