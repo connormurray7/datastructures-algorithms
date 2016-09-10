@@ -5,6 +5,7 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of a graph using an adjacency list.
 """
 from graph import Graph
+from queue import Queue
 
 class AdjListGraph(Graph):
     """Python implementation of a graph with adj list.
@@ -18,6 +19,14 @@ class AdjListGraph(Graph):
         print("it worked wooo!")
         self.adj_list = {}
 
+    def __str__(self):
+        """String representation of set"""
+        vertices = []
+        for vert in self.adj_list:
+            vertices.append(vert)
+        out_str = ' '.join([str(v) for v in vertices])
+        return "Graph [" + out_str + "]"
+
     def add_vertex(self, key):
         self.adj_list[key] = []
 
@@ -27,10 +36,18 @@ class AdjListGraph(Graph):
         if v2 in self.adj_list:
             self.adj_list[v2].append(v1)
 
-    def __str__(self):
-        """String representation of set"""
-        vertices = []
-        for vert in self.adj_list:
-            vertices.append(vert)
-        out_str = ' '.join([str(v) for v in vertices])
-        return "Graph [" + out_str + "]"
+    def find_path(self, v1, v2):
+        path = [v1]
+        queue = Queue()
+        queue.put(v1)
+        while(not queue.empty()):
+            vert = queue.get()
+            if vert== v2:
+                return path
+            if self.adj_list[vert] is None:
+                path.pop()
+            else:
+                for v in self.adj_list[vert]:
+                    queue.put(v)
+        print(path)
+        return path
