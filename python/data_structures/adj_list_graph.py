@@ -28,15 +28,18 @@ class AdjListGraph(Graph):
         return "Graph [" + out_str + "]"
 
     def add_vertex(self, key):
+        """Adds vertex to adjacency list, O(1)."""
         self.adj_list[key] = []
 
     def add_edge(self, v1, v2):
+        """Adds edge between two vertices O(1)."""
         if v1 in self.adj_list:
             self.adj_list[v1].append(v2)
         if v2 in self.adj_list:
             self.adj_list[v2].append(v1)
 
     def find_path(self, v1, v2):
+        """Find path between two vertices, O(n!)."""
         path = [v1]
         queue = Queue()
         queue.put(v1)
