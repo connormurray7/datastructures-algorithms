@@ -4,7 +4,7 @@ Created by Connor Murray (connormurray7@gmail.com)
 
 Python implementation of a graph using an adjacency list.
 """
-from graph import Graph
+from data_structures.graph import Graph
 
 class AdjListGraph(Graph):
     """Python implementation of a graph with adj list.
@@ -37,20 +37,19 @@ class AdjListGraph(Graph):
             self.adj_list[v2].append(v1)
 
     def find_path(self, v1, v2):
-        """Find path between two vertices, O(n!)."""
-        visited = {}
+        """Find path between two vertices, O(E*V)."""
+        visited = set()
         stack = []
         stack.append(v1)
-        visited[v1] = True
         while(len(stack) > 0):
             vert = stack[len(stack)-1]
             if vert == v2:
-                stack.append(v2)
-                break
-            if visited[vert]:
+                return stack
+            if vert in visited:
                 stack.pop()
             else:
-                visited[vert] = True
+                visited.add(vert)
                 for v in self.adj_list[vert]:
-                    stack.append(v)
+                    if v not in visited:
+                        stack.append(v)
         return stack

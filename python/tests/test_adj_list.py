@@ -19,7 +19,6 @@ class AdjListTest(unittest.TestCase):
         g.add_edge("A","B")
         g.add_edge("B","D")
         g.add_edge("A","C")
-        g.add_edge("A","B")
 
         path = g.find_path("A","D")
         print(path)
