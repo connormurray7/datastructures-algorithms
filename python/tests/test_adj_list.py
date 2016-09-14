@@ -21,7 +21,7 @@ class AdjListTest(unittest.TestCase):
         g.add_edge("A","C")
 
         path = g.find_path("A","D")
-        print(path)
+        self.assertEqual(path, ["A", "B", "D"])
 
 
 if __name__ == '__main__':
