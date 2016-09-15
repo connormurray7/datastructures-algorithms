@@ -5,6 +5,7 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of a graph using an adjacency list.
 """
 from data_structures.graph import Graph
+from queue import Queue
 
 class AdjListGraph(Graph):
     """Python implementation of a graph with adj list.
@@ -37,7 +38,7 @@ class AdjListGraph(Graph):
             self.adj_list[v2].append(v1)
 
     def find_path(self, v1, v2):
-        """Find path between two vertices, O(E*V)."""
+        """Find path between two vertices with DFS, O(E*V)."""
         visited = set()
         stack = []
         stack.append(v1)
@@ -53,3 +54,25 @@ class AdjListGraph(Graph):
                     if v not in visited:
                         stack.append(v)
         return stack
+
+    def breadth_first_search(self, start):
+        """Traverse entire tree with BFS, O(E*V)."""
+        q = Queue()
+        discovered = set()
+        processed = set()
+
+        q.put(start)
+        discovered.add(start)
+
+        while(not q.empty()):
+            cur = q.get()
+            print("Processed vertex: " + cur)
+            processed.add(cur)
+            for vert in self.adj_list[cur]:
+                if vert not in processed:
+                    print("Processed edge: (" + cur + "," + vert + ")")
+                if vert not in discovered:
+                    q.put(vert)
+                    discovered.add(vert)
+
+        print("Finished processing all vertexes")
