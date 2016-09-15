@@ -1,3 +1,5 @@
-Implementing datastructures in both c++ and python
+Refreshing knowledge of data structures by implementing them while going through The Algorithm Design Manual by *Skiena* 
 
-Unifnished, currently under production
+Written in Python and C++
+
+Still work in progress
