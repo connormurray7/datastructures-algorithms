@@ -37,3 +37,10 @@ class AdjMatrixGraph(Graph):
             self.adj_matrix[i][j] = 1
             self.adj_matrix[j][i] = 1
 
+    def find_path(self, v1, v2):
+        """Find path between two vertices with DFS, O(E*V)."""
+
+
+
+    def breadth_first_search(self, start):
+        """Traverse tree with BFS, O(E*V)."""

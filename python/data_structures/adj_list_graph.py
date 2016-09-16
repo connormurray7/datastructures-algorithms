@@ -56,7 +56,7 @@ class AdjListGraph(Graph):
         return stack
 
     def breadth_first_search(self, start):
-        """Traverse entire tree with BFS, O(E*V)."""
+        """Traverse tree with BFS, O(E*V)."""
         q = Queue()
         discovered = set()
         processed = set()
