@@ -41,6 +41,10 @@ class AdjMatrixGraph(Graph):
         """Find path between two vertices with DFS, O(E*V)."""
 
 
-
     def breadth_first_search(self, start):
         """Traverse tree with BFS, O(E*V)."""
+
+    def minimum_spanning_tree(self, start):
+
+
+    def find_cycles(self, start):
