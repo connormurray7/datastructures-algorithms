@@ -59,13 +59,25 @@ class SuffixTrie:
 
         return root
 
-    def has_substring(self, s):
+    def _walk_trie(self, s):
         if s is None or len(s) == 0:
-            return False
+            return None
         cur = self.root
         for char in s:
             if char in cur.children:
                 cur = cur.children[char]
             else:
-                return False
-        return True
+                return None
+        return cur 
+        
+    def has_substring(self, s):
+        node = self._walk_trie(s)
+        return node is not None
+
+    def is_suffix(self, s):
+        node = self._walk_trie(s)
+        if node is None:
+            return False
+        
+        return len(node.children) == 0
+        
