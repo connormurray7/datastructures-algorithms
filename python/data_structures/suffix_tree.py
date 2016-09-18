@@ -6,34 +6,35 @@ Python implementation of a suffix tree based on:
 https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/suffixtrees.pdf
 """
 
-class SuffixTree:
+class _SuffixTrieNode:
+    def __init__(self, link = None):
+        self.children = {}
+        if link is not None:
+            self.link = link
+        else:
+            self.link = self
+
+    def make_link(self, char, node):
+        self.children[char] = node
+
+class SuffixTrie:
     """Python implementation of suffix tree.
 
     Attributes:
 
     """
 
-    class SuffixTreeNode:
-        def __init__(self, link = None):
-            self.children = {}
-            if link is not None:
-                self.link = link
-            else:
-                self.link = self
-
-        def make_link(self, char, node):
-            self.children[char] = node
 
     def __init__(self, s):
-        self.root = self.build_tree(s)
+        self.root = self._build_tree(s)
 
 
-    def build_tree(self, s):
+    def _build_tree(self, s):
         if s in None or len(s) == 0:
             return None
 
-        root = SuffixTreeNode()
-        longest = SuffixTreeNode(root)
+        root = _SuffixTrieNode()
+        longest = _SuffixTrieNode(root)
         root.make_link(s[0], longest)
 
         for char in s[1:]:
@@ -41,8 +42,7 @@ class SuffixTree:
             prev = None
 
             while(char not in cur.children):
-
-                node = SuffixTreeNode()
+                node = _SuffixTrieNode()
                 cur.make_link(char, node)
 
                 if prev is not None:
