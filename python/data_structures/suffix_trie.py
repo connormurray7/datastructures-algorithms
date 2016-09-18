@@ -24,13 +24,12 @@ class SuffixTrie:
 
     """
 
-
     def __init__(self, s):
         self.root = self._build_tree(s)
 
 
     def _build_tree(self, s):
-        if s in None or len(s) == 0:
+        if s is None or len(s) == 0:
             return None
 
         root = _SuffixTrieNode()
@@ -59,3 +58,14 @@ class SuffixTrie:
             longest = longest.children[char]
 
         return root
+
+    def has_substring(self, s):
+        if s is None or len(s) == 0:
+            return False
+        cur = self.root
+        for char in s:
+            if char in cur.children:
+                cur = cur.children[char]
+            else:
+                return False
+        return True
