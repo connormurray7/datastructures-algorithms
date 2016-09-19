@@ -1,12 +1,13 @@
 """
 Created by Connor Murray (connormurray7@gmail.com)
-8/27/2016
+9/18/2016
 
 Python implementation of a suffix tree based on:
 https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/suffixtrees.pdf
 """
 
 class _SuffixTrieNode:
+    """Implementation of node in suffix trie, not meant for external use."""
     def __init__(self, link = None):
         self.children = {}
         if link is not None:
@@ -20,15 +21,19 @@ class _SuffixTrieNode:
 class SuffixTrie:
     """Python implementation of suffix tree.
 
-    Attributes:
+    Uncompressed trie implementation, uses O(n^2) space created in O(n^2) time.
 
+    Attributes:
+        _root: Used for traversal, not meant for external use.
     """
 
     def __init__(self, s):
-        self.root = self._build_tree(s)
+        """Creates suffix trie for string s."""
+        self._root = self._build_tree(s)
 
 
     def _build_tree(self, s):
+        """Builds trie for string s. Returns root node."""
         if s is None or len(s) == 0:
             return None
 
@@ -60,9 +65,10 @@ class SuffixTrie:
         return root
 
     def _walk_trie(self, s):
+        """Traverses trie for string s, returns final node if s is substring."""
         if s is None or len(s) == 0:
             return None
-        cur = self.root
+        cur = self._root
         for char in s:
             if char in cur.children:
                 cur = cur.children[char]
@@ -71,13 +77,14 @@ class SuffixTrie:
         return cur 
         
     def has_substring(self, s):
+        """True if string is a substring."""
         node = self._walk_trie(s)
         return node is not None
 
     def is_suffix(self, s):
+        """True if string is a suffix.""" 
         node = self._walk_trie(s)
         if node is None:
             return False
         
         return len(node.children) == 0
-        
