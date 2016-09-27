@@ -40,10 +40,10 @@ class AdjListGraph(Graph):
     def find_path(self, v1, v2):
         """Find path between two vertices with DFS, O(E*V)."""
         visited = set()
-        stack = []
+        stack = [] #Use list as stack
         stack.append(v1)
         while(len(stack) > 0):
-            vert = stack[len(stack)-1]
+            vert = stack[len(stack)-1] #Last value in stack is top
             if vert == v2:
                 return stack
             if vert in visited:
