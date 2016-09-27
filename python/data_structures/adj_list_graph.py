@@ -37,46 +37,6 @@ class AdjListGraph(Graph):
         if v2 in self.adj_list:
             self.adj_list[v2].append(v1)
 
-    def find_path(self, v1, v2):
-        """Find path between two vertices with DFS, O(E*V)."""
-        visited = set()
-        stack = [] #Use list as stack
-        stack.append(v1)
-        while(len(stack) > 0):
-            vert = stack[len(stack)-1] #Last value in stack is top
-            if vert == v2:
-                return stack
-            if vert in visited:
-                stack.pop()
-            else:
-                visited.add(vert)
-                for v in self.adj_list[vert]:
-                    if v not in visited:
-                        stack.append(v)
-        return stack
-
-    def breadth_first_search(self, start):
-        """Traverse tree with BFS, O(E*V)."""
-        q = Queue()
-        discovered = set()
-        processed = set()
-
-        q.put(start)
-        discovered.add(start)
-
-        while(not q.empty()):
-            cur = q.get()
-            print("Processed vertex: " + cur)
-            processed.add(cur)
-            for vert in self.adj_list[cur]:
-                if vert not in processed:
-                    print("Processed edge: (" + cur + "," + vert + ")")
-                if vert not in discovered:
-                    q.put(vert)
-                    discovered.add(vert)
-
-        print("Finished processing all vertexes")
-
 
     def minimum_spanning_tree(self, start):
 
