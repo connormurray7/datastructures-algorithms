@@ -2,11 +2,11 @@
 Created by Connor Murray (connormurray7@gmail.com)
 9/26/2016
 
-DFS of graph in data_structures directory
+BFS of graph in data_structures directory
 """
 
 def breadth_first_search(self, graph, start):
-"""Traverse tree with BFS, O(E*V)."""
+    """Traverse tree with BFS, O(E*V)."""
     q = Queue()
     discovered = set()
     processed = set()
