@@ -5,24 +5,23 @@ Created by Connor Murray (connormurray7@gmail.com)
 BFS of graph in data_structures directory
 """
 
-def breadth_first_search(self, graph, start):
+from queue import Queue
+
+def breadth_first_search(graph, start):
     """Traverse tree with BFS, O(E*V)."""
+    bfs_order = []
     q = Queue()
     discovered = set()
-    processed = set()
 
     q.put(start)
     discovered.add(start)
 
     while(not q.empty()):
         cur = q.get()
-        print("Processed vertex: " + cur)
-        processed.add(cur)
+        bfs_order.append(cur)
         for vert in graph.adj_list[cur]:
-            if vert not in processed:
-                print("Processed edge: (" + cur + "," + vert + ")")
             if vert not in discovered:
                 q.put(vert)
                 discovered.add(vert)
 
-    print("Finished processing all vertexes")
+    return bfs_order
