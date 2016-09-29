@@ -5,15 +5,16 @@ Created by Connor Murray (connormurray7@gmail.com)
 DFS of graph in data_structures directory
 """
 
-def depth_first_search(graph, start):
+def depth_first_search(graph, start, visited = None):
     """Find path between two vertices with DFS, O(E*V)."""
+    if visited is None:
+        visited = set() #Can be used for topological sorting if passed in.
     stack = [] #Use list as stack
-    visited = set()
     dfs_order = []
 
     stack.append(start)
 
-    while(len(stack) > 0):
+    while stack:
         vert = stack[len(stack)-1] #Last value in stack is top
         if vert in visited:
             dfs_order.append(vert)
