@@ -5,12 +5,12 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of mergesort
 """
 
-def merge_sort(arr, low, high):
+def mergesort(arr, low, high):
     if high <= low:
         return
     mid = (high + low) // 2
-    merge_sort(arr, low, mid)
-    merge_sort(arr, mid + 1, high)
+    mergesort(arr, low, mid)
+    mergesort(arr, mid + 1, high)
     merge(arr, low, high)
 
 def merge(arr, low, high):
@@ -22,7 +22,7 @@ def merge(arr, low, high):
     hi = mid + 1
 
     while(lo <= mid and hi <= high):
-        if arr[lo] < arr[hi]
+        if arr[lo] < arr[hi]:
             tmp[k] = arr[lo]
             lo += 1
         else:
@@ -43,5 +43,5 @@ def merge(arr, low, high):
     #Have to write back.
     lo = low
     for val in tmp:
-        arr[lo] = tmp[k]
+        arr[lo] = val
         lo += 1
