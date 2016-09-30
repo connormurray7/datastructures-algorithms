@@ -15,11 +15,12 @@ def depth_first_search(graph, start, visited = None):
     stack.append(start)
 
     while stack:
-        vert = stack[len(stack)-1] #Last value in stack is top
+        vert = stack[-1] #Back of list is top of stack
         if vert in visited:
             dfs_order.append(vert)
             stack.pop()
         else:
+            print("Adding vertex " + vert)
             visited.add(vert)
             for v in graph.adj_list[vert]:
                 if v not in visited:
