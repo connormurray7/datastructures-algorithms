@@ -14,8 +14,9 @@ class AdjListGraph(Graph):
         add_vertex: constructs a vertex and keeps track of it
     """
 
-    def __init__(self):
+    def __init__(self, directed = False):
         self.adj_list = {}
+        self.directed = directed
 
     def __str__(self):
         """String representation of set"""
@@ -33,5 +34,5 @@ class AdjListGraph(Graph):
         """Adds edge between two vertices O(1)."""
         if v1 in self.adj_list:
             self.adj_list[v1].append(v2)
-        if v2 in self.adj_list:
+        if not self.directed and v2 in self.adj_list:
             self.adj_list[v2].append(v1)

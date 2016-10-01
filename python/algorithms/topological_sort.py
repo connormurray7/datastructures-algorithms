@@ -13,6 +13,7 @@ def topological_sort(graph, start):
     visited = set()
     topological_sort = []
     for v in graph.adj_list.keys():
+        print(str(visited))
         if v not in visited:
             topological_sort.extend(depth_first_search(graph, v))
 
