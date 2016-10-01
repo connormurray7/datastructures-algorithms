@@ -11,10 +11,10 @@ def topological_sort(graph, start):
     """Requires a DAG, runs in O(|E| + |V|)."""
 
     visited = set()
-    topological_sort = []
+    dfs_order = []
     for v in graph.adj_list.keys():
-        print(str(visited))
         if v not in visited:
-            topological_sort.extend(depth_first_search(graph, v))
+            dfs_order.extend(depth_first_search(graph, v, visited))
 
-    return topological_sort.reverse()
+    dfs_order.reverse()
+    return dfs_order #This is now topologically sorted

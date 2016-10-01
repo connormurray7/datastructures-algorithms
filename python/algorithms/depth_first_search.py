@@ -8,6 +8,7 @@ DFS of graph in data_structures directory
 def depth_first_search(graph, start, visited = None):
     """Find path between two vertices with DFS, O(E*V)."""
     if visited is None:
+        print("We should never get here")
         visited = set() #Can be used for topological sorting if passed in.
     stack = [] #Use list as stack
     dfs_order = []
@@ -20,7 +21,6 @@ def depth_first_search(graph, start, visited = None):
             dfs_order.append(vert)
             stack.pop()
         else:
-            print("Adding vertex " + vert)
             visited.add(vert)
             for v in graph.adj_list[vert]:
                 if v not in visited:
