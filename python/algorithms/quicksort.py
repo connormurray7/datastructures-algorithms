@@ -5,9 +5,11 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of quicksort with option for randomized quicksor
 """
 
+from random import shuffle
+
 def quicksort(arr, randomized = False):
     if randomized:
-        print("Call random function")
+        shuffle(arr)
 
     _quicksort(arr, 0, len(arr) - 1)
 
@@ -15,11 +17,11 @@ def _quicksort(arr, low, high):
     if high <= low:
         return
 
-    p = partition(arr, low, high)
+    p = _partition(arr, low, high)
     _quicksort(arr, low, p - 1)
     _quicksort(arr, p + 1, high)
 
-def partition(arr, low, high):
+def _partition(arr, low, high):
     wall = low
     lo = low
     hi = high
