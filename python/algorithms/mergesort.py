@@ -11,9 +11,9 @@ def mergesort(arr, low, high):
     mid = (high + low) // 2
     mergesort(arr, low, mid)
     mergesort(arr, mid + 1, high)
-    merge(arr, low, high)
+    _merge(arr, low, high)
 
-def merge(arr, low, high):
+def _merge(arr, low, high):
     tmp = [None]*(high-low+1) #Pre-allocate for speed
 
     k = 0
