@@ -16,5 +16,5 @@ def topological_sort(graph, start):
         if v not in visited:
             dfs_order.extend(depth_first_search(graph, v, visited))
 
-    dfs_order.reverse()
+    dfs_order
     return dfs_order #This is now topologically sorted

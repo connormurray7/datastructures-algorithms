@@ -35,6 +35,12 @@ class TopologicalSortTest(unittest.TestCase):
         order = topological_sort(g, "0")
         print(str(order))
 
+        self.assertEqual(order.pop(), "3")
+        self.assertEqual(order.pop(), "6")
+        self.assertEqual(order.pop(), "0")
+        self.assertEqual(order.pop(), "5")
+        self.assertEqual(order.pop(), "2")
+        self.assertEqual(order.pop(), "1")
 
 if __name__ == '__main__':
     unittest.main()
