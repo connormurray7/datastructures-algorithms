@@ -25,7 +25,7 @@ def dijkstra(graph, start):
         q.remove(u)
 
         for v in graph.adj_list[u]:
-            alt = dist[u] + graph.weight(u,v)
+            alt = dist[u] + graph.weights[(u,v)]
             if alt < dist[v]:
                 dist[v] = alt
                 prev[v] = u
