@@ -12,6 +12,7 @@ class AdjListGraph(Graph):
     Attributes:
         init: constructor
         add_vertex: constructs a vertex and keeps track of it
+        add_edge: creates edge between two vertices
     """
 
     def __init__(self, directed = False):
@@ -31,7 +32,7 @@ class AdjListGraph(Graph):
         self.adj_list[key] = []
 
     def add_edge(self, v1, v2):
-        """Adds edge between two vertices O(1)."""
+        """Adds edge between two vertices if O(1)."""
         if v1 in self.adj_list:
             self.adj_list[v1].append(v2)
         if not self.directed and v2 in self.adj_list:
