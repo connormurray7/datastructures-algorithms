@@ -21,7 +21,7 @@ def dijkstra(graph, start):
     dist[start] = 0
 
     while q:
-        u = _min_vert(q)
+        u = _min_vert(q, dist)
         q.remove(u)
 
         for v in graph.adj_list[u]:
