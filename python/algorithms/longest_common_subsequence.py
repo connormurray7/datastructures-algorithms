@@ -19,4 +19,15 @@ def lcs(word1, word2):
             else:
                 matrix[i][j] = max(matrix[i][j-1], matrix[i-1][j])
 
-    return matrix[m-1][n-1]
+    return _backtrack(matrix, word1, word2, m-1, n-1)
+
+def _backtrack(matrix, word1, word2, i, j):
+    if i == 0 or j == 0:
+        return ""
+    if word1[i-1] == word2[j-1]:
+        return _backtrack(matrix, word1, word2, i-1, j-1) + word1[i-1]
+    else:
+        if matrix[i][j-1] > matrix[i-1][j]:
+            return _backtrack(matrix, word1, word2, i, j-1)
+        else:
+            return _backtrack(matrix, word1, word2, i-1, j)
