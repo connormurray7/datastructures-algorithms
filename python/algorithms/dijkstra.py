@@ -29,9 +29,9 @@ def dijkstra(graph, start):
             if alt < dist[v]:
                 dist[v] = alt
                 prev[v] = u
-    
+
     return (dist, prev)
-            
+
 
 
 def _min_vert(q, dist):
@@ -41,5 +41,5 @@ def _min_vert(q, dist):
         if dist[vert] <= min_val:
             min_val = dist[vert]
             min_vert = vert
-        
+
     return min_vert

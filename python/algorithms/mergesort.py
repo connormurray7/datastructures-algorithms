@@ -29,12 +29,12 @@ def _merge(arr, low, high):
             tmp[k] = arr[hi]
             hi += 1
         k += 1
-        
+
     while(lo <= mid):
         tmp[k] = arr[lo]
         k += 1
         lo += 1
-    
+
     while(hi <= high):
         tmp[k] = arr[hi]
         k += 1

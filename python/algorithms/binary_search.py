@@ -10,7 +10,7 @@ def binary_search_recursive(arr, low, high, val):
     mid = (high + low) // 2
     if arr[mid] == val:
         return mid
-    
+
     if val < arr[mid]:
         return binary_search_recursive(arr, low, mid -1, val)
 
@@ -31,5 +31,5 @@ def binary_search_iterative(arr, val):
             low = mid + 1
         else:
             high = mid - 1
-    
+
     return None
