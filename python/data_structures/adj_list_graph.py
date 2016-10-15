@@ -4,7 +4,7 @@ Created by Connor Murray (connormurray7@gmail.com)
 
 Python implementation of a graph using an adjacency list.
 """
-from graph import Graph
+from data_structures.graph import Graph
 
 
 class AdjListGraph(Graph):
