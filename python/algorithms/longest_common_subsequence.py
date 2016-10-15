@@ -7,7 +7,7 @@ Python implementation of Longest Common Subsequence
 
 
 def lcs(word1, word2):
-
+    """Longest common subsequence, runs in O(m * n), O(m * n) extra space."""
     m = len(word1) + 1
     n = len(word2) + 1
 

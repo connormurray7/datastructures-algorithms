@@ -8,6 +8,7 @@ import sys
 
 
 def dijkstra(graph, start):
+    """Dijkstra's algorithm, runs in O(|E| log |V|) on average."""
 
     dist = {}
     prev = {}
@@ -32,7 +33,6 @@ def dijkstra(graph, start):
                 prev[v] = u
 
     return dist, prev
-
 
 
 def _min_vert(q, dist):

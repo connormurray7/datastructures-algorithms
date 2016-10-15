@@ -5,6 +5,7 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementations of tree traversals
 """
 
+
 def pre_order(root):
     if root is None:
         return
@@ -19,6 +20,7 @@ def in_order(root):
     pre_order(root.left)
     _process(root)
     pre_order(root.right)
+
 
 def post_order(root):
     pre_order(root.left)

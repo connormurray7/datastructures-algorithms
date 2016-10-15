@@ -2,13 +2,14 @@
 Created by Connor Murray (connormurray7@gmail.com)
 9/20/2016
 
-Python implementation of quicksort with option for randomized quicksor
+Python implementation of quick sort with option for randomized quicksor
 """
 
 from random import shuffle
 
 
 def quicksort(arr, randomized = False):
+    """Quick sort, runs in O(n log n), O(1) extra space."""
     if randomized:
         shuffle(arr)
 

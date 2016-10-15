@@ -7,7 +7,7 @@ Python implementation of mergesort
 
 
 def mergesort(arr, low, high):
-    """Runs in O(n log n) with O(n) extra space"""
+    """Runs in O(n log n) with O(n) extra space."""
     if high <= low:
         return
     mid = (high + low) // 2
