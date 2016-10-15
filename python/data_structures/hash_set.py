@@ -5,6 +5,7 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of a Hash set.
 """
 
+
 class HashSet:
     """Python implementation of a Hash set.
 
@@ -37,11 +38,11 @@ class HashSet:
         out_str = ' '.join([str(k) for k in keys])
         return "Hashset [" + out_str + "]"
 
-    def __getitem__(self,key):
+    def __getitem__(self, key):
         """Overloads operator [] for O(1) access"""
         return self.get(key)
 
-    def get(self,key):
+    def get(self, key):
         """Overloads operator [] for O(1) access"""
         return self.buckets[self.hash(key)]
 

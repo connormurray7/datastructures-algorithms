@@ -5,6 +5,7 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of a linked list
 """
 
+
 class Node:
     """Every element in linked list is a Node """
     def __init__(self, data=None):
@@ -13,6 +14,7 @@ class Node:
 
     def __str__(self):
         return str(self.data)
+
 
 class LinkedList:
     """Python implementation of a linked list.

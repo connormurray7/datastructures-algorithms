@@ -5,6 +5,7 @@ Connor Murray (connormurray7@gmail.com)
 on 8/25/2016
 """
 
+
 class Array:
     """Implemented with a python list because there are no static arrays.
 
@@ -24,7 +25,7 @@ class Array:
 
     def __getitem__(self, index):
         """Overloads operator [] for random access if exists."""
-        if index >= 0 and index < self.buffer:
+        if 0 <= index < self.buffer:
             return self.array[index]
         else:
             return None
@@ -39,10 +40,10 @@ class Array:
     def get(self):
         """Returns what element the ring buffer is currently on."""
         item = self.array[self.index]
-        self.index = (self.index + 1) % (self.buffer)
+        self.index = (self.index + 1) % self.buffer
         return item
 
-    def remove(self,index):
+    def remove(self, index):
         """Removes element at index, if it exists."""
         if index < 0 or index >= self.buffer:
             return

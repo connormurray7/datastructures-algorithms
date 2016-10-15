@@ -22,7 +22,6 @@ class Trie:
         def __init__(self, val=None):
             self.children = {}
             self.val = val
-        
 
     def __init__(self):
         self.head = self.Node()
@@ -33,7 +32,7 @@ class Trie:
 
     def __setitem__(self, key, val):
         """Sets val associated with string key, O(m) time."""
-        self.set(key,val)
+        self.set(key, val)
 
     def get(self, key):
         """Finds val associated with string key, O(m) time."""

@@ -5,6 +5,7 @@ A simple binary search tree with NO self-balancing.
 """
 from collections import deque
 
+
 class BinarySearchTree(object):
     """A simple binary search tree with no self-balancing."""
 
@@ -62,7 +63,7 @@ class BinarySearchTree(object):
         d = deque()
         d.append(self.head)
         vals = []
-        while(len(d) > 0):
+        while len(d) > 0:
             cur = d.popleft()
             if cur is not None:
                 vals.append(str(cur.val))

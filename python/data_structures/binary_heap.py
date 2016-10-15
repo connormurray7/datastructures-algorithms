@@ -39,7 +39,7 @@ class BinaryHeap:
             if self.comp(self.heap[idx], self.heap[parent]):
                 self.swap(idx, parent)
             idx = parent
-            parent = parent // 2
+            parent //= 2
 
     def fix_down(self, idx):
         """Sorts downward in heap, runs in O(log n)."""

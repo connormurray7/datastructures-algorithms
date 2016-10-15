@@ -4,7 +4,8 @@ Created by Connor Murray (connormurray7@gmail.com)
 
 Python implementation of a graph using an adjacency list.
 """
-from data_structures.graph import Graph
+from graph import Graph
+
 
 class AdjListGraph(Graph):
     """Python implementation of a graph with adj list.
@@ -32,7 +33,7 @@ class AdjListGraph(Graph):
         """Adds vertex to adjacency list, O(1)."""
         self.adj_list[key] = []
 
-    def add_edge(self, v1, v2, w = None):
+    def add_edge(self, v1, v2, w=None):
         """Adds edge between two vertices if O(1)."""
         if v1 in self.adj_list:
             self.adj_list[v1].append(v2)

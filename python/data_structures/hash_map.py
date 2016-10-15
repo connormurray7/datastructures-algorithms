@@ -5,6 +5,7 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of a Hash map with chaining.
 """
 
+
 class HashMap:
     """Python implementation of a Hash map with chaining.
 
@@ -56,8 +57,8 @@ class HashMap:
         tmp = self.buckets
         self.buckets = [None]*self.max_size
 
-        for pair in tmp:
-            self.add(pair.key, pair.val)
+        for node in tmp:
+            self.buckets.add(node.key, node.val)
 
     def add(self, key, val):
         """Amortized O(1) addition to dict, if container too full, calls grow"""
@@ -68,12 +69,11 @@ class HashMap:
             node = self.buckets[bucket]
             while node:
                 last = node
-                node = node.next #Get to the end of the chain
+                node = node.next  # Get to the end of the chain
             last.next = self.Node((key, val))
         else:
             self.buckets[bucket] = self.Node((key, val))
         self.size += 1
-
 
     def remove(self, key):
         """Amortized O(1) removal of key-val pair, O(n) worst case """
@@ -85,7 +85,7 @@ class HashMap:
                 if node.data[0] == key:
                     self.buckets[bucket] = None
                     self.size -= 1
-                    if node != prev: #first iteration
+                    if node != prev:  # first iteration
                         prev.next = node.next
                 node = node.next
 

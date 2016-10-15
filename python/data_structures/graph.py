@@ -6,10 +6,12 @@ Python abstract class of a graph.
 """
 from abc import ABCMeta
 
+
 class Vertex:
     """Vertex in a graph."""
     def __init__(self, key):
         self.key = key
+
 
 class Edge:
     """Connects two vertices with optional weight."""
@@ -17,6 +19,7 @@ class Edge:
     def __init__(self, v1, v2, w=None):
         self.edge = (v1, v2)
         self.weight = w
+
 
 class Graph:
     """Python abstract class of a graph.
