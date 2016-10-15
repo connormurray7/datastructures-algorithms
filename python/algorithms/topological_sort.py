@@ -5,7 +5,8 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of topological sort using DFS
 """
 
-from algorithms.depth_first_search import *
+from algorithms.depth_first_search import depth_first_search
+
 
 def topological_sort(graph, start):
     """Requires a DAG, runs in O(|E| + |V|)."""
@@ -16,5 +17,4 @@ def topological_sort(graph, start):
         if v not in visited:
             dfs_order.extend(depth_first_search(graph, v, visited))
 
-    dfs_order
-    return dfs_order #This is now topologically sorted
+    return dfs_order # This is now topologically sorted

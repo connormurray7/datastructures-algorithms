@@ -6,6 +6,7 @@ Python implementation of Dijkstra's Algorithm
 """
 import sys
 
+
 def dijkstra(graph, start):
 
     dist = {}
@@ -30,12 +31,13 @@ def dijkstra(graph, start):
                 dist[v] = alt
                 prev[v] = u
 
-    return (dist, prev)
+    return dist, prev
 
 
 
 def _min_vert(q, dist):
     min_val = sys.maxsize
+    min_vert = None
 
     for vert in q:
         if dist[vert] <= min_val:

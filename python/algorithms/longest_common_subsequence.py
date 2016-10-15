@@ -5,6 +5,7 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of Longest Common Subsequence
 """
 
+
 def lcs(word1, word2):
 
     m = len(word1) + 1
@@ -20,6 +21,7 @@ def lcs(word1, word2):
                 matrix[i][j] = max(matrix[i][j-1], matrix[i-1][j])
 
     return _backtrack(matrix, word1, word2, m-1, n-1)
+
 
 def _backtrack(matrix, word1, word2, i, j):
     if i == 0 or j == 0:

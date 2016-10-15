@@ -7,11 +7,13 @@ Python implementation of quicksort with option for randomized quicksor
 
 from random import shuffle
 
+
 def quicksort(arr, randomized = False):
     if randomized:
         shuffle(arr)
 
     _quicksort(arr, 0, len(arr) - 1)
+
 
 def _quicksort(arr, low, high):
     if high <= low:
@@ -21,6 +23,7 @@ def _quicksort(arr, low, high):
     _quicksort(arr, low, p - 1)
     _quicksort(arr, p + 1, high)
 
+
 def _partition(arr, low, high):
     wall = low
     lo = low
@@ -28,9 +31,9 @@ def _partition(arr, low, high):
     
     p = hi
 
-    while(lo < hi):
+    while lo < hi:
         if arr[lo] < arr[p]:
-            arr[lo], arr[wall] = arr[wall], arr[lo] #swap
+            arr[lo], arr[wall] = arr[wall], arr[lo]  # swap
             wall += 1
         lo += 1
 

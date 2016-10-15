@@ -5,7 +5,9 @@ Created by Connor Murray (connormurray7@gmail.com)
 Python implementation of mergesort
 """
 
+
 def mergesort(arr, low, high):
+    """Runs in O(n log n) with O(n) extra space"""
     if high <= low:
         return
     mid = (high + low) // 2
@@ -13,8 +15,9 @@ def mergesort(arr, low, high):
     mergesort(arr, mid + 1, high)
     _merge(arr, low, high)
 
+
 def _merge(arr, low, high):
-    tmp = [None]*(high-low+1) #Pre-allocate for speed
+    tmp = [None]*(high-low+1)  # Pre-allocate for speed
 
     k = 0
     lo = low
@@ -40,7 +43,7 @@ def _merge(arr, low, high):
         k += 1
         hi += 1
 
-    #Have to write back.
+    # Have to write back.
     lo = low
     for val in tmp:
         arr[lo] = val
