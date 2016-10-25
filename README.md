@@ -2,4 +2,4 @@ Refreshing knowledge of data structures and algorithms by implementing them whil
 
 Written in Python and C++
 
-Still work in progress
+Python iteration of the implementations are complete, C++ still a WIP.
