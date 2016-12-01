@@ -30,8 +30,8 @@ BinaryTree<K,V>::~BinaryTree() {}
 template<typename K, typename V>
 typename BinaryTree<K,V>::nodeptr_t BinaryTree<K,V>::find(K k) {
     auto ptr = root;
-    while(ptr != nullptr && k != ptr->K) {
-        ptr = (k < ptr->K) ? ptr->left : ptr->right;
+    while(ptr != nullptr && k != ptr->key) {
+        ptr = (k < ptr->key) ? ptr->left : ptr->right;
     }
     return ptr;
 }
@@ -47,9 +47,9 @@ void BinaryTree<K,V>::insert(K k, V v) {
     auto last = cur;
     while(cur) {
         last = cur;
-        cur = (n->K < cur->K) ? cur->left : cur->right;
+        cur = (n->key < cur->key) ? cur->left : cur->right;
     }
-    if(n->K < last->K) {
+    if(n->key < last->key) {
         last->left = n;
     }
     else {
@@ -83,7 +83,7 @@ void BinaryTree<K,V>::print_tree() {
             cur = s.top();
             s.pop();
 
-            os << cur->K << " ";
+            os << cur->key << " ";
             cur = cur->right;
         }
     }
