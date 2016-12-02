@@ -19,7 +19,7 @@ BinaryTree<K,V>::BinaryTree() {
 template<typename K, typename V>
 BinaryTree<K,V>::BinaryTree(BinaryTree<K,V> &tree_in) {
     auto data = tree_in.get_nodes();
-    std::sort(data.begin(), data.end(),sort_comp);
+    std::sort(data.begin(), data.end(), sort_comp);
     root = build_tree(data, 0, data.size());
 }
 
