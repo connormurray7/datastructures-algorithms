@@ -13,14 +13,6 @@
 
 template<typename K, typename V>
 class BinaryTree {
-
-    typedef std::shared_ptr<Node<K,V>> nodeptr_t;
-        //Typedef that will be used throughout the class
-        //shared_ptr was chosen over standard pointers
-
-    typedef Node<K,V> node_t;
-        //Typedef for a templated node.
-
 public:
 
     //==============================================//
@@ -41,12 +33,12 @@ public:
     //           Standard map functions
     //==============================================//
 
-    nodeptr_t find(K k);
+    std::shared_ptr<Node<K,V>> find(K k);
         //Requires the K, and returns a pointer
         //to the node.
         //O(log N) average, O(N) worst case
 
-    nodeptr_t operator[](K k) { return find(k); }
+    std::shared_ptr<Node<K,V>> operator[](K k) { return find(k); }
         //Overloaded operator that calls find.
 
     void insert(K k, V v);
@@ -84,24 +76,24 @@ public:
         //time from your cpu clock.
         //O(N Log N) time.
 
-    std::vector<nodeptr_t> get_nodes();
+    std::vector<std::shared_ptr<Node<K,V>>> get_nodes();
         //Requires nothing, returns all of
         //the nodes of the tree.
         //O(N) time, space
 
 private:
 
-    nodeptr_t root;
+    std::shared_ptr<Node<K,V>> root;
         //Templated root node
 
     int num_nodes;
         //Total number of nodes
 
-    nodeptr_t build_tree(std::vector<nodeptr_t> &vec, int start, int end);
+    std::shared_ptr<Node<K,V>> build_tree(std::vector<std::shared_ptr<Node<K,V>>> &vec, int start, int end);
         //Requires a vector of node pointers
         //Private function to do the actual building of the tree.
 
-    static bool sort_comp(nodeptr_t a, nodeptr_t b) {return *a < *b;};
+    static bool sort_comp(std::shared_ptr<Node<K,V>> a, std::shared_ptr<Node<K,V>> b) {return *a < *b;};
         //Requires two node pointers.
         //Operator< is already overloaded for Node, this function
         //dereferences the pointers and compares. Useful for

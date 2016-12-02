@@ -28,7 +28,7 @@ BinaryTree<K,V>::~BinaryTree() {}
 
 //  Standard map functions  //
 template<typename K, typename V>
-typename BinaryTree<K,V>::nodeptr_t BinaryTree<K,V>::find(K k) {
+std::shared_ptr<Node<K,V>> BinaryTree<K,V>::find(K k) {
     auto ptr = root;
     while(ptr != nullptr && k != ptr->key) {
         ptr = (k < ptr->key) ? ptr->left : ptr->right;
@@ -38,7 +38,7 @@ typename BinaryTree<K,V>::nodeptr_t BinaryTree<K,V>::find(K k) {
 
 template<typename K, typename V>
 void BinaryTree<K,V>::insert(K k, V v) {
-    nodeptr_t n = std::make_shared<Node<K,V> >(node_t(k,v));
+    std::shared_ptr<Node<K,V>> n = std::make_shared<Node<K,V> >(Node<K,V>(k,v));
     if(!root) {
         root = n;
         return;
@@ -70,9 +70,9 @@ void BinaryTree<K,V>::print_tree() {
     }
 
     std::ostringstream os;
-    std::stack<nodeptr_t> s;
+    std::stack<std::shared_ptr<Node<K,V>>> s;
     s.push(root);
-    nodeptr_t cur = root->left;
+    std::shared_ptr<Node<K,V>> cur = root->left;
 
     while(!s.empty() || cur) {
         while(cur) {
@@ -119,9 +119,9 @@ void BinaryTree<K,V>::generate_tree(int num, int max) {
 }
 
 template<typename K, typename V>
-std::vector<typename BinaryTree<K,V>::nodeptr_t> BinaryTree<K,V>::get_nodes() {
-    std::queue<nodeptr_t> q;
-    std::vector<nodeptr_t> v;
+std::vector<std::shared_ptr<Node<K,V>>> BinaryTree<K,V>::get_nodes() {
+    std::queue<std::shared_ptr<Node<K,V>>> q;
+    std::vector<std::shared_ptr<Node<K,V>>> v;
     q.push(root);
     while(!q.empty()) {
         if(q.front()) {
@@ -137,11 +137,11 @@ std::vector<typename BinaryTree<K,V>::nodeptr_t> BinaryTree<K,V>::get_nodes() {
 //Private Member Functions
 
 template<typename K, typename V>
-typename BinaryTree<K,V>::nodeptr_t //<-- return type is a nodeptr
-BinaryTree<K,V>::build_tree(std::vector<nodeptr_t> &vec, int start, int end) {
+std::shared_ptr<Node<K,V>> //<-- return type is a nodeptr
+BinaryTree<K,V>::build_tree(std::vector<std::shared_ptr<Node<K,V>>> &vec, int start, int end) {
     //This function is private, so we know that vec is sorted.
     if(end <= start) {
-        nodeptr_t null_ptr;
+        std::shared_ptr<Node<K,V>> null_ptr;
         return null_ptr;
     }
     int mid = (start + end)/2;
