@@ -54,6 +54,17 @@ public:
         //Requires nothing, appends to vector.
         //Amortized O(1).
     
+    void pop_back();
+        //Requires nothing, removes last element
+        //if it exists.
+        //O(1).
+        
+    void resize(int num);
+        //Requires nothing. Changes capacity
+        //of vector. If num < capacity, then
+        //it will remove the elements at the 
+        //end of the vecotr.
+    
 private:
 
     T[] arr;
