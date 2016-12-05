@@ -24,21 +24,21 @@ public:
     //           Standard functions
     //==============================================//
     
-    T operator[](int idx);
+    T& operator[](int idx);
         //Requires a valid index
         //O(1)
         
-    T at(int idx);
+    T& at(int idx);
         //Requires a valid index
         //Else throws out_of_range exception
         //O(1)
 
-    T* front();
+    T& front();
         //Requires nothing
         //Returns a reference to the first element
         //O(1)
 
-    T* back();
+    T& back();
         //Requires nothing
         //Returns a reference to the last element
         //O(1)
@@ -62,6 +62,12 @@ public:
         //O(1).
         
     void resize(int num);
+        //Requires nothing. Changes capacity
+        //of vector. If num < capacity, then
+        //it will remove the elements at the 
+        //end of the vecotr.
+    
+    void resize(int num, const T&);
         //Requires nothing. Changes capacity
         //of vector. If num < capacity, then
         //it will remove the elements at the 

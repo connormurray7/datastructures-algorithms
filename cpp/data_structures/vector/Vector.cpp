@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include <stdexcept>
 
 template<typename T>
 Vector<T>::Vector(){}
@@ -15,43 +16,78 @@ template<typename T>
 Vector<T>::~Vector(){}
 
 template<typename T>
-T operator[](int idx){}
+T operator[](int idx){
+    return arr[idx];
+}
     
 template<typename T>
-T at(int idx){}
+T at(int idx) {
+    if(empty() || num_elements < idx) {
+        throw std::out_of_range ("Index out of bounds.");
+    }
+    return arr[idx];
+}
 
 template<typename T>
-T* front(){}
+T& front() {
+    if(empty()) {
+        throw std::out_of_range ("Index out of bounds.");
+    }
+    return arr[0];
+}
 
 template<typename T>
-T* back(){}
+T& back() {
+    if(empty()) {
+        throw std::out_of_range ("Index out of bounds.");
+    }
+}
 
 template<typename T>
-bool empty(){}
+void push_back(T val){
+    if(full()) {
+        grow();
+    }
+    arr[++num_elements] = val;
+}
 
 template<typename T>
-unsigned int size(){}
-
-template<typename T>
-void push_back(T val){}
-
-template<typename T>
-void pop_back(){}
+void pop_back(){
+    if(num_elements != 0)
+        num_elements--;
+}
     
 template<typename T>
-void resize(int num){}
+void resize(int num, const T& val){
+    if(num < 0) {
+        throw std::out_of_range ("Cannot resize negative size.");
+    }
+    while(capacity < num) {
+        grow();
+    }
+    for(int i=0; i < num; ++i) {
+        arr[i] = val;
+    } 
+}
 
 template<typename T>
-T[] arr{}
+void grow() {
+    int doubled = capacity * 2;
+    auto new_arr = make_unique<T[]>(new T[doubled]);
+    for(int i = 0; i < num_elements; ++i) {
+        new_arr[i] = arr[i];
+    }
+    arr = std::move(new_arr);
+}
 
-template<typename T>
-int capacity = 1{}
+bool empty(){
+    return (num_elements == 0);
+}
 
-template<typename T>
-int num_elements = 0{}
+unsigned int size() {
+    return num_elements;
+}
 
-template<typename T>
-void grow(){}
-
-template<typename T>
-bool full(){}
+bool full(){
+    return (num_elements == capacity);
+}
