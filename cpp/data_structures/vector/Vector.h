@@ -1,6 +1,8 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include<memory>
+
 template<typename T>
 class Vector {
 public:
@@ -67,9 +69,6 @@ public:
     
 private:
 
-    T[] arr;
-        //Underlying array.
-    
     int capacity = 1;
         //Size of the underlying array
     
@@ -83,5 +82,8 @@ private:
     bool full();
         //Returns true if num_elements
         //equals the capacity.
+
+    std::unique_ptr<T[]> arr(new T[capacity]);
+        //Underlying array.
 };
 #endif
