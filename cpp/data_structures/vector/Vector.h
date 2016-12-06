@@ -1,7 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-#include<memory>
+#include <memory>
 
 template<typename T>
 class Vector {
@@ -14,7 +14,7 @@ public:
     Vector();
         //Requires nothing, creates empty Vector
     
-    Vector(Vector<T> &vector_in);
+    Vector(const Vector<T>& other);
         //Copy constructor, shallow copy
         
     ~Vector();
@@ -24,11 +24,11 @@ public:
     //           Standard functions
     //==============================================//
     
-    T& operator[](int idx);
+    T& operator[](unsigned int idx);
         //Requires a valid index
         //O(1)
         
-    T& at(int idx);
+    T& at(unsigned int idx);
         //Requires a valid index
         //Else throws out_of_range exception
         //O(1)
@@ -52,7 +52,7 @@ public:
         //Returns number of elements in vector
         //O(1)
 
-    void push_back(T val);
+    void push_back(const T& val);
         //Requires nothing, appends to vector.
         //Amortized O(1).
     
@@ -61,13 +61,13 @@ public:
         //if it exists.
         //O(1).
         
-    void resize(int num);
+    void resize(unsigned int num);
         //Requires nothing. Changes capacity
         //of vector. If num < capacity, then
         //it will remove the elements at the 
         //end of the vecotr.
     
-    void resize(int num, const T&);
+    void resize(unsigned int num, const T&);
         //Requires nothing. Changes capacity
         //of vector. If num < capacity, then
         //it will remove the elements at the 
@@ -75,10 +75,10 @@ public:
     
 private:
 
-    int capacity = 1;
+    unsigned int capacity = 1;
         //Size of the underlying array
     
-    int num_elements = 0;
+    unsigned int num_elements = 0;
         //Number of elements in container.
     
     void grow();
@@ -89,7 +89,8 @@ private:
         //Returns true if num_elements
         //equals the capacity.
 
-    std::unique_ptr<T[]> arr(new T[capacity]);
+    std::unique_ptr<T[]> arr;
         //Underlying array.
 };
 #endif
+

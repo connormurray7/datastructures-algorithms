@@ -1,14 +1,14 @@
-#include "Vector.h"
+#include "vector.h"
 #include <stdexcept>
 
 template<typename T>
-Vector<T>::Vector(){}
+Vector<T>::Vector(): arr(new T[capacity]){}
 
 template<typename T>
-Vector<T>::Vector(const Vector<T>& v){
-    arr = std::unique_ptr<T[]>(new T[v.size()]);
-    for(unsigned int i = 0; i < v.size(); ++i) {
-        arr[i] = v[i];
+Vector<T>::Vector(const Vector<T>& other) {
+    arr = std::make_unique(new T[other.size()]);
+    for(unsigned int i = 0; i < other.size(); ++i) {
+        arr[i] = other[i];
     }
 }
     
@@ -16,12 +16,12 @@ template<typename T>
 Vector<T>::~Vector(){}
 
 template<typename T>
-T operator[](int idx){
+T& Vector<T>::operator[](unsigned int idx) {
     return arr[idx];
 }
     
 template<typename T>
-T Vector<T>::at(int idx) {
+T& Vector<T>::at(unsigned int idx) {
     if(empty() || num_elements < idx) {
         throw std::out_of_range ("Index out of bounds.");
     }
@@ -44,7 +44,7 @@ T& Vector<T>::back() {
 }
 
 template<typename T>
-void Vector<T>::push_back(T val) {
+void Vector<T>::push_back(const T& val) {
     if(full()) {
         grow();
     }
@@ -58,23 +58,20 @@ void Vector<T>::pop_back() {
 }
     
 template<typename T>
-void Vector<T>::resize(int num, const T& val) {
-    if(num < 0) {
-        throw std::out_of_range ("Cannot resize negative size.");
-    }
+void Vector<T>::resize(unsigned int num, const T& val) {
     while(capacity < num) {
         grow();
     }
-    for(int i=0; i < num; ++i) {
+    for(unsigned int i=0; i < num; ++i) {
         arr[i] = val;
     } 
 }
 
 template<typename T>
 void Vector<T>::grow() {
-    int doubled = capacity * 2;
-    auto new_arr = make_unique<T[]>(new T[doubled]);
-    for(int i = 0; i < num_elements; ++i) {
+    unsigned int doubled = capacity * 2;
+    auto new_arr = std::make_unique<T[]>(new T[doubled]);
+    for(unsigned int i = 0; i < num_elements; ++i) {
         new_arr[i] = arr[i];
     }
     arr = std::move(new_arr);
@@ -94,3 +91,4 @@ template<typename T>
 bool Vector<T>::full() {
     return (num_elements == capacity);
 }
+

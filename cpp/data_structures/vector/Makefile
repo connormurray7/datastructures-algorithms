@@ -38,7 +38,7 @@ all: $(OBJECTS)
 # individual dependencies for objects
 vector.o: vector.cpp
 
-vector.o: main.cpp
+main.o: main.cpp
 
 # rule for creating objects
 %.o:
