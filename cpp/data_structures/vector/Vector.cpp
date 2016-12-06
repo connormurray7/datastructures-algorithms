@@ -21,7 +21,7 @@ T operator[](int idx){
 }
     
 template<typename T>
-T at(int idx) {
+T Vector<T>::at(int idx) {
     if(empty() || num_elements < idx) {
         throw std::out_of_range ("Index out of bounds.");
     }
@@ -29,7 +29,7 @@ T at(int idx) {
 }
 
 template<typename T>
-T& front() {
+T& Vector<T>::front() {
     if(empty()) {
         throw std::out_of_range ("Index out of bounds.");
     }
@@ -37,14 +37,14 @@ T& front() {
 }
 
 template<typename T>
-T& back() {
+T& Vector<T>::back() {
     if(empty()) {
         throw std::out_of_range ("Index out of bounds.");
     }
 }
 
 template<typename T>
-void push_back(T val){
+void Vector<T>::push_back(T val) {
     if(full()) {
         grow();
     }
@@ -52,13 +52,13 @@ void push_back(T val){
 }
 
 template<typename T>
-void pop_back(){
+void Vector<T>::pop_back() {
     if(num_elements != 0)
         num_elements--;
 }
     
 template<typename T>
-void resize(int num, const T& val){
+void Vector<T>::resize(int num, const T& val) {
     if(num < 0) {
         throw std::out_of_range ("Cannot resize negative size.");
     }
@@ -71,7 +71,7 @@ void resize(int num, const T& val){
 }
 
 template<typename T>
-void grow() {
+void Vector<T>::grow() {
     int doubled = capacity * 2;
     auto new_arr = make_unique<T[]>(new T[doubled]);
     for(int i = 0; i < num_elements; ++i) {
@@ -80,14 +80,17 @@ void grow() {
     arr = std::move(new_arr);
 }
 
-bool empty(){
+template<typename T>
+bool Vector<T>::empty() {
     return (num_elements == 0);
 }
 
-unsigned int size() {
+template<typename T>
+unsigned int Vector<T>::size() {
     return num_elements;
 }
 
-bool full(){
+template<typename T>
+bool Vector<T>::full() {
     return (num_elements == capacity);
 }
