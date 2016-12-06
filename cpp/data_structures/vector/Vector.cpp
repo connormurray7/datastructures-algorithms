@@ -1,4 +1,4 @@
-#include "vector.h"
+#include "Vector.h"
 #include <stdexcept>
 
 template<typename T>
@@ -6,7 +6,7 @@ Vector<T>::Vector(): arr(new T[capacity]){}
 
 template<typename T>
 Vector<T>::Vector(const Vector<T>& other) {
-    arr = std::make_unique(new T[other.size()]);
+    arr = std::make_unique<T[]>(*(new T[other.size()]));
     for(unsigned int i = 0; i < other.size(); ++i) {
         arr[i] = other[i];
     }
@@ -16,10 +16,15 @@ template<typename T>
 Vector<T>::~Vector(){}
 
 template<typename T>
+T& Vector<T>::operator[](unsigned int idx) const {
+    return arr[idx];
+}
+
+template<typename T>
 T& Vector<T>::operator[](unsigned int idx) {
     return arr[idx];
 }
-    
+
 template<typename T>
 T& Vector<T>::at(unsigned int idx) {
     if(empty() || num_elements < idx) {
@@ -48,7 +53,7 @@ void Vector<T>::push_back(const T& val) {
     if(full()) {
         grow();
     }
-    arr[++num_elements] = val;
+    arr[num_elements++] = val;
 }
 
 template<typename T>
@@ -70,7 +75,7 @@ void Vector<T>::resize(unsigned int num, const T& val) {
 template<typename T>
 void Vector<T>::grow() {
     unsigned int doubled = capacity * 2;
-    auto new_arr = std::make_unique<T[]>(new T[doubled]);
+    auto new_arr = std::make_unique<T[]>(*new T[doubled]);
     for(unsigned int i = 0; i < num_elements; ++i) {
         new_arr[i] = arr[i];
     }
@@ -83,7 +88,7 @@ bool Vector<T>::empty() {
 }
 
 template<typename T>
-unsigned int Vector<T>::size() {
+unsigned int Vector<T>::size() const {
     return num_elements;
 }
 

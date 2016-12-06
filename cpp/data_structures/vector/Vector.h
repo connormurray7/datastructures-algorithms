@@ -27,7 +27,11 @@ public:
     T& operator[](unsigned int idx);
         //Requires a valid index
         //O(1)
-        
+    
+    T& operator[](unsigned int idx) const;
+        //Requires a valid index
+        //O(1)
+    
     T& at(unsigned int idx);
         //Requires a valid index
         //Else throws out_of_range exception
@@ -47,7 +51,7 @@ public:
         //Requires nothing
         //True if container is empty.
     
-    unsigned int size();
+    unsigned int size() const;
         //Requires nothing
         //Returns number of elements in vector
         //O(1)
@@ -93,4 +97,3 @@ private:
         //Underlying array.
 };
 #endif
-
