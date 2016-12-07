@@ -24,25 +24,21 @@ public:
     //           Standard functions
     //==============================================//
     
-    T& operator[](unsigned int idx);
-        //Requires a valid index
-        //O(1)
-    
     T& operator[](unsigned int idx) const;
         //Requires a valid index
         //O(1)
     
-    T& at(unsigned int idx);
+    T& at(unsigned int idx) const;
         //Requires a valid index
         //Else throws out_of_range exception
         //O(1)
 
-    T& front();
+    T& front() const;
         //Requires nothing
         //Returns a reference to the first element
         //O(1)
 
-    T& back();
+    T& back() const;
         //Requires nothing
         //Returns a reference to the last element
         //O(1)
@@ -97,3 +93,4 @@ private:
         //Underlying array.
 };
 #endif
+

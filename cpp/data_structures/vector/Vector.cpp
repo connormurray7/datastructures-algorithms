@@ -21,12 +21,7 @@ T& Vector<T>::operator[](unsigned int idx) const {
 }
 
 template<typename T>
-T& Vector<T>::operator[](unsigned int idx) {
-    return arr[idx];
-}
-
-template<typename T>
-T& Vector<T>::at(unsigned int idx) {
+T& Vector<T>::at(unsigned int idx) const {
     if(empty() || num_elements < idx) {
         throw std::out_of_range ("Index out of bounds.");
     }
@@ -34,7 +29,7 @@ T& Vector<T>::at(unsigned int idx) {
 }
 
 template<typename T>
-T& Vector<T>::front() {
+T& Vector<T>::front() const {
     if(empty()) {
         throw std::out_of_range ("Index out of bounds.");
     }
@@ -42,7 +37,7 @@ T& Vector<T>::front() {
 }
 
 template<typename T>
-T& Vector<T>::back() {
+T& Vector<T>::back() const {
     if(empty()) {
         throw std::out_of_range ("Index out of bounds.");
     }
@@ -96,4 +91,3 @@ template<typename T>
 bool Vector<T>::full() {
     return (num_elements == capacity);
 }
-
