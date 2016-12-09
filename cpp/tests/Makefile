@@ -21,9 +21,9 @@ run:
 all: $(OBJECTS)
 	 $(CXX) $(CXXFLAGS) $(OBJECTS) -o $(EXECUTABLE)
 
-Vector.o: Vector.cpp
+Vector.o: ../data_structures/vector/Vector.cpp
 
-main.o: main.cpp
+test_vector.o: test_vector.cpp
 
 %.o:
 	 $(CXX) $(CXXFLAGS) -c $*.cpp
