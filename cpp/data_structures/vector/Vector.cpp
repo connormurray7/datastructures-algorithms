@@ -11,7 +11,7 @@ Vector<T>::Vector(const Vector<T>& other) {
         arr[i] = other[i];
     }
 }
-    
+
 template<typename T>
 Vector<T>::~Vector(){}
 
@@ -56,7 +56,7 @@ void Vector<T>::pop_back() {
     if(num_elements != 0)
         num_elements--;
 }
-    
+
 template<typename T>
 void Vector<T>::resize(unsigned int num, const T& val) {
     while(capacity < num) {
@@ -64,13 +64,13 @@ void Vector<T>::resize(unsigned int num, const T& val) {
     }
     for(unsigned int i=0; i < num; ++i) {
         arr[i] = val;
-    } 
+    }
 }
 
 template<typename T>
 void Vector<T>::grow() {
-    unsigned int doubled = capacity * 2;
-    auto new_arr = std::make_unique<T[]>(*new T[doubled]);
+    capacity *= 2;
+    auto new_arr = std::make_unique<T[]>(*new T[capacity]);
     for(unsigned int i = 0; i < num_elements; ++i) {
         new_arr[i] = arr[i];
     }
