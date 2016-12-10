@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "Vector.cpp"
+#include "../data_structures/vector/Vector.cpp"
 #include <string>
 
 TEST_CASE( "Test push_back", "[vector]" ) {
@@ -46,7 +46,7 @@ TEST_CASE( "Test pop_back", "[vector]" ) {
     v.push_back(0);
 
     REQUIRE(v.back() == 0);
-    v.pop_back()
+    v.pop_back();
 
     REQUIRE(v.back() == -1);
     v.pop_back();

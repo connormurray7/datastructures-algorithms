@@ -41,6 +41,7 @@ T& Vector<T>::back() const {
     if(empty()) {
         throw std::out_of_range ("Index out of bounds.");
     }
+    return arr[size()-1];
 }
 
 template<typename T>
@@ -78,7 +79,7 @@ void Vector<T>::grow() {
 }
 
 template<typename T>
-bool Vector<T>::empty() {
+bool Vector<T>::empty() const {
     return (num_elements == 0);
 }
 
