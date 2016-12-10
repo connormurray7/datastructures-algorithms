@@ -30,3 +30,27 @@ TEST_CASE( "Test push_back", "[vector]" ) {
     REQUIRE(v[7] == -4000);
 
 }
+
+TEST_CASE( "Test pop_back", "[vector]" ) {
+    Vector<int> v;
+    v.push_back(0);
+    v.push_back(-1);
+    v.push_back(1);
+    v.push_back(2);
+
+    REQUIRE(v.back() == 2);
+    v.pop_back();
+
+    REQUIRE(v.back() == 1);
+    v.pop_back();
+    v.push_back(0);
+
+    REQUIRE(v.back() == 0);
+    v.pop_back()
+
+    REQUIRE(v.back() == -1);
+    v.pop_back();
+
+    REQUIRE(v.back() == 0);
+
+}
