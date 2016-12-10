@@ -1,12 +1,15 @@
 #include "Vector.h"
 #include <stdexcept>
+#include <memory>
 
 template<typename T>
-Vector<T>::Vector(): arr(new T[capacity]){}
+Vector<T>::Vector() {
+    arr = new T[capacity];
+}
 
 template<typename T>
 Vector<T>::Vector(const Vector<T>& other) {
-    arr = std::make_unique<T[]>(*(new T[other.size()]));
+    arr = new T[other.size()];
     for(unsigned int i = 0; i < other.size(); ++i) {
         arr[i] = other[i];
     }
@@ -71,11 +74,13 @@ void Vector<T>::resize(unsigned int num, const T& val) {
 template<typename T>
 void Vector<T>::grow() {
     capacity *= 2;
-    auto new_arr = std::make_unique<T[]>(*new T[capacity]);
+    auto old = arr;
+    auto new_arr = new T[capacity];
     for(unsigned int i = 0; i < num_elements; ++i) {
         new_arr[i] = arr[i];
     }
-    arr = std::move(new_arr);
+    arr = new_arr;
+    delete[] old;
 }
 
 template<typename T>

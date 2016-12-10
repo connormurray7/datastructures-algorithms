@@ -1,9 +1,9 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "../data_structures/vector/Vector.cpp"
+#include "Vector.cpp"
 #include <string>
 
-TEST_CASE( "Test push_back", "[vector]" ) {
+TEST_CASE("Test push_back", "[vector]" ) {
     Vector<int> v;
     v.push_back(0);
     REQUIRE(v[0] == 0);
@@ -31,26 +31,50 @@ TEST_CASE( "Test push_back", "[vector]" ) {
 
 }
 
-TEST_CASE( "Test pop_back", "[vector]" ) {
-    Vector<int> v;
-    v.push_back(0);
-    v.push_back(-1);
-    v.push_back(1);
-    v.push_back(2);
+ TEST_CASE("Test pop_back", "[vector]" ) {
+     Vector<int> v;
+     v.push_back(0);
+     v.push_back(-1);
+     v.push_back(1);
+     v.push_back(2);
 
-    REQUIRE(v.back() == 2);
-    v.pop_back();
+     REQUIRE(v.back() == 2);
+     v.pop_back();
 
-    REQUIRE(v.back() == 1);
-    v.pop_back();
-    v.push_back(0);
+     REQUIRE(v.back() == 1);
+     v.pop_back();
+     v.push_back(0);
 
-    REQUIRE(v.back() == 0);
-    v.pop_back();
+     REQUIRE(v.back() == 0);
+     v.pop_back();
 
-    REQUIRE(v.back() == -1);
-    v.pop_back();
+     REQUIRE(v.back() == -1);
+     v.pop_back();
 
-    REQUIRE(v.back() == 0);
+     REQUIRE(v.back() == 0);
 
-}
+ }
+
+
+ TEST_CASE("Test size", "[vector]" ) {
+     Vector<int> v;
+
+     for(int i = 0; i < 100000; ++i) {
+       REQUIRE(v.size() == i);
+       v.push_back(i);
+     }
+
+     for(int i = 100000; i >= 0; --i) {
+       REQUIRE(v.size() == i);
+       v.pop_back();
+     }
+
+       v.pop_back();
+       REQUIRE(v.size() == 0);
+
+       v.pop_back();
+       REQUIRE(v.size() == 0);
+
+       v.pop_back();
+       REQUIRE(v.size() == 0);
+ }
