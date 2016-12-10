@@ -1,6 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "Vector.cpp"
+#include "../data_structures/vector/Vector.cpp"
 #include <string>
 
 TEST_CASE("Test push_back", "[vector]" ) {
