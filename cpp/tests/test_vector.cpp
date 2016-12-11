@@ -1,9 +1,8 @@
-#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "../data_structures/vector/Vector.cpp"
 #include <string>
 
-TEST_CASE("Test push_back", "[vector]" ) {
+TEST_CASE("Test push_back", "[Vector]" ) {
     Vector<int> v;
     v.push_back(0);
     REQUIRE(v[0] == 0);

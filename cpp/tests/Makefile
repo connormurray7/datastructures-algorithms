@@ -15,15 +15,19 @@ profile: CXXFLAGS += -pg
 profile: clean all
 
 run: all
-run:
-	./$(EXECUTEABLE)
+run: 
+	chmod 755 main && ./main
 
 all: $(OBJECTS)
 	 $(CXX) $(CXXFLAGS) $(OBJECTS) -o $(EXECUTABLE)
 
 Vector.o: ../data_structures/vector/Vector.cpp
+BinaryTree.o: ../data_structures/binary_tree/BinaryTree.cpp
 
 test_vector.o: test_vector.cpp
+test_binary_tree.o: test_binary_tree.cpp
+
+main.o: main.cpp
 
 %.o:
 	 $(CXX) $(CXXFLAGS) -c $*.cpp

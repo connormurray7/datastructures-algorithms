@@ -7,8 +7,6 @@
 #include <queue>
 #include <algorithm>
 
-//  Constructors and Destructor  //
-
 template<typename K, typename V>
 BinaryTree<K,V>::BinaryTree() {
     root = nullptr;
@@ -46,27 +44,25 @@ V& BinaryTree<K,V>::operator[] (const K& key) {
 }
 
 template<typename K, typename V>
-void BinaryTree<K,V>::insert(K& key, V& val) {
+void BinaryTree<K,V>::insert(const K& key, const V& val) {
     insert_node(key, val);
 }
-
-//  Utility functions  //
 
 template<typename K, typename V>
 std::shared_ptr<Node<K,V>> BinaryTree<K,V>::find_node(const K& key) {
     auto ptr = root;
     while(ptr != nullptr && key != ptr->key) {
-        ptr = (k < ptr->key) ? ptr->left : ptr->right;
+        ptr = (key < ptr->key) ? ptr->left : ptr->right;
     }
     return ptr;
 }
 
 template<typename K, typename V>
-void BinaryTree<K,V>::insert_node(K& key, V& val) {
+std::shared_ptr<Node<K,V>> BinaryTree<K,V>::insert_node(const K& key, const V& val) {
     std::shared_ptr<Node<K,V>> n = std::make_shared<Node<K,V>>(Node<K,V>(key,val));
     if(!root) {
         root = n;
-        return;
+        return n;
     }
     auto cur = root;
     auto last = cur;

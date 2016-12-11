@@ -4,11 +4,10 @@
 #include "Node.h"
 #include <vector>
 
-/* Standard Binary Tree Implementation
- * with utility functions to test your
- * implementations. Also includes benchmarking
- * functions to test against the stl and your
- * code.
+/* Simple Binary Tree implementation
+ * does not include balancing. Most
+ * operations are O(log n), O(n) worst
+ * case.
  */
 
 template<typename K, typename V>
@@ -72,6 +71,10 @@ private:
     std::shared_ptr<Node<K,V>> insert_node(const K& key, const V& val);
         //Returns node that was inserted.
         //O(log n).
+
+    std::shared_ptr<Node<K,V>> build_tree(std::vector<std::shared_ptr<Node<K,V>>> &vec, int start, int end);
+        //Requires a vector of node pointers
+        //Private function to do the actual building of the tree.
 
     static bool sort_comp(std::shared_ptr<Node<K,V>> a, std::shared_ptr<Node<K,V>> b) {return *a < *b;};
         //Requires two node pointers.
