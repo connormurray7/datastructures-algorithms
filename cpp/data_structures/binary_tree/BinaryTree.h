@@ -30,23 +30,23 @@ public:
         //delete the data for us.
 
     //==============================================//
-    //           Standard map functions
+    //                 Map functions
     //==============================================//
 
-    std::shared_ptr<Node<K,V>> find(K k);
-        //Requires the K, and returns a pointer
-        //to the node.
+    V& at(K k);
+        //Requires the K, returns value associated to key.
         //O(log N) average, O(N) worst case
 
-    std::shared_ptr<Node<K,V>> operator[](K k) { return find(k); }
+    V& operator[](K k);
         //Overloaded operator that calls find.
 
-    void insert(K k, V v);
-        //Takes a pointer to the node and inserts
-        //at correct position.
+    void insert(const K& k, const V& v);
+        //Takes key, and value, emplaces node at key.
         //O(log N) average, O(N) worst case.
 
-    bool erase(K k);
+    bool erase(const K& k);
+        //Returns true if successful.
+        //O(log N) average, O(N) worst case.
 
     void clear() { root.reset(); }
         //Requires nothing, removes all node from tree
