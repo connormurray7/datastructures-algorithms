@@ -57,30 +57,6 @@ public:
         //Requires nothing, returns size of tree
         //O(1)
 
-
-    //==============================================//
-    //             Utility Functions
-    //==============================================//
-
-    void print_tree();
-        //Requires nothing, prints the tree
-        //In order.
-        //O(N) time, O(K) (where K is the
-        //depth of the tree) space.
-
-    void generate_tree(int n, int max);
-        //Requires nothing, generates a tree
-        //of size n, with a range of integers
-        //from 0 to max. Uses rand() to generate
-        //the integers with a seed from the current
-        //time from your cpu clock.
-        //O(N Log N) time.
-
-    std::vector<std::shared_ptr<Node<K,V>>> get_nodes();
-        //Requires nothing, returns all of
-        //the nodes of the tree.
-        //O(N) time, space
-
 private:
 
     std::shared_ptr<Node<K,V>> root;
@@ -93,10 +69,9 @@ private:
         //Returns node associated with key,
         //nullptr if doesn't exist, O(log n).
 
-
-    std::shared_ptr<Node<K,V>> build_tree(std::vector<std::shared_ptr<Node<K,V>>> &vec, int start, int end);
-        //Requires a vector of node pointers
-        //Private function to do the actual building of the tree.
+    std::shared_ptr<Node<K,V>> insert_node(const K& key, const V& val);
+        //Returns node that was inserted.
+        //O(log n).
 
     static bool sort_comp(std::shared_ptr<Node<K,V>> a, std::shared_ptr<Node<K,V>> b) {return *a < *b;};
         //Requires two node pointers.
