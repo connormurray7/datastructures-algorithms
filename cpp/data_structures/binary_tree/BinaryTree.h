@@ -43,10 +43,6 @@ public:
         //Takes key, and value, emplaces node at key.
         //O(log N) average, O(N) worst case.
 
-    bool erase(const K& key);
-        //Returns true if successful.
-        //O(log N) average, O(N) worst case.
-
     void clear() { root.reset(); }
         //Requires nothing, removes all node from tree
         //shared_ptrs do the deleting for us.
