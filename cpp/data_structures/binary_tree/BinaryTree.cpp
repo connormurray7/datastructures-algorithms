@@ -28,12 +28,18 @@ BinaryTree<K,V>::~BinaryTree() {}
 
 //  Standard map functions  //
 template<typename K, typename V>
-std::shared_ptr<Node<K,V>> BinaryTree<K,V>::find(K k) {
-    auto ptr = root;
-    while(ptr != nullptr && k != ptr->key) {
-        ptr = (k < ptr->key) ? ptr->left : ptr->right;
+V& BinaryTree<K,V>::at(const K& key) {
+    auto node = find_node(key);
+    if(node == nullptr) {
+        throw std::out_of_range("Element does not exist.");
     }
-    return ptr;
+    return node->value;
+}
+
+template<typename K, typename V>
+V& BinaryTree<K,V>::operator[] (const K& key) {
+    auto node = find_node(key);
+    return (node == nullptr) ? node : node->value;
 }
 
 template<typename K, typename V>
@@ -58,6 +64,19 @@ void BinaryTree<K,V>::insert(K k, V v) {
 }
 
 //  Utility functions  //
+
+template<typename K, typename V>
+std::shared_ptr<Node<K,V>> BinaryTree<K,V>::find_node (const K& key) {
+    auto ptr = root;
+    while(ptr != nullptr && key != ptr->key) {
+        ptr = (k < ptr->key) ? ptr->left : ptr->right;
+    }
+    return ptr;
+}
+
+
+
+
 
 template<typename K, typename V>
 void BinaryTree<K,V>::print_tree() {
@@ -112,7 +131,7 @@ void BinaryTree<K,V>::generate_tree(int num, int max) {
     std::sort(vec.begin(), vec.end(),sort_comp);
 
     //O(N Log N) to fill tree.
-    root = build_tree(vec,0,num);
+    root = build_tree(vec, 0, num);
 
     num++; //temp to compile
     max++;

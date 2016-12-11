@@ -33,18 +33,18 @@ public:
     //                 Map functions
     //==============================================//
 
-    V& at(K k);
+    V& at(const K& key);
         //Requires the K, returns value associated to key.
         //O(log N) average, O(N) worst case
 
-    V& operator[](K k);
+    V& operator[](const K& key);
         //Overloaded operator that calls find.
 
-    void insert(const K& k, const V& v);
+    void insert(const K& key, const V& val);
         //Takes key, and value, emplaces node at key.
         //O(log N) average, O(N) worst case.
 
-    bool erase(const K& k);
+    bool erase(const K& key);
         //Returns true if successful.
         //O(log N) average, O(N) worst case.
 
@@ -88,6 +88,11 @@ private:
 
     int num_nodes;
         //Total number of nodes
+
+    std::shared_ptr<Node<K,V>> find_node(const K& key);
+        //Returns node associated with key,
+        //nullptr if doesn't exist, O(log n).
+
 
     std::shared_ptr<Node<K,V>> build_tree(std::vector<std::shared_ptr<Node<K,V>>> &vec, int start, int end);
         //Requires a vector of node pointers
