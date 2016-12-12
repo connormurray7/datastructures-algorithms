@@ -40,7 +40,7 @@ V& BinaryTree<K,V>::operator[] (const K& key) {
     if(node == nullptr) {
         node = insert_node(key, V());
     }
-    return node;
+    return node->value;
 }
 
 template<typename K, typename V>
