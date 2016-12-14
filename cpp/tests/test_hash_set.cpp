@@ -2,7 +2,7 @@
 #include "../data_structures/hash_set/HashSet.cpp"
 #include <string>
 
-TEST_CASE("Test insert", "[HashSet]" ) {
+TEST_CASE("Test insert and contains", "[HashSet]" ) {
     HashSet<int> intSet;
     HashSet<std::string> stringSet;
 
@@ -26,7 +26,7 @@ TEST_CASE("Test insert", "[HashSet]" ) {
     REQUIRE(stringSet.contains("foobarbaz"));
 }
 
-TEST_CASE("Test erase", "[HashSet]" ) {
+TEST_CASE("Test erase and contains", "[HashSet]" ) {
     HashSet<int> intSet;
     HashSet<std::string> stringSet;
 
@@ -73,14 +73,19 @@ TEST_CASE("Test erase", "[HashSet]" ) {
     REQUIRE(!intSet.contains("foo"));
 }
 
-TEST_CASE("Test contains", "[HashSet]" ) {
+TEST_CASE("Test size and empty", "[HashSet]" ) {
+    HashSet<int> set;
+    REQUIRE(set.empty());
 
-}
-
-TEST_CASE("Test size", "[HashSet]" ) {
-
-}
-
-TEST_CASE("Test empty", "[HashSet]" ) {
-
+    for(int i = 0; i < 10000; ++i) {
+        set.insert(i);
+        REQUIRE(set.size() == i);
+        REQUIRE(!set.empty());
+    }
+    for(int i = 9999; i >= 0; --i) {
+        REQUIRE(!set.empty());
+        set.erase(i);
+        REQUIRE(set.size() == i);
+    }
+    REQUIRE(set.empty());
 }
