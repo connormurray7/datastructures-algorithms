@@ -12,20 +12,20 @@ public:
     //==============================================//
 
     Vector();
-        //Requires nothing, creates empty Vector
+        //Requires nothing, creates empty Vector.
 
     Vector(const Vector<T>& other);
-        //Copy constructor, shallow copy
+        //Copy constructor, shallow copy.
 
     ~Vector();
-        //Requires nothing, does nothing, rule of zero
+        //Frees memory of underlying array.
 
     //==============================================//
     //           Standard functions
     //==============================================//
 
     T& operator[](unsigned int idx) const;
-        //Requires a valid index
+        //Requires a valid index.
         //O(1)
 
     T& at(unsigned int idx) const;

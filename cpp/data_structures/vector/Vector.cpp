@@ -16,7 +16,9 @@ Vector<T>::Vector(const Vector<T>& other) {
 }
 
 template<typename T>
-Vector<T>::~Vector(){}
+Vector<T>::~Vector() {
+    delete[] arr;
+}
 
 template<typename T>
 T& Vector<T>::operator[](unsigned int idx) const {
