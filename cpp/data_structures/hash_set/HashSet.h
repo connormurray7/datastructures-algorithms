@@ -46,12 +46,18 @@ public:
 private:
 
     unsigned int capacity = 16;
+        //Size of the container, doubles
+        //when load factor is reached
 
     double load_factor = 0.75;
+        //Maximum ratio of used spots in
+        //the table
 
     std::vector<T> table;
+        //Vector represents the table buckets
 
     H hash;
+        //Hash function used for filling the container.
 }
 
 #endif
