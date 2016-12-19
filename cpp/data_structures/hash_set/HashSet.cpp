@@ -9,13 +9,17 @@ HashSet<T,H>::HashSet() {
 
 template<typename T, typename H>
 HashSet<T,H>::HashSet(const HashSet& other) {
-
+    this.table = std::vector<Bucket<T>>();
+    this.table.reserve(other.capacity);
+    for(Bucket<T>& i: other.table) {
+        for(auto& key: i.get_keys()) {
+            insert(key)
+        }
+    }
 }
 
 template<typename T, typename H>
-HashSet<T,H>::~HashSet() {
-
-}
+HashSet<T,H>::~HashSet() {}
 
 template<typename T, typename H>
 void HashSet<T,H>::insert(const T& key) {

@@ -23,6 +23,8 @@ public:
 
     bool isEmpty();
 
+    std::vector<T> get_keys();
+
 private:
     HashSetNode* node;
 

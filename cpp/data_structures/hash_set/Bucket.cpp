@@ -1,4 +1,5 @@
 #include "Bucket.h"
+#include <vector>
 
 template<typename T>
 Bucket<T>::Bucket(HashSetNode& n) {
@@ -47,6 +48,17 @@ void Bucket<T>::remove(T& val) {
 template<typename T>
 bool Bucket<T>::isEmpty() {
     return node == nullptr;
+}
+
+template<typename T>
+std::vector<T> Bucket<T>::get_keys() {
+    std::vector<T> v;
+    HashSetNode* n = node;
+    while(n) {
+        v.push_back(n->val);
+        n = n->next;
+    }
+    return v;
 }
 
 template<typename T>
