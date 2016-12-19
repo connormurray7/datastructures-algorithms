@@ -1,7 +1,7 @@
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
 
-#include "Node.h"
+#include "TreeNode.h"
 #include <vector>
 
 /* Simple Binary Tree implementation
@@ -54,25 +54,25 @@ public:
 
 private:
 
-    std::shared_ptr<Node<K,V>> root;
+    std::shared_ptr<TreeNode<K,V>> root;
         //Templated root node
 
     int num_nodes;
         //Total number of nodes
 
-    std::shared_ptr<Node<K,V>> find_node(const K& key);
+    std::shared_ptr<TreeNode<K,V>> find_node(const K& key);
         //Returns node associated with key,
         //nullptr if doesn't exist, O(log n).
 
-    std::shared_ptr<Node<K,V>> insert_node(const K& key, const V& val);
+    std::shared_ptr<TreeNode<K,V>> insert_node(const K& key, const V& val);
         //Returns node that was inserted.
         //O(log n).
 
-    std::shared_ptr<Node<K,V>> build_tree(std::vector<std::shared_ptr<Node<K,V>>> &vec, int start, int end);
+    std::shared_ptr<TreeNode<K,V>> build_tree(std::vector<std::shared_ptr<TreeNode<K,V>>> &vec, int start, int end);
         //Requires a vector of node pointers
         //Private function to do the actual building of the tree.
 
-    static bool sort_comp(std::shared_ptr<Node<K,V>> a, std::shared_ptr<Node<K,V>> b) {return *a < *b;};
+    static bool sort_comp(std::shared_ptr<TreeNode<K,V>> a, std::shared_ptr<TreeNode<K,V>> b) {return *a < *b;};
         //Requires two node pointers.
         //Operator< is already overloaded for Node, this function
         //dereferences the pointers and compares. Useful for

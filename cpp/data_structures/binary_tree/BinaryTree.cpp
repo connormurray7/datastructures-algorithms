@@ -49,7 +49,7 @@ void BinaryTree<K,V>::insert(const K& key, const V& val) {
 }
 
 template<typename K, typename V>
-std::shared_ptr<Node<K,V>> BinaryTree<K,V>::find_node(const K& key) {
+std::shared_ptr<TreeNode<K,V>> BinaryTree<K,V>::find_node(const K& key) {
     auto ptr = root;
     while(ptr != nullptr && key != ptr->key) {
         ptr = (key < ptr->key) ? ptr->left : ptr->right;
@@ -58,8 +58,8 @@ std::shared_ptr<Node<K,V>> BinaryTree<K,V>::find_node(const K& key) {
 }
 
 template<typename K, typename V>
-std::shared_ptr<Node<K,V>> BinaryTree<K,V>::insert_node(const K& key, const V& val) {
-    std::shared_ptr<Node<K,V>> n = std::make_shared<Node<K,V>>(Node<K,V>(key,val));
+std::shared_ptr<TreeNode<K,V>> BinaryTree<K,V>::insert_node(const K& key, const V& val) {
+    std::shared_ptr<TreeNode<K,V>> n = std::make_shared<TreeNode<K,V>>(TreeNode<K,V>(key,val));
     if(!root) {
         root = n;
         return n;
