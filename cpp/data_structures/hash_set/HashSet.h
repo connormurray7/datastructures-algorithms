@@ -46,6 +46,9 @@ public:
 
 private:
 
+    unsigned int num_elements = 0;
+        //Number of elements in container
+
     unsigned int capacity = 16;
         //Size of the container, doubles
         //when load factor is reached
@@ -59,6 +62,19 @@ private:
 
     H hash;
         //Hash function used for filling the container.
+
+    unsigned int get_idx(T& key);
+        //Returns the index for the key. using
+        //the hash function.
+
+    bool too_full();
+        //If the ratio of elements to the capacity
+        //is greater than the load_factor, then
+        //returns true.
+
+    void expand();
+        //Doubles container capacity and
+        //rehashes values.
 }
 
 #endif

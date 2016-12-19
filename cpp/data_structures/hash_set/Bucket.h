@@ -13,48 +13,20 @@ struct HashSetNode {
 template<typename T>
 class Bucket {
 public:
-    Bucket(HashSetNode& n) {
-        node = &n;
-    }
+    Bucket(HashSetNode& n);
 
-    void add(T& val) {
-        if(isEmpty()) {
-            node = &HashSetNode(val);
-            return;
-        }
-        HashSetNode* n = node;
-        while(n->next) {
-            n = n->next;
-        }
-        n->next = &HashSetNode(val);
-    }
+    bool contains(T& val);
 
-    void remove(T& val) {
-        if(isEmpty()) {
-            return;
-        }
-        HashSetNode* cur = node;
-        HashSetNode prev = nullptr;
-        while(cur && cur->val != val) {
-            prev = cur;
-            cur = cur->next;
-        }
-        if(cur == nullptr) {
-            return; //key not found.
-        }
-        if(prev == nullptr) {
-            node = node->next;
-        } else {
-            prev->next = cur->next;
-        }
-    }
+    void add(T& val);
 
-    bool isEmpty() {
-        return node == nullptr;
-    }
+    void remove(T& val);
+
+    bool isEmpty();
 
 private:
     HashSetNode* node;
+
+    HashSetNode* find(T& val);
 }
 
 #endif
