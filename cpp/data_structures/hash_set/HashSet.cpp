@@ -1,7 +1,9 @@
-#include "HashSet.cpp"
+#include "HashSet.h"
 
 template<typename T, typename H>
 HashSet<T,H>::HashSet() {
+    table = std::vector<Bucket<T>>();
+    table.reserve(capacity);
 
 }
 
@@ -37,5 +39,5 @@ unsigned int HashSet<T,H>::size() {
 
 template<typename T, typename H>
 bool HashSet<T,H>::empty() {
-    
+
 }

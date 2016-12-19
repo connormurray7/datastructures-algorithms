@@ -1,4 +1,5 @@
 #include <vector>
+#include "Bucket.h"
 
 #ifndef HASHSET_H
 #define HASHSET_H
@@ -53,7 +54,7 @@ private:
         //Maximum ratio of used spots in
         //the table
 
-    std::vector<T> table;
+    std::vector<Bucket<T>> table;
         //Vector represents the table buckets
 
     H hash;
