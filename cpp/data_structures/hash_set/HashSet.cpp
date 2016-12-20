@@ -11,8 +11,8 @@ template<typename T, typename H>
 HashSet<T,H>::HashSet(const HashSet& other) {
     table = std::vector<Bucket<T>>();
     table.reserve(other.capacity);
-    for(Bucket<T>& i: other.table) {
-        for(auto& key: i.get_keys()) {
+    for(Bucket<T>& b: other.table) {
+        for(auto& key: b.get_keys()) {
             insert(key);
         }
     }
@@ -58,4 +58,18 @@ unsigned int HashSet<T,H>::get_idx(const T& key) {
 template<typename T, typename H>
 bool HashSet<T,H>::too_full() {
     return (num_elements*1.0 / capacity) > load_factor;
+}
+
+template<typename T, typename H>
+void HashSet<T,H>::expand() {
+    capacity *= 2;
+    std::vector<Bucket<T>> new_table;
+
+    new_table.reserve(capacity);
+    for(Bucket<T>& b: table) {
+        for(auto& key: b.get_keys()) {
+            new_table[get_idx(key)].add(key);
+        }
+    }
+    table = new_table;
 }
