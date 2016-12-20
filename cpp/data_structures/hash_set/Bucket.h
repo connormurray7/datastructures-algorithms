@@ -1,3 +1,6 @@
+#include <vector>
+
+
 #ifndef BUCKET_H
 #define BUCKET_H
 
@@ -8,12 +11,12 @@ struct HashSetNode {
 
     T val;
     HashSetNode* next;
-}
+};
 
 template<typename T>
 class Bucket {
 public:
-    Bucket(HashSetNode& n);
+    Bucket(HashSetNode<T>& n);
 
     bool contains(T& val);
 
@@ -26,9 +29,9 @@ public:
     std::vector<T> get_keys();
 
 private:
-    HashSetNode* node;
+    HashSetNode<T>* node;
 
-    HashSetNode* find(T& val);
-}
+    HashSetNode<T>* find(T& val);
+};
 
 #endif

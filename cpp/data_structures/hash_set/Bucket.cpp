@@ -2,7 +2,7 @@
 #include <vector>
 
 template<typename T>
-Bucket<T>::Bucket(HashSetNode& n) {
+Bucket<T>::Bucket(HashSetNode<T>& n) {
     node = &n;
 }
 
@@ -14,14 +14,14 @@ bool Bucket<T>::contains(T& val) {
 template<typename T>
 void Bucket<T>::add(T& val) {
     if(isEmpty()) {
-        node = &HashSetNode(val);
+        node = &HashSetNode<T>(val);
         return;
     }
-    HashSetNode* n = node;
+    HashSetNode<T>* n = node;
     while(n->next) {
         n = n->next;
     }
-    n->next = &HashSetNode(val);
+    n->next = &HashSetNode<T>(val);
 }
 
 template<typename T>
@@ -29,8 +29,8 @@ void Bucket<T>::remove(T& val) {
     if(isEmpty()) {
         return;
     }
-    HashSetNode* cur = node;
-    HashSetNode prev = nullptr;
+    HashSetNode<T>* cur = node;
+    HashSetNode<T> prev = nullptr;
     while(cur && cur->val != val) {
         prev = cur;
         cur = cur->next;
@@ -53,7 +53,7 @@ bool Bucket<T>::isEmpty() {
 template<typename T>
 std::vector<T> Bucket<T>::get_keys() {
     std::vector<T> v;
-    HashSetNode* n = node;
+    HashSetNode<T>* n = node;
     while(n) {
         v.push_back(n->val);
         n = n->next;
@@ -62,10 +62,10 @@ std::vector<T> Bucket<T>::get_keys() {
 }
 
 template<typename T>
-HashSetNode* Bucket<T>::find(T& val) {
-    HashSetNode* cur = node;
+HashSetNode<T>* Bucket<T>::find(T& val) {
+    HashSetNode<T>* cur = node;
     while(cur && cur->val != val) {
         cur = cur->next;
     }
-    return cur
+    return cur;
 }

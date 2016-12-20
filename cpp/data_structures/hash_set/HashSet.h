@@ -63,7 +63,7 @@ private:
     H hash;
         //Hash function used for filling the container.
 
-    unsigned int get_idx(T& key);
+    std::size_t get_idx(T& key);
         //Returns the index for the key. using
         //the hash function.
 
@@ -75,6 +75,6 @@ private:
     void expand();
         //Doubles container capacity and
         //rehashes values.
-}
+};
 
 #endif
