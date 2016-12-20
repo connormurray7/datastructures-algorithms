@@ -18,11 +18,11 @@ class Bucket {
 public:
     Bucket(HashSetNode<T>& n);
 
-    bool contains(T& val);
+    bool contains(const T& val);
 
-    void add(T& val);
+    void add(const T& val);
 
-    void remove(T& val);
+    void remove(const T& val);
 
     bool isEmpty();
 

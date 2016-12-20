@@ -7,12 +7,12 @@ Bucket<T>::Bucket(HashSetNode<T>& n) {
 }
 
 template<typename T>
-bool Bucket<T>::contains(T& val) {
+bool Bucket<T>::contains(const T& val) {
     return find(val) != nullptr;
 }
 
 template<typename T>
-void Bucket<T>::add(T& val) {
+void Bucket<T>::add(const T& val) {
     if(isEmpty()) {
         node = &HashSetNode<T>(val);
         return;
@@ -25,7 +25,7 @@ void Bucket<T>::add(T& val) {
 }
 
 template<typename T>
-void Bucket<T>::remove(T& val) {
+void Bucket<T>::remove(const T& val) {
     if(isEmpty()) {
         return;
     }

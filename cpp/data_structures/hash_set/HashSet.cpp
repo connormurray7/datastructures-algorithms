@@ -51,6 +51,11 @@ bool HashSet<T,H>::empty() {
 }
 
 template<typename T, typename H>
+unsigned int HashSet<T,H>::get_idx(const T& key) {
+    return static_cast<unsigned int>(hash(key)) % capacity;
+}
+
+template<typename T, typename H>
 bool HashSet<T,H>::too_full() {
     return (num_elements*1.0 / capacity) > load_factor;
 }
