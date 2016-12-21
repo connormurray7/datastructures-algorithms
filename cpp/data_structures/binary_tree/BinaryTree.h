@@ -68,10 +68,6 @@ private:
         //Returns node that was inserted.
         //O(log n).
 
-    std::shared_ptr<TreeNode<K,V>> build_tree(std::vector<std::shared_ptr<TreeNode<K,V>>> &vec, int start, int end);
-        //Requires a vector of node pointers
-        //Private function to do the actual building of the tree.
-
     static bool sort_comp(std::shared_ptr<TreeNode<K,V>> a, std::shared_ptr<TreeNode<K,V>> b) {return *a < *b;};
         //Requires two node pointers.
         //Operator< is already overloaded for Node, this function
