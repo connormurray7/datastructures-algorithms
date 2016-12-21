@@ -7,7 +7,7 @@
 template<typename T>
 struct HashSetNode {
 
-    HashSetNode(T& val_in) : val(val_in) {}
+    HashSetNode(const T& val_in) : val(val_in) {}
 
     T val;
     HashSetNode* next;
@@ -16,6 +16,8 @@ struct HashSetNode {
 template<typename T>
 class Bucket {
 public:
+    Bucket();
+
     Bucket(HashSetNode<T>& n);
 
     bool contains(const T& val);

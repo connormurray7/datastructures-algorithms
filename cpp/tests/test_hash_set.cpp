@@ -1,14 +1,19 @@
 #include "catch.hpp"
 #include "../data_structures/hash_set/HashSet.cpp"
+#include "../data_structures/hash_set/Bucket.cpp"
 #include <string>
 
 TEST_CASE("Test insert and contains", "[HashSet]" ) {
     HashSet<int, std::hash<int>> intSet;
-    HashSet<std::string, std::hash<std::string>> stringSet;
+    // HashSet<std::string, std::hash<std::string>> stringSet;
 
-    for(int i = -10000; i < 10000; ++i) {
-        intSet.insert(i);
-    }
+    // intSet.insert(0);
+    // intSet.insert(1);
+    // intSet.insert(2);
+
+    // for(int i = -10000; i < 10000; ++i) {
+    //     intSet.insert(i);
+    // }
     // for(int i = -10000; i < 10000; ++i) {
     //     REQUIRE(intSet.contains(i));
     // }

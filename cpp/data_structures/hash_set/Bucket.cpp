@@ -2,6 +2,9 @@
 #include <vector>
 
 template<typename T>
+Bucket<T>::Bucket() {}
+
+template<typename T>
 Bucket<T>::Bucket(HashSetNode<T>& n) {
     node = &n;
 }
@@ -13,15 +16,16 @@ bool Bucket<T>::contains(const T& val) {
 
 template<typename T>
 void Bucket<T>::add(const T& val) {
+    auto n = HashSetNode<T>(val);
     if(isEmpty()) {
-        node = &HashSetNode<T>(val);
+        node = &n;
         return;
     }
-    HashSetNode<T>* n = node;
-    while(n->next) {
-        n = n->next;
+    HashSetNode<T>* cur = node;
+    while(cur->next) {
+        cur = cur->next;
     }
-    n->next = &HashSetNode<T>(val);
+    cur->next = &n;
 }
 
 template<typename T>

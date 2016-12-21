@@ -24,6 +24,7 @@ all: $(OBJECTS)
 Vector.o: ../data_structures/vector/Vector.cpp
 BinaryTree.o: ../data_structures/binary_tree/BinaryTree.cpp
 HashSet.o: ../data_structures/hash_set/HashSet.cpp
+Bucket.o: ../data_structures/hash_set/Bucket.cpp
 
 test_vector.o: test_vector.cpp
 test_binary_tree.o: test_binary_tree.cpp

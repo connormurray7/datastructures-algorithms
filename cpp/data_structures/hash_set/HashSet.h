@@ -75,6 +75,9 @@ private:
     void expand();
         //Doubles container capacity and
         //rehashes values.
+
+    void fill_table();
+
 };
 
 #endif

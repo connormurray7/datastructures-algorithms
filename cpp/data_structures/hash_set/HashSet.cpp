@@ -1,16 +1,17 @@
 #include "HashSet.h"
+#include <iostream>
 
 template<typename T, typename H>
 HashSet<T,H>::HashSet() {
     table = std::vector<Bucket<T>>();
-    table.reserve(capacity);
-
+    fill_table();
 }
 
 template<typename T, typename H>
 HashSet<T,H>::HashSet(const HashSet& other) {
     table = std::vector<Bucket<T>>();
-    table.reserve(other.capacity);
+    capacity = other.capacity;
+    fill_table();
     for(Bucket<T>& b: other.table) {
         for(auto& key: b.get_keys()) {
             insert(key);
@@ -72,4 +73,12 @@ void HashSet<T,H>::expand() {
         }
     }
     table = new_table;
+}
+
+template<typename T, typename H>
+void HashSet<T,H>::fill_table() {
+    table.reserve(capacity);
+    for(unsigned int i = 0; i < capacity; ++i) {
+        table.push_back(Bucket<T>());
+    }
 }
