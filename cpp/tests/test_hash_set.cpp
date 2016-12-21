@@ -5,11 +5,7 @@
 
 TEST_CASE("Test insert and contains", "[HashSet]" ) {
     HashSet<int, std::hash<int>> intSet;
-    // HashSet<std::string, std::hash<std::string>> stringSet;
-
-    // intSet.insert(0);
-    // intSet.insert(1);
-    // intSet.insert(2);
+    HashSet<std::string, std::hash<std::string>> stringSet;
 
     // for(int i = -10000; i < 10000; ++i) {
     //     intSet.insert(i);
@@ -18,17 +14,17 @@ TEST_CASE("Test insert and contains", "[HashSet]" ) {
     //     REQUIRE(intSet.contains(i));
     // }
 
-    // stringSet.insert("foo");
-    // stringSet.insert("bar");
-    // stringSet.insert("baz");
-    // stringSet.insert("foobar");
-    // stringSet.insert("foobarbaz");
-    //
-    // REQUIRE(stringSet.contains("foo"));
-    // REQUIRE(stringSet.contains("bar"));
-    // REQUIRE(stringSet.contains("baz"));
-    // REQUIRE(stringSet.contains("foobar"));
-    // REQUIRE(stringSet.contains("foobarbaz"));
+    stringSet.insert("foo");
+    stringSet.insert("bar");
+    stringSet.insert("baz");
+    stringSet.insert("foobar");
+    stringSet.insert("foobarbaz");
+
+    REQUIRE(stringSet.contains("foo"));
+    REQUIRE(stringSet.contains("bar"));
+    REQUIRE(stringSet.contains("baz"));
+    REQUIRE(stringSet.contains("foobar"));
+    REQUIRE(stringSet.contains("foobarbaz"));
 }
 
 // TEST_CASE("Test erase and contains", "[HashSet]" ) {

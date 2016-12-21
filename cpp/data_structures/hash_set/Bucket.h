@@ -33,7 +33,7 @@ public:
 private:
     HashSetNode<T>* node;
 
-    HashSetNode<T>* find(T& val);
+    HashSetNode<T>* find(const T& val);
 };
 
 #endif

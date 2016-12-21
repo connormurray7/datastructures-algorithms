@@ -1,5 +1,4 @@
 #include "HashSet.h"
-#include <iostream>
 
 template<typename T, typename H>
 HashSet<T,H>::HashSet() {
