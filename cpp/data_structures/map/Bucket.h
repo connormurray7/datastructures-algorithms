@@ -1,3 +1,4 @@
+#include "HashNode.h"
 #include <vector>
 #include <memory>
 
@@ -9,7 +10,7 @@ class Bucket {
 public:
     Bucket();
 
-    Bucket(HashSetNode<T>& n);
+    Bucket(HashNode<T>& n);
 
     bool contains(const T& key);
 

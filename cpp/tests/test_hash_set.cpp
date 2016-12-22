@@ -1,6 +1,6 @@
 #include "catch.hpp"
-#include "../data_structures/hash_set/HashSet.cpp"
-#include "../data_structures/hash_set/Bucket.cpp"
+#include "../data_structures/map/Bucket.cpp"
+#include "../data_structures/map/hash_set/HashSet.cpp"
 #include <string>
 
 TEST_CASE("Test insert and contains", "[HashSet]" ) {

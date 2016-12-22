@@ -1,6 +1,5 @@
 #include "Bucket.h"
 #include <vector>
-#include <iostream>
 
 template<typename T>
 Bucket<T>::Bucket() {
@@ -8,7 +7,7 @@ Bucket<T>::Bucket() {
 }
 
 template<typename T>
-Bucket<T>::Bucket(HashSetNode<T>& n) {
+Bucket<T>::Bucket(HashNode<T>& n) {
     node = &n;
 }
 
@@ -19,7 +18,7 @@ bool Bucket<T>::contains(const T& key) {
 
 template<typename T>
 void Bucket<T>::add(const T& key) {
-    auto new_node = std::make_shared<HashSetNode<T>>(key);
+    auto new_node = std::make_shared<HashNode<T>>(key);
     if(isEmpty()) {
         node = new_node;
         return;
@@ -37,7 +36,7 @@ bool Bucket<T>::remove(const T& key) {
         return false;
     }
     auto cur = node;
-    std::shared_ptr<HashSetNode<T>> prev = nullptr;
+    std::shared_ptr<HashNode<T>> prev = nullptr;
     while(cur != nullptr && cur->key != key) {
         prev = cur;
         cur = cur->next;
@@ -70,7 +69,7 @@ std::vector<T> Bucket<T>::get_keys() {
 }
 
 template<typename T>
-std::shared_ptr<HashSetNode<T>> Bucket<T>::find(const T& key) {
+std::shared_ptr<HashNode<T>> Bucket<T>::find(const T& key) {
     auto cur = node;
     while(cur != nullptr && cur->key != key) {
         cur = cur->next;
