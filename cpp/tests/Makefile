@@ -24,11 +24,13 @@ all: $(OBJECTS)
 Vector.o: ../data_structures/vector/Vector.cpp
 BinaryTree.o: ../data_structures/binary_tree/BinaryTree.cpp
 HashSet.o: ../data_structures/map/hash_set/HashSet.cpp
+HashMap.o: ../data_structures/map/hash_map/HashMap.cpp
 Bucket.o: ../data_structures/map/Bucket.cpp
 
 test_vector.o: test_vector.cpp
 test_binary_tree.o: test_binary_tree.cpp
 test_hash_set.o: test_hash_set.cpp
+test_hash_map.o: test_hash_map.cpp
 
 main.o: main.cpp
 
