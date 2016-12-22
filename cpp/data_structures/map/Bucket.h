@@ -12,15 +12,19 @@ public:
 
     Bucket(HashNode<T>& n);
 
-    bool contains(const T& key);
+    void add(std::shared_ptr<HashNode<T>> node);
 
-    void add(const T& key);
+    std::shared_ptr<HashNode<T>> get_node(const T& key);
+
+    bool contains(const T& key);
 
     bool remove(const T& key);
 
-    bool isEmpty();
+    bool empty();
 
     std::vector<T> get_keys();
+
+    std::vector<std::shared_ptr<HashNode<T>>> get_nodes();
 
 private:
     std::shared_ptr<HashNode<T>> node;

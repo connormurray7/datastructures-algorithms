@@ -13,8 +13,8 @@ HashSet<T,H>::HashSet(const HashSet& other) {
     capacity = other.capacity;
     fill_table();
     for(Bucket<T>& b: other.table) {
-        for(auto& key: b.get_keys()) {
-            insert(key);
+        for(auto& n: b.nodes()) {
+            insert(n);
         }
     }
 }
@@ -28,7 +28,8 @@ void HashSet<T,H>::insert(const T& key) {
     if(too_full())  {
         expand();
     }
-    table[get_idx(key)].add(key);
+    auto node = std::make_shared<HashNode<T>>(key);
+    table[get_idx(key)].add(node);
 }
 
 template<typename T, typename H>
@@ -72,8 +73,8 @@ void HashSet<T,H>::expand() {
     fill_table();
 
     for(Bucket<T>& b: old_table) {
-        for(auto& key: b.get_keys()) {
-            table[get_idx(key)].add(key);
+        for(auto& n: b.get_nodes()) {
+            table[get_idx(n->key)].add(n);
         }
     }
 }

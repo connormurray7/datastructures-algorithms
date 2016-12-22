@@ -5,11 +5,10 @@
 #define HASHMAPNODE_H
 
 template<typename K, typename V>
-class HashMapNode : public HashNode {
+class HashMapNode : public HashNode<K> {
 public:
 
-    HashMapNode(K key_in, V val_in) : HashNode(val_in) {
-        key = key_in;
+    HashMapNode(K key_in, V val_in) : HashNode<K>(key_in) {
         val = val_in;
     }
 

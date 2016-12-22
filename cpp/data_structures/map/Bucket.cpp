@@ -17,9 +17,8 @@ bool Bucket<T>::contains(const T& key) {
 }
 
 template<typename T>
-void Bucket<T>::add(const T& key) {
-    auto new_node = std::make_shared<HashNode<T>>(key);
-    if(isEmpty()) {
+void Bucket<T>::add(std::shared_ptr<HashNode<T>> new_node) {
+    if(empty()) {
         node = new_node;
         return;
     }
@@ -31,8 +30,13 @@ void Bucket<T>::add(const T& key) {
 }
 
 template<typename T>
+std::shared_ptr<HashNode<T>> get_node(const T& key) {
+    return find(key);
+}
+
+template<typename T>
 bool Bucket<T>::remove(const T& key) {
-    if(isEmpty()) {
+    if(empty()) {
         return false;
     }
     auto cur = node;
@@ -53,7 +57,7 @@ bool Bucket<T>::remove(const T& key) {
 }
 
 template<typename T>
-bool Bucket<T>::isEmpty() {
+bool Bucket<T>::empty() {
     return node == nullptr;
 }
 
@@ -63,6 +67,17 @@ std::vector<T> Bucket<T>::get_keys() {
     auto cur = node;
     while(cur != nullptr) {
         v.push_back(cur->key);
+        cur = cur->next;
+    }
+    return v;
+}
+
+template<typename T>
+std::vector<std::shared_ptr<HashNode<T>>> Bucket<T>::get_nodes() {
+    std::vector<std::shared_ptr<HashNode<T>>> v;
+    auto cur = node;
+    while(cur != nullptr) {
+        v.push_back(cur);
         cur = cur->next;
     }
     return v;
