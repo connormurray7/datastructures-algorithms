@@ -1,5 +1,6 @@
 #include "Bucket.h"
 #include <vector>
+#include <iostream>
 
 template<typename T>
 Bucket<T>::Bucket() {
@@ -12,43 +13,44 @@ Bucket<T>::Bucket(HashSetNode<T>& n) {
 }
 
 template<typename T>
-bool Bucket<T>::contains(const T& val) {
-    return find(val) != nullptr;
+bool Bucket<T>::contains(const T& key) {
+    return find(key) != nullptr;
 }
 
 template<typename T>
-void Bucket<T>::add(const T& val) {
-    auto n = HashSetNode<T>(val);
+void Bucket<T>::add(const T& key) {
+    auto new_node = std::make_shared<HashSetNode<T>>(key);
     if(isEmpty()) {
-        node = &n;
+        node = new_node;
         return;
     }
-    HashSetNode<T>* cur = node;
-    while(cur->next) {
+    auto cur = node;
+    while(cur->next != nullptr) {
         cur = cur->next;
     }
-    cur->next = &n;
+    cur->next = new_node;
 }
 
 template<typename T>
-void Bucket<T>::remove(const T& val) {
+bool Bucket<T>::remove(const T& key) {
     if(isEmpty()) {
-        return;
+        return false;
     }
-    HashSetNode<T>* cur = node;
-    HashSetNode<T> prev = nullptr;
-    while(cur && cur->val != val) {
+    auto cur = node;
+    std::shared_ptr<HashSetNode<T>> prev = nullptr;
+    while(cur != nullptr && cur->key != key) {
         prev = cur;
         cur = cur->next;
     }
     if(cur == nullptr) {
-        return; //key not found.
+        return false; //key not found.
     }
     if(prev == nullptr) {
         node = node->next;
     } else {
         prev->next = cur->next;
     }
+    return true;
 }
 
 template<typename T>
@@ -59,18 +61,18 @@ bool Bucket<T>::isEmpty() {
 template<typename T>
 std::vector<T> Bucket<T>::get_keys() {
     std::vector<T> v;
-    HashSetNode<T>* n = node;
-    while(n) {
-        v.push_back(n->val);
-        n = n->next;
+    auto cur = node;
+    while(cur != nullptr) {
+        v.push_back(cur->key);
+        cur = cur->next;
     }
     return v;
 }
 
 template<typename T>
-HashSetNode<T>* Bucket<T>::find(const T& val) {
-    HashSetNode<T>* cur = node;
-    while(cur && cur->val != val) {
+std::shared_ptr<HashSetNode<T>> Bucket<T>::find(const T& key) {
+    auto cur = node;
+    while(cur != nullptr && cur->key != key) {
         cur = cur->next;
     }
     return cur;

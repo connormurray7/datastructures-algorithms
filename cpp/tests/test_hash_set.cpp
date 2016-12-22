@@ -78,8 +78,8 @@ TEST_CASE("Test size and empty", "[HashSet]" ) {
     HashSet<int, std::hash<int>> set;
 
     for(int i = 0; i < 10000; ++i) {
-        set.insert(i);
         REQUIRE(set.size() == i);
+        set.insert(i);
         REQUIRE(!set.empty());
     }
     for(int i = 9999; i >= 0; --i) {

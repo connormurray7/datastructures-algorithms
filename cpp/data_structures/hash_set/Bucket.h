@@ -1,5 +1,5 @@
 #include <vector>
-
+#include <memory>
 
 #ifndef BUCKET_H
 #define BUCKET_H
@@ -7,10 +7,13 @@
 template<typename T>
 struct HashSetNode {
 
-    HashSetNode(const T& val_in) : val(val_in) {}
+    HashSetNode(T key_in) {
+        key = key_in;
+        next = nullptr;
+    }
 
-    T val;
-    HashSetNode* next;
+    T key;
+    std::shared_ptr<HashSetNode<T>> next;
 };
 
 template<typename T>
@@ -20,20 +23,20 @@ public:
 
     Bucket(HashSetNode<T>& n);
 
-    bool contains(const T& val);
+    bool contains(const T& key);
 
-    void add(const T& val);
+    void add(const T& key);
 
-    void remove(const T& val);
+    bool remove(const T& key);
 
     bool isEmpty();
 
     std::vector<T> get_keys();
 
 private:
-    HashSetNode<T>* node;
+    std::shared_ptr<HashSetNode<T>> node;
 
-    HashSetNode<T>* find(const T& val);
+    std::shared_ptr<HashSetNode<T>> find(const T& val);
 };
 
 #endif

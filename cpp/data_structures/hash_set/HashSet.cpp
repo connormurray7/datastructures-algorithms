@@ -1,4 +1,5 @@
 #include "HashSet.h"
+#include <iostream>
 
 template<typename T, typename H>
 HashSet<T,H>::HashSet() {
@@ -32,7 +33,10 @@ void HashSet<T,H>::insert(const T& key) {
 
 template<typename T, typename H>
 void HashSet<T,H>::erase(const T& key) {
-    table[get_idx(key)].remove(key);
+    bool success = table[get_idx(key)].remove(key);
+    if(success) {
+        --num_elements;
+    }
 }
 
 template<typename T, typename H>
@@ -62,16 +66,16 @@ bool HashSet<T,H>::too_full() {
 
 template<typename T, typename H>
 void HashSet<T,H>::expand() {
+    std::vector<Bucket<T>> old_table = table;
+    table = std::vector<Bucket<T>>();
     capacity *= 2;
-    std::vector<Bucket<T>> new_table;
+    fill_table();
 
-    new_table.reserve(capacity);
-    for(Bucket<T>& b: table) {
+    for(Bucket<T>& b: old_table) {
         for(auto& key: b.get_keys()) {
-            new_table[get_idx(key)].add(key);
+            table[get_idx(key)].add(key);
         }
     }
-    table = new_table;
 }
 
 template<typename T, typename H>

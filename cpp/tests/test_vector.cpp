@@ -54,7 +54,7 @@ TEST_CASE("Test pop_back", "[vector]" ) {
 
 }
 
-TEST_CASE("Test size and empty", "[vector]" ) {
+TEST_CASE("Test empty and size", "[vector]" ) {
     Vector<int> v;
 
     REQUIRE(v.empty());
