@@ -23,12 +23,13 @@ template<typename K, typename V, typename H>
 HashMap<K,V,H>::~HashMap() {}
 
 template<typename K, typename V, typename H>
-V& HashMap<K,V,H>::operator[](const K& key) {
-    return table[get_idx(key)].get_node(key)->val;
+V& HashMap<K,V,H>::operator[](const K& key) const {
+    std::shared_ptr<HashNode<K>> n = table[get_idx(key)].get_node(key);
+    return static_cast<HashMapNode<K,V>*>(n.get())->val;
 }
 
 template<typename K, typename V, typename H>
-V& HashMap<K,V,H>::at(const K& key) {
+V& HashMap<K,V,H>::at(const K& key) const {
     std::shared_ptr<HashMapNode<K,V>> n = table[get_idx(key)].get_node(key);
     if(n == nullptr) {
         throw std::out_of_range ("Index out of bounds.");
@@ -48,27 +49,27 @@ void HashMap<K,V,H>::erase(const K& key) {
 }
 
 template<typename K, typename V, typename H>
-bool HashMap<K,V,H>::contains(const K& key) {
+bool HashMap<K,V,H>::contains(const K& key) const {
     return table[get_idx(key)].contains(key);
 }
 
 template<typename K, typename V, typename H>
-unsigned int HashMap<K,V,H>::size() {
+unsigned int HashMap<K,V,H>::size() const {
     return num_elements;
 }
 
 template<typename K, typename V, typename H>
-bool HashMap<K,V,H>::empty() {
+bool HashMap<K,V,H>::empty() const {
     return num_elements == 0;
 }
 
 template<typename K, typename V, typename H>
-unsigned int HashMap<K,V,H>::get_idx(const K& key) {
+unsigned int HashMap<K,V,H>::get_idx(const K& key) const {
     return static_cast<unsigned int>(hash(key)) % capacity;
 }
 
 template<typename K, typename V, typename H>
-bool HashMap<K,V,H>::too_full() {
+bool HashMap<K,V,H>::too_full() const {
     return (num_elements*1.0 / capacity) > load_factor;
 }
 

@@ -12,7 +12,7 @@ Bucket<T>::Bucket(HashNode<T>& n) {
 }
 
 template<typename T>
-bool Bucket<T>::contains(const T& key) {
+bool Bucket<T>::contains(const T& key) const {
     return find(key) != nullptr;
 }
 
@@ -57,12 +57,12 @@ bool Bucket<T>::remove(const T& key) {
 }
 
 template<typename T>
-bool Bucket<T>::empty() {
+bool Bucket<T>::empty() const {
     return node == nullptr;
 }
 
 template<typename T>
-std::vector<T> Bucket<T>::get_keys() {
+std::vector<T> Bucket<T>::get_keys() const {
     std::vector<T> v;
     auto cur = node;
     while(cur != nullptr) {
@@ -73,7 +73,7 @@ std::vector<T> Bucket<T>::get_keys() {
 }
 
 template<typename T>
-std::vector<std::shared_ptr<HashNode<T>>> Bucket<T>::get_nodes() {
+std::vector<std::shared_ptr<HashNode<T>>> Bucket<T>::get_nodes() const {
     std::vector<std::shared_ptr<HashNode<T>>> v;
     auto cur = node;
     while(cur != nullptr) {
@@ -84,7 +84,7 @@ std::vector<std::shared_ptr<HashNode<T>>> Bucket<T>::get_nodes() {
 }
 
 template<typename T>
-std::shared_ptr<HashNode<T>> Bucket<T>::find(const T& key) {
+std::shared_ptr<HashNode<T>> Bucket<T>::find(const T& key) const {
     auto cur = node;
     while(cur != nullptr && cur->key != key) {
         cur = cur->next;

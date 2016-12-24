@@ -26,9 +26,9 @@ public:
     //             Standard functions
     //==============================================//
 
-    V& operator[](const K& key);
+    V& operator[](const K& key) const;
 
-    V& at(const K& key);
+    V& at(const K& key) const;
 
     void insert(const K& key, const V& val);
         //Adds key, value pairs to map.
@@ -38,14 +38,14 @@ public:
         //Removes key values from the map
         //O(1) operation amortized.
 
-    bool contains(const K& key);
+    bool contains(const K& key) const;
         //Returns true if key in map.
         //O(1) operation amortized
 
-    unsigned int size();
+    unsigned int size() const;
         //Number of elements in container, O(1)
 
-    bool empty();
+    bool empty() const;
         //True if no elements.
 
 private:
@@ -67,11 +67,11 @@ private:
     H hash;
         //Hash function used for filling the container.
 
-    unsigned int get_idx(const K& key);
+    unsigned int get_idx(const K& key) const;
         //Returns the index for the key. using
         //the hash function.
 
-    bool too_full();
+    bool too_full() const;
         //If the ratio of elements to the capacity
         //is greater than the load_factor, then
         //returns true.
