@@ -40,16 +40,24 @@ public:
         //Removes node from list if node for key exists.
 
     bool empty() const;
-        //True if bucket is empty
+        //True if bucket is empty.
 
     std::vector<T> get_keys() const;
+        //Returns vector of all keys in bucket.
+        //O(k) where k is number of keys with the same
+        //hash.
 
     std::vector<std::shared_ptr<HashNode<T>>> get_nodes() const;
+        //Returns vector of all nodes in bucket.
+        //O(k) where k is number of keys with the same
+        //hash.
 
 private:
-    std::shared_ptr<HashNode<T>> node;
+    std::shared_ptr<HashNode<T>> head;
+        //First node in the linked list.
 
-    std::shared_ptr<HashNode<T>> find(const T& val) const;
+    std::shared_ptr<HashNode<T>> find(const T& key) const;
+        //Returns node for associated key.
 };
 
 #endif

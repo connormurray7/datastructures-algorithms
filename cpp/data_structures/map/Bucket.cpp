@@ -3,12 +3,12 @@
 
 template<typename T>
 Bucket<T>::Bucket() {
-    node = nullptr;
+    head = nullptr;
 }
 
 template<typename T>
 Bucket<T>::Bucket(HashNode<T>& n) {
-    node = &n;
+    head = &n;
 }
 
 template<typename T>
@@ -19,10 +19,10 @@ bool Bucket<T>::contains(const T& key) const {
 template<typename T>
 void Bucket<T>::add(std::shared_ptr<HashNode<T>> new_node) {
     if(empty()) {
-        node = new_node;
+        head = new_node;
         return;
     }
-    auto cur = node;
+    auto cur = head;
     while(cur->next != nullptr) {
         cur = cur->next;
     }
@@ -39,7 +39,7 @@ bool Bucket<T>::remove(const T& key) {
     if(empty()) {
         return false;
     }
-    auto cur = node;
+    auto cur = head;
     std::shared_ptr<HashNode<T>> prev = nullptr;
     while(cur != nullptr && cur->key != key) {
         prev = cur;
@@ -49,7 +49,7 @@ bool Bucket<T>::remove(const T& key) {
         return false; //key not found.
     }
     if(prev == nullptr) {
-        node = node->next;
+        head = head->next;
     } else {
         prev->next = cur->next;
     }
@@ -58,13 +58,13 @@ bool Bucket<T>::remove(const T& key) {
 
 template<typename T>
 bool Bucket<T>::empty() const {
-    return node == nullptr;
+    return head == nullptr;
 }
 
 template<typename T>
 std::vector<T> Bucket<T>::get_keys() const {
     std::vector<T> v;
-    auto cur = node;
+    auto cur = head;
     while(cur != nullptr) {
         v.push_back(cur->key);
         cur = cur->next;
@@ -75,7 +75,7 @@ std::vector<T> Bucket<T>::get_keys() const {
 template<typename T>
 std::vector<std::shared_ptr<HashNode<T>>> Bucket<T>::get_nodes() const {
     std::vector<std::shared_ptr<HashNode<T>>> v;
-    auto cur = node;
+    auto cur = head;
     while(cur != nullptr) {
         v.push_back(cur);
         cur = cur->next;
@@ -85,7 +85,7 @@ std::vector<std::shared_ptr<HashNode<T>>> Bucket<T>::get_nodes() const {
 
 template<typename T>
 std::shared_ptr<HashNode<T>> Bucket<T>::find(const T& key) const {
-    auto cur = node;
+    auto cur = head;
     while(cur != nullptr && cur->key != key) {
         cur = cur->next;
     }
