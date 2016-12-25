@@ -23,12 +23,18 @@ public:
         //(stores key, vals) on the heap.
 
     //==============================================//
-    //             Standard functions
+    //             Member functions
     //==============================================//
 
     V& operator[](const K& key) const;
+        //Gets element for key, if exists.
+        //Does not check before accessing
+        //O(1)
 
     V& at(const K& key) const;
+        //Gets element for key, if exists.
+        //Throws out_of_range if does not exist
+        //O(1)
 
     void insert(const K& key, const V& val);
         //Adds key, value pairs to map.
@@ -81,6 +87,8 @@ private:
         //rehashes values.
 
     void fill_table();
+        //Fills the table with empty buckets
+        //Used when expanding the table.
 
 };
 
