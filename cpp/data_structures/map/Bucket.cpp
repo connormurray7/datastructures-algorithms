@@ -30,7 +30,7 @@ void Bucket<T>::add(std::shared_ptr<HashNode<T>> new_node) {
 }
 
 template<typename T>
-std::shared_ptr<HashNode<T>> get_node(const T& key) {
+std::shared_ptr<HashNode<T>> Bucket<T>::get_node(const T& key) const {
     return find(key);
 }
 

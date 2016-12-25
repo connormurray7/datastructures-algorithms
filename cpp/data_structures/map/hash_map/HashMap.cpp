@@ -1,3 +1,4 @@
+#include "../HashNode.h"
 #include "HashMap.h"
 #include "HashMapNode.h"
 
@@ -30,11 +31,11 @@ V& HashMap<K,V,H>::operator[](const K& key) const {
 
 template<typename K, typename V, typename H>
 V& HashMap<K,V,H>::at(const K& key) const {
-    std::shared_ptr<HashMapNode<K,V>> n = table[get_idx(key)].get_node(key);
+    std::shared_ptr<HashNode<K>> n = table[get_idx(key)].get_node(key);
     if(n == nullptr) {
         throw std::out_of_range ("Index out of bounds.");
     }
-    return table[get_idx(key)].get_node(key)->val;
+    return static_cast<HashMapNode<K,V>*>(n.get())->val;
 }
 
 template<typename K, typename V, typename H>

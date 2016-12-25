@@ -7,10 +7,10 @@ TEST_CASE("Test insert and contains", "[HashSet]" ) {
     HashSet<int, std::hash<int>> intSet;
     HashSet<std::string, std::hash<std::string>> stringSet;
 
-    for(int i = -10000; i < 10000; ++i) {
+    for(int i = -1000; i < 1000; ++i) {
         intSet.insert(i);
     }
-    for(int i = -10000; i < 10000; ++i) {
+    for(int i = -1000; i < 1000; ++i) {
         REQUIRE(intSet.contains(i));
     }
 
@@ -77,12 +77,12 @@ TEST_CASE("Test erase and contains", "[HashSet]" ) {
 TEST_CASE("Test size and empty", "[HashSet]" ) {
     HashSet<int, std::hash<int>> set;
 
-    for(int i = 0; i < 10000; ++i) {
+    for(int i = 0; i < 1000; ++i) {
         REQUIRE(set.size() == i);
         set.insert(i);
         REQUIRE(!set.empty());
     }
-    for(int i = 9999; i >= 0; --i) {
+    for(int i = 999; i >= 0; --i) {
         REQUIRE(!set.empty());
         set.erase(i);
         REQUIRE(set.size() == i);

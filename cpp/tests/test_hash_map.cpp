@@ -7,22 +7,23 @@ TEST_CASE("Test insert and []", "[HashSet]" ) {
     HashMap<int, int> intMap;
     HashMap<std::string, int> stringMap;
 
-    for(int i = -10000; i < 10000; ++i) {
+    for(int i = -1000; i < 1000; ++i) {
         intMap.insert(i, i+1);
     }
-    for(int i = -10000; i < 10000; ++i) {
+    for(int i = -1000; i < 1000; ++i) {
+        REQUIRE(intMap.at(i) == i+1);
         REQUIRE(intMap[i] == i+1);
     }
 
-    // stringSet.insert("foo");
-    // stringSet.insert("bar");
-    // stringSet.insert("baz");
-    // stringSet.insert("foobar");
-    // stringSet.insert("foobarbaz");
-    //
-    // REQUIRE(stringSet.contains("foo"));
-    // REQUIRE(stringSet.contains("bar"));
-    // REQUIRE(stringSet.contains("baz"));
-    // REQUIRE(stringSet.contains("foobar"));
-    // REQUIRE(stringSet.contains("foobarbaz"));
+    stringMap.insert("foo", 0);
+    stringMap.insert("bar", 1);
+    stringMap.insert("baz", 2);
+    stringMap.insert("foobar", 3);
+    stringMap.insert("foobarbaz", 4);
+
+    REQUIRE(stringMap["foo"] == 0);
+    REQUIRE(stringMap["bar"] == 1);
+    REQUIRE(stringMap.contains("baz"));
+    REQUIRE(stringMap.contains("foobar"));
+    REQUIRE(stringMap.contains("foobarbaz"));
 }

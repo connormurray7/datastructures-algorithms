@@ -58,13 +58,13 @@ TEST_CASE("Test empty and size", "[vector]" ) {
     Vector<int> v;
 
     REQUIRE(v.empty());
-    for(int i = 0; i < 10000; ++i) {
+    for(int i = 0; i < 1000; ++i) {
         REQUIRE(v.size() == i);
         v.push_back(i);
         REQUIRE(!v.empty());
     }
 
-    for(int i = 10000; i >= 0; --i) {
+    for(int i = 1000; i >= 0; --i) {
         REQUIRE(v.size() == i);
         v.pop_back();
     }
