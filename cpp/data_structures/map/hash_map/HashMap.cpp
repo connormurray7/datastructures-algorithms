@@ -42,11 +42,13 @@ template<typename K, typename V, typename H>
 void HashMap<K,V,H>::insert(const K& key, const V& val) {
     auto n = std::make_shared<HashMapNode<K,V>>(key, val);
     table[get_idx(key)].add(n);
+    num_elements++;
 }
 
 template<typename K, typename V, typename H>
 void HashMap<K,V,H>::erase(const K& key) {
     table[get_idx(key)].remove(key);
+    num_elements--;
 }
 
 template<typename K, typename V, typename H>
