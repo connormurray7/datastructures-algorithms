@@ -54,6 +54,10 @@ public:
 
 private:
 
+    //==============================================//
+    //           Implementation Details 
+    //==============================================//
+
     std::shared_ptr<TreeNode<K,V>> root;
         //Templated root node
 

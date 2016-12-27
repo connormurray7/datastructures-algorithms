@@ -46,6 +46,10 @@ public:
 
 private:
 
+    //==============================================//
+    //           Implementation Details 
+    //==============================================//
+
     unsigned int num_elements = 0;
         //Number of elements in container
 

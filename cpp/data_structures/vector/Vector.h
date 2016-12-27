@@ -75,6 +75,10 @@ public:
 
 private:
 
+    //==============================================//
+    //           Implementation Details 
+    //==============================================//
+
     unsigned int capacity = 1;
         //Size of the underlying array
 
