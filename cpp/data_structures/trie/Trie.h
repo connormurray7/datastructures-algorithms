@@ -30,10 +30,17 @@ public:
 
     void erase(std::string& key);
 
+    bool contains(std::string& key);
 
-}
+    bool has_prefix(std::string& prefix);
 
+private:
 
+    //==============================================//
+    //           Implementation Details 
+    //==============================================//
 
+    TrieNode* root;
+};
 
 #endif
