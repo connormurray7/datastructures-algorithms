@@ -19,20 +19,33 @@ public:
         //Copy constructor, shallow copy.
 
     ~Trie();
+        //Does nothing unique ptr takes care of deletion.
 
     //==============================================//
     //             Member functions
     //==============================================//
 
     T& operator[](std::string& key);
+        //Returns val for associated key,
+        //O(k) time where k is len of key.
 
     T& at(std::string& key);
+        //Returns val for associated key,
+        //Will throw out of bounds if key 
+        //does not exist.
+        //O(k) time where k is len of key.
 
     void erase(std::string& key);
+        //Removes val for associated key,
+        //O(k) time where k is len of key.
 
     bool contains(std::string& key);
+        //True if key existsin Trie.
+        //O(k) time where k is len of key.
 
     bool has_prefix(std::string& prefix);
+        //True if prefix exists in Trie.
+        //O(p) time where p is len of prefix.
 
 private:
 
@@ -40,7 +53,12 @@ private:
     //           Implementation Details 
     //==============================================//
 
-    TrieNode* root;
+    std::unique_ptr<TrieNode<T>> find_node(std::string& key);
+        //Traverses tree, returns node for key.
+        //O(k) time.
+
+    std::unique_ptr<TrieNode<T>> root;
+        //Root of the tree.
 };
 
 #endif

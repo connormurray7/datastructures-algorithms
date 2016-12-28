@@ -9,10 +9,12 @@
 template<typename T>
 struct TrieNode {
     T val;
-    TrieNode* children[ALPHABET_SIZE];
+    TrieNode* children;
 
-    TrieNode() {}
-    TrieNode(T& val) : key(key), val(val) {}
+    TrieNode() {
+        children = new TrieNode<T>[ALPHABET_SIZE];
+        val = NULL;
+    }
 }
 
 #endif
