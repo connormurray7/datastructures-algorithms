@@ -54,7 +54,7 @@ bool Trie<T>::has_prefix(std::string& prefix) {
 }
 
 template<typename T>
-std::unique_ptr<TrieNode<T>> find_node(std::string& key) {
+std::shared_ptr<TrieNode<T>> Trie<T>::find_node(std::string& key) {
     std::shared_ptr<TrieNode<T>> cur = root;
     for(char& c: key) {
         if(cur->val == NULL) {

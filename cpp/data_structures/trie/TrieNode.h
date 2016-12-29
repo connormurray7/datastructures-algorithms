@@ -15,6 +15,9 @@ struct TrieNode {
         children = new TrieNode<T>[ALPHABET_SIZE];
         val = NULL;
     }
+    ~TrieNode() {
+        delete[] children;
+    }
 };
 
 #endif
