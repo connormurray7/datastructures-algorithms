@@ -4,4 +4,8 @@
 
 TEST_CASE("Test insert", "[Trie]" ) {
     Trie<std::string> trie;
+    std::string s = "hello";
+    std::string s2 = "hi";
+    
+    trie.insert(s, s2);
 }

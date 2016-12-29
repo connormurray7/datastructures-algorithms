@@ -38,13 +38,13 @@ void Trie<T>::erase(std::string& key) {
     std::shared_ptr<TrieNode<T>> last = root;
     std::shared_ptr<TrieNode<T>> cur = root;
     for(char& c: key) {
-        if(cur->val == NULL) {
+        cur = cur->children[c - ALPHABET_START];
+        if(cur == nullptr) {
             break;
         }
         last = cur;
-        cur = cur->children[c - ALPHABET_START];
     }
-    return cur;
+    last->children[key.back() - ALPHABET_START] = nullptr;
 }
 
 template<typename T>
