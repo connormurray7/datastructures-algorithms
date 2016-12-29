@@ -1,6 +1,6 @@
 #include "Trie.h"
 
-#define ALPHABET_START 'a'
+
 
 template<typename T>
 Trie<T>::Trie() {
@@ -9,7 +9,7 @@ Trie<T>::Trie() {
 
 template<typename T>
 Trie<T>::Trie(const Trie& other) {
-    root = other.root;
+    root = other.root; //shallow copy.
 }
 
 template<typename T>
@@ -17,7 +17,7 @@ Trie<T>::~Trie() {}
 
 template<typename T>
 T& Trie<T>::operator[](std::string& key) {
-    return find_node(key)->val;
+    return find_node(key, true)->val;
 }
 
 template<typename T>
@@ -58,13 +58,18 @@ bool Trie<T>::has_prefix(std::string& prefix) {
 }
 
 template<typename T>
-std::shared_ptr<TrieNode<T>> Trie<T>::find_node(std::string& key) {
+std::shared_ptr<TrieNode<T>> Trie<T>::find_node(std::string& key, bool create_path) {
     std::shared_ptr<TrieNode<T>> cur = root;
     for(char& c: key) {
-        if(cur->val == NULL) {
-            break;
+        if(create_path) {
+            cur = cur->get_or_emplace(c);
         }
-        cur = cur->children[c - ALPHABET_START];
+        else {
+            cur = cur->children[c - ALPHABET_START];
+            if(cur == nullptr) {
+                break;
+            }
+        }
     }
     return cur;
 }

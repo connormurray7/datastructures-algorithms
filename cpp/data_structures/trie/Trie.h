@@ -57,9 +57,10 @@ private:
     //           Implementation Details 
     //==============================================//
 
-    std::shared_ptr<TrieNode<T>> find_node(std::string& key);
+    std::shared_ptr<TrieNode<T>> find_node(std::string& key, bool create_path);
         //Traverses tree, returns node for key.
-        //O(k) time.
+        //If node does not exist, constructs nodes
+        //along the way. O(k) time.
 
     std::shared_ptr<TrieNode<T>> root;
         //Root of the tree.
