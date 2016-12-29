@@ -1,4 +1,6 @@
 #include <string>
+#include <vector>
+#include <memory>
 
 
 #ifndef TRIE_NODE_H
@@ -9,14 +11,12 @@
 template<typename T>
 struct TrieNode {
     T val;
-    TrieNode* children;
+    std::vector<std::shared_ptr<TrieNode<T>>> children;
 
     TrieNode() {
-        children = new TrieNode<T>[ALPHABET_SIZE];
-        val = NULL;
-    }
-    ~TrieNode() {
-        delete[] children;
+        children = std::vector<std::shared_ptr<TrieNode<T>>>();
+        children.reserve(26);
+        for(int i = 0; i < 26; ++i) { children[i] = nullptr; }
     }
 };
 

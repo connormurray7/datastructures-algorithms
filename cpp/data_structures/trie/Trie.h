@@ -34,6 +34,10 @@ public:
         //Will throw out of bounds if key 
         //does not exist.
         //O(k) time where k is len of key.
+    
+    void insert(std::string& key, T& val);
+        //Inserts value for key.
+        //O(k) time where k is len of key.
 
     void erase(std::string& key);
         //Removes val for associated key,

@@ -28,6 +28,10 @@ T& Trie<T>::at(std::string& key) {
     }
     return cur->val;
 }
+template<typename T>
+void insert(std::string& key, T& val) {
+    
+}
 
 template<typename T>
 void Trie<T>::erase(std::string& key) {
