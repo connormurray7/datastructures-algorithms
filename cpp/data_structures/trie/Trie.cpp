@@ -1,7 +1,5 @@
 #include "Trie.h"
 
-
-
 template<typename T>
 Trie<T>::Trie() {
     root = std::make_shared<TrieNode<T>>();
@@ -28,9 +26,11 @@ T& Trie<T>::at(std::string& key) {
     }
     return cur->val;
 }
+
 template<typename T>
-void insert(std::string& key, T& val) {
-    
+void Trie<T>::insert(std::string& key, T& val) {
+    auto node = find_node(key, true);
+    node->val = val;
 }
 
 template<typename T>
@@ -49,12 +49,12 @@ void Trie<T>::erase(std::string& key) {
 
 template<typename T>
 bool Trie<T>::contains(std::string& key) {
-    return find_node(key)->val != NULL;
+    return find_node(key, false) == nullptr;
 }
 
 template<typename T>
 bool Trie<T>::has_prefix(std::string& prefix) {
-    
+    return contains(prefix) == nullptr;
 }
 
 template<typename T>
