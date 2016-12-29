@@ -53,11 +53,11 @@ private:
     //           Implementation Details 
     //==============================================//
 
-    std::unique_ptr<TrieNode<T>> find_node(std::string& key);
+    std::shared_ptr<TrieNode<T>> find_node(std::string& key);
         //Traverses tree, returns node for key.
         //O(k) time.
 
-    std::unique_ptr<TrieNode<T>> root;
+    std::shared_ptr<TrieNode<T>> root;
         //Root of the tree.
 };
 

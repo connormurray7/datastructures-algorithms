@@ -49,7 +49,9 @@ bool Trie<T>::contains(std::string& key) {
 }
 
 template<typename T>
-bool Trie<T>::has_prefix(std::string& prefix) {}
+bool Trie<T>::has_prefix(std::string& prefix) {
+    
+}
 
 template<typename T>
 std::unique_ptr<TrieNode<T>> find_node(std::string& key) {

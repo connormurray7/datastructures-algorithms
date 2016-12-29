@@ -15,6 +15,6 @@ struct TrieNode {
         children = new TrieNode<T>[ALPHABET_SIZE];
         val = NULL;
     }
-}
+};
 
 #endif
