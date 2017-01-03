@@ -3,16 +3,16 @@
 
 #include <memory>
 
-template<typename KEY, typename VALUE>
+template<typename K, typename V>
 struct TreeNode {
 
-    KEY key;
-    VALUE value;
+    K key;
+    V value;
 
-    std::shared_ptr<TreeNode<KEY,VALUE> > left;
-    std::shared_ptr<TreeNode<KEY,VALUE> > right;
+    std::shared_ptr<TreeNode<K,V> > left;
+    std::shared_ptr<TreeNode<K,V> > right;
 
-    TreeNode(KEY k_in, VALUE v_in)
+    TreeNode(K k_in, V v_in)
         : key(k_in), value(v_in) {}
 
     bool operator<(const TreeNode &other) {

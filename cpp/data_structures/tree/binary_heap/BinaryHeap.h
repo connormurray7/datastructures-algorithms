@@ -1,5 +1,8 @@
+#include "../TreeNode.h"
 #include <vector>
+#include <memory>
 #include <functional>
+
 
 #ifndef BINARY_HEAP_H
 #define BINARY_HEAP_H
@@ -12,6 +15,8 @@ public:
 
     BinaryHeap(const BinaryHeap& other);
 
+    ~BinaryHeap();
+
     void push(K& key, V& val);
 
     V& pop(K& key);
@@ -22,7 +27,13 @@ public:
 
 
 private:
-    std::vector<HeapNode> table;
+    std::vector<std::unique_ptr<HeapNode<K,V>>> table;
+
+    void fix_down(int node_idx);
+
+    void fix_up(int node_idx);
+
+    std::vector<std::unique_ptr<HeapNode<K,V>>>::iterator max_node(int node_idx);
 };
 
 #endif

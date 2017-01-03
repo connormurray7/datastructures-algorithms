@@ -1,7 +1,7 @@
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
 
-#include "TreeNode.h"
+#include "../TreeNode.h"
 #include <vector>
 
 /* Simple Binary Tree implementation
