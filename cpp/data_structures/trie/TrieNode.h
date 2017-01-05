@@ -16,8 +16,7 @@ struct TrieNode {
 
     TrieNode() {
         children = std::vector<std::shared_ptr<TrieNode<T>>>();
-        children.reserve(ALPHABET_SIZE);
-        for(int i = 0; i < ALPHABET_SIZE; ++i) { children[i] = nullptr; }
+        children.resize(ALPHABET_SIZE, nullptr);
     }
     
     std::shared_ptr<TrieNode<T>> get_or_emplace(char letter) {
