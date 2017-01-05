@@ -22,7 +22,7 @@ BinaryHeap<K,V,C>::~BinaryHeap() {}
 template<typename K, typename V, typename C>
 void BinaryHeap<K,V,C>::push(const K& key, const V& val) {
     table.push_back(std::make_unique<TreeNode<K,V>>(key, val));
-    fix_up(table.size());
+    fix_up(table.size()-1);
 }
 
 template<typename K, typename V, typename C>
@@ -44,38 +44,29 @@ bool BinaryHeap<K,V,C>::empty() const {
 
 template<typename K, typename V, typename C>
 void BinaryHeap<K,V,C>::fix_down(int node_idx) {
+    unsigned int size = table.size()-1;
     unsigned int parent = node_idx;
-    while(parent < table.size()) {
-        int child = max_node(parent);
-        if(comp(table[parent]->key, table[child]->key)) {
-            std::swap(table[parent], table[child]);
+
+    while(2*parent <= size) {
+        unsigned int child = 2 * parent; //left first
+        if(child < size && comp(table[child]->key, table[child+1]->key)) {
+            ++child; //right child
         }
+        if(table[child]->key < table[parent]->key) {
+            //heap restored
+            break;
+        }
+        std::swap(table[child], table[parent]);
         parent = child;
+
     }
 }
 
 template<typename K, typename V, typename C>
 void BinaryHeap<K,V,C>::fix_up(int node) {
-    int parent = node / 2;
-    while(parent > 0) {
-        int child = max_node(parent);
-        if(comp(table[parent]->key, table[child]->key)) {
-            std::swap(table[parent], table[child]);
-        }
-        parent /= 2;
+    int cur_node = node;
+    while(cur_node > 1 && comp(table[cur_node/2]->key, table[cur_node]->key)) {
+        std::swap(table[cur_node], table[cur_node/2]);
+        cur_node /= 2;
     }
-}
-
-template<typename K, typename V, typename C>
-int BinaryHeap<K,V,C>::max_node(int parent) {
-    if(table[parent*2] == nullptr) {
-        return parent;
-    }
-    if(table[parent*2 + 1] == nullptr) {
-        return parent*2;
-    }
-    if(comp(table[parent*2]->key, table[parent*2 + 1]->key)) {
-        return parent*2 + 1;
-    }
-    return parent*2;
 }

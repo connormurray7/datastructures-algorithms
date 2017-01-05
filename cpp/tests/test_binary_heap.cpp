@@ -12,11 +12,14 @@ TEST_CASE("Test push and pop", "[Binary Heap]" ) {
     heap.push(3, "3");
     heap.push(4, "4");
 
-    REQUIRE(heap.top() == "0");
+    REQUIRE(heap.top() == "4");
     heap.pop();
-    //REQUIRE(heap.pop() == "0");
-    //REQUIRE(heap.pop() == "0");
-    //REQUIRE(heap.pop() == "0");
-    //REQUIRE(heap.pop() == "0");
+    REQUIRE(heap.top() == "3");
+    heap.pop();
+    REQUIRE(heap.top() == "2");
+    heap.pop();
+    REQUIRE(heap.top() == "1");
+    heap.pop();
+    REQUIRE(heap.top() == "0");
 }
 

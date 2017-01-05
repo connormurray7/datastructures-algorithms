@@ -25,15 +25,13 @@ public:
 
     bool empty() const;
 
-
 private:
+    
     std::vector<std::unique_ptr<TreeNode<K,V>>> table;
 
     void fix_down(int node_idx);
 
     void fix_up(int node_idx);
-
-    int max_node(int node_idx);
 
     C comp;
 };
