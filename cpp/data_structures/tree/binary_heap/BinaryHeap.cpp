@@ -39,7 +39,7 @@ V& BinaryHeap<K,V,C>::top() const {
 
 template<typename K, typename V, typename C>
 bool BinaryHeap<K,V,C>::empty() const {
-    return table.size() == 0;
+    return table.size() == 1; //First entry is not used
 }
 
 template<typename K, typename V, typename C>
@@ -53,12 +53,10 @@ void BinaryHeap<K,V,C>::fix_down(int node_idx) {
             ++child; //right child
         }
         if(table[child]->key < table[parent]->key) {
-            //heap restored
             break;
         }
         std::swap(table[child], table[parent]);
         parent = child;
-
     }
 }
 

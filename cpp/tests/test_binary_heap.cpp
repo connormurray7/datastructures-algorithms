@@ -4,22 +4,29 @@
 
 using std::string;
 
-TEST_CASE("Test push and pop", "[Binary Heap]" ) {
-    BinaryHeap<int, string> heap;
-    heap.push(0, "0");
-    heap.push(1, "1");
-    heap.push(2, "2");
-    heap.push(3, "3");
-    heap.push(4, "4");
+TEST_CASE("Test push/pop and top", "[Binary Heap]" ) {
+    BinaryHeap<int, string> intHeap;
 
-    REQUIRE(heap.top() == "4");
-    heap.pop();
-    REQUIRE(heap.top() == "3");
-    heap.pop();
-    REQUIRE(heap.top() == "2");
-    heap.pop();
-    REQUIRE(heap.top() == "1");
-    heap.pop();
-    REQUIRE(heap.top() == "0");
+    for(int i = 0; i < 1000; ++i) {
+        intHeap.push(i, std::to_string(i));
+    }
+    for(int i = 999; i >= 0; --i) {
+        REQUIRE(intHeap.top() == std::to_string(i));
+        intHeap.pop();
+    }
 }
 
+TEST_CASE("Test empty", "[Binary Heap]" ) {
+    BinaryHeap<int, string> heap;
+
+    REQUIRE(heap.empty());
+    for(int i = 0; i < 1000; ++i) {
+        heap.push(i, std::to_string(i));
+        REQUIRE(!heap.empty());
+    }
+    for(int i = 999; i >= 0; --i) {
+        REQUIRE(!heap.empty());
+        heap.pop();
+    }
+    REQUIRE(heap.empty());
+}
