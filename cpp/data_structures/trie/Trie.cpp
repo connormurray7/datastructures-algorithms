@@ -49,7 +49,7 @@ void Trie<T>::erase(const std::string& key) {
 
 template<typename T>
 bool Trie<T>::contains(const std::string& key) {
-    return find_node(key, false) == nullptr;
+    return find_node(key, false) != nullptr;
 }
 
 template<typename T>
