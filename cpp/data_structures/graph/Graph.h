@@ -34,10 +34,14 @@ public:
     int size();
 
     std::vector<GraphNode<T>*> nodes;
+
+private:
+
+    bool directed;
 };
 
 template<typename T>
-Graph<T>::Graph() {
+Graph<T>::Graph(bool directed) {
     nodes = std::vector<GraphNode<T>>();
 }
 
@@ -55,7 +59,18 @@ int Graph<T>::add_node(const T& val) {
     nodes.push_back(std::make_shared(val));
 }
 
+template<typename T>
+int Graph<T>::add_edge(int node1, int node2) {
+    nodes[node1]->edges.push_back(node2);
+    if(!directed) {
+        nodes[node2]->edges.push_back(node1);
+    }
+}
 
+template<typename T>
+int Graph<T>::size() {
+    return nodes.size();
+}
 
 
 #endif
