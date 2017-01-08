@@ -28,6 +28,7 @@ HashSet.o: ../data_structures/map/hash_set/HashSet.cpp
 HashMap.o: ../data_structures/map/hash_map/HashMap.cpp
 Bucket.o: ../data_structures/map/Bucket.cpp
 Trie.o: ../data_structures/trie/Trie.cpp
+Graph.o: ../data_structures/graph/Graph.cpp
 
 test_vector.o: test_vector.cpp
 test_binary_tree.o: test_binary_heap.cpp
@@ -35,6 +36,7 @@ test_binary_heap.o: test_binary_tree.cpp
 test_hash_set.o: test_hash_set.cpp
 test_hash_map.o: test_hash_map.cpp
 test_trie.o: test_trie.cpp
+test_graph.o: test_graph.cpp
 
 main.o: main.cpp
 

@@ -1,13 +1,14 @@
 #include <vector>
 #include <memory>
 
-#ifdef GRAPH_H
+#ifndef GRAPH_H
 #define GRAPH_H
+
 
 template<typename T>
 struct GraphNode {
 
-    GraphNode(const T& val) {
+    GraphNode(const T& val_in) {
         val = val_in;
         visited = false;
     }
@@ -20,7 +21,8 @@ struct GraphNode {
 template<typename T>
 class Graph {
 public:
-
+    
+    typedef std::shared_ptr<GraphNode<T>> node_ptr;
     //==============================================//
     //         Constructors and Destructor
     //==============================================//
@@ -41,14 +43,14 @@ public:
         //position (it's id) in the vector. This can be
         //used to create edges between two nodes. O(1).
 
-    void add_edge(int node1, node2);
+    void add_edge(int node1, int node2);
         //Creates edge between nodes, if directed, then
         //this creates edge ony from node1 to node2. O(1)
 
     int size();
         //Number of nodes in graph, O(!)
 
-    std::vector<GraphNode<T>*> nodes;
+    std::vector<node_ptr> nodes;
         //List of nodes in the graph. Their index is the
         //"id" of the node.
 
@@ -59,8 +61,9 @@ private:
 };
 
 template<typename T>
-Graph<T>::Graph(bool directed) {
-    nodes = std::vector<GraphNode<T>>();
+Graph<T>::Graph(bool directed_in) {
+    nodes = std::vector<node_ptr>();
+    directed = directed_in;
 }
 
 template<typename T>
@@ -74,11 +77,12 @@ Graph<T>::~Graph() {}
 template<typename T>
 int Graph<T>::add_node(const T& val) {
     int num = nodes.size();
-    nodes.push_back(std::make_shared(val));
+    nodes.push_back(std::make_shared<GraphNode<T>>(val));
+    return num;
 }
 
 template<typename T>
-int Graph<T>::add_edge(int node1, int node2) {
+void Graph<T>::add_edge(int node1, int node2) {
     nodes[node1]->edges.push_back(node2);
     if(!directed) {
         nodes[node2]->edges.push_back(node1);
