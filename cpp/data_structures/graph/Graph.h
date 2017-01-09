@@ -13,6 +13,15 @@ struct GraphNode {
         visited = false;
     }
 
+    bool containsEdge(int edge) {
+        for(auto& e: edges) {
+            if(e == edge) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     T val;
     bool visited;
     std::vector<int> edges;
