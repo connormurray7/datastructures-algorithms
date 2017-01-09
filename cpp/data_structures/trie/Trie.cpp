@@ -31,30 +31,33 @@ template<typename T>
 void Trie<T>::insert(const std::string& key, const T& val) {
     auto node = find_node(key, true);
     node->val = val;
+    node->set = true;
 }
 
 template<typename T>
 void Trie<T>::erase(const std::string& key) {
-    std::shared_ptr<TrieNode<T>> last = root;
     std::shared_ptr<TrieNode<T>> cur = root;
     for(const char& c: key) {
-        cur = cur->children[c - ALPHABET_START];
         if(cur == nullptr) {
             break;
         }
-        last = cur;
+        cur = cur->children[c - ALPHABET_START];
     }
-    last->children[key.back() - ALPHABET_START] = nullptr;
+    cur->set = false;
 }
 
 template<typename T>
 bool Trie<T>::contains(const std::string& key) {
-    return find_node(key, false) != nullptr;
+    auto node = find_node(key, false);
+    if(node == nullptr) {
+        return false;
+    }
+    return node->set;
 }
 
 template<typename T>
 bool Trie<T>::has_prefix(const std::string& prefix) {
-    return contains(prefix) == nullptr;
+    return contains(prefix);
 }
 
 template<typename T>

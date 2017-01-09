@@ -67,11 +67,11 @@ TEST_CASE("Test erase", "[Trie]" ) {
     trie.erase("b");
     REQUIRE(!trie.contains("b"));
 
-    REQUIRE(trie.contains("bo"));
-    trie.erase("bo");
-    REQUIRE(!trie.contains("bo"));
+    REQUIRE(trie.contains("ba"));
+    trie.erase("ba");
+    REQUIRE(!trie.contains("ba"));
     
-    REQUIRE(trie.contains("boo"));
-    trie.erase("boo");
-    REQUIRE(!trie.contains("bo"));
+    REQUIRE(trie.contains("baz"));
+    trie.erase("baz");
+    REQUIRE(!trie.contains("baz"));
 }

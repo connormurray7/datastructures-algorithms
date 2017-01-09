@@ -10,13 +10,11 @@
 
 template<typename T>
 struct TrieNode {
-    T val;
-    std::vector<std::shared_ptr<TrieNode<T>>> children;
-    const static int ALPHABET_SIZE = 26;
 
     TrieNode() {
         children = std::vector<std::shared_ptr<TrieNode<T>>>();
         children.resize(ALPHABET_SIZE, nullptr);
+        set = false;
     }
     
     std::shared_ptr<TrieNode<T>> get_or_emplace(char letter) {
@@ -26,6 +24,11 @@ struct TrieNode {
         }
         return children[idx];
     }
+
+    T val;
+    bool set;
+    std::vector<std::shared_ptr<TrieNode<T>>> children;
+    const static int ALPHABET_SIZE = 26;
 };
 
 #endif
