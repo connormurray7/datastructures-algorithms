@@ -10,7 +10,6 @@ struct GraphNode {
 
     GraphNode(const T& val_in) {
         val = val_in;
-        visited = false;
     }
 
     bool containsEdge(int edge) {
@@ -23,7 +22,6 @@ struct GraphNode {
     }
 
     T val;
-    bool visited;
     std::vector<int> edges;
 };
 
