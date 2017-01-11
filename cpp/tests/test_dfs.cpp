@@ -17,12 +17,12 @@ TEST_CASE("Test dfs", "[BFS]") {
     int f = graph.add_node("F");
     int g = graph.add_node("G");
 
-    graph.add_edge(a,b);
     graph.add_edge(a,c);
-    graph.add_edge(b,d);
+    graph.add_edge(a,b);
     graph.add_edge(b,e);
-    graph.add_edge(c,f);
+    graph.add_edge(b,d);
     graph.add_edge(c,g);
+    graph.add_edge(c,f);
 
     auto vals = dfs(graph, a);
     
