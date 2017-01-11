@@ -100,11 +100,11 @@ TEST_CASE("Test bfs on directed graph", "[BFS]") {
 }
 
 TEST_CASE("Test bfs on undirected graph", "[BFS]") {
-    Graph<string> graph(true);
+    Graph<string> graph(false);
     int a = graph.add_node("A");
     int b = graph.add_node("B");
     
-    graph.add_edge(a,b);
+    graph.add_edge(b,a);
     auto vals = bfs(graph, a);
 
     REQUIRE(vals[0] == "A");
@@ -120,7 +120,7 @@ TEST_CASE("Test bfs on undirected graph", "[BFS]") {
     REQUIRE(vals[2] == "C");
 
     int d = graph.add_node("D");
-    graph.add_edge(b,d);
+    graph.add_edge(d,b);
 
     vals = bfs(graph, a);
 
@@ -130,7 +130,7 @@ TEST_CASE("Test bfs on undirected graph", "[BFS]") {
     REQUIRE(vals[3] == "D");
 
     int e = graph.add_node("E");
-    graph.add_edge(b,e);
+    graph.add_edge(e,b);
 
     vals = bfs(graph, a);
 
@@ -141,7 +141,7 @@ TEST_CASE("Test bfs on undirected graph", "[BFS]") {
     REQUIRE(vals[4] == "E");
 
     int f = graph.add_node("F");
-    graph.add_edge(c,f);
+    graph.add_edge(f,c);
 
     vals = bfs(graph, a);
 
@@ -165,7 +165,7 @@ TEST_CASE("Test bfs on undirected graph", "[BFS]") {
     REQUIRE(vals[5] == "F");
     REQUIRE(vals[6] == "G");
 
-    Graph<string> graph2(true);
+    Graph<string> graph2(false);
     a = graph2.add_node("A");
     b = graph2.add_node("B");
     c = graph2.add_node("C");
