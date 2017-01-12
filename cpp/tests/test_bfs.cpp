@@ -1,7 +1,7 @@
 #include <string>
 #include "catch.hpp"
 #include "../data_structures/graph/Graph.h"
-#include "../algorithms/bfs.h"
+#include "../algorithms/breadth_first_search.h"
 
 using std::string;
 

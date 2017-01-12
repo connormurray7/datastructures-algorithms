@@ -1,7 +1,7 @@
 #include <string>
 #include "catch.hpp"
 #include "../data_structures/graph/Graph.h"
-#include "../algorithms/dfs.h"
+#include "../algorithms/depth_first_search.h"
 
 using std::string;
 
