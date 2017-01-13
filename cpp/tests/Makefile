@@ -38,6 +38,7 @@ test_hash_map.o: test_hash_map.cpp
 test_trie.o: test_trie.cpp
 test_graph.o: test_graph.cpp
 test_bfs.o: test_bfs.cpp
+test_top_sort.o: test_top_sort.cpp
 
 main.o: main.cpp
 
