@@ -1,8 +1,9 @@
 #include "../data_structures/graph/Graph.h"
-#include <stack>
 #include <vector>
 
 //Requires a directed acyclic graph
+//Returns a vector with the first node
+//in the order at the back, and the last in the front
 template<typename T>
 std::vector<T> topological_sort(Graph<T>& graph) {
     std::vector<T> order;
@@ -21,8 +22,8 @@ void topological_sort_helper(Graph<T>& graph, int idx, std::vector<bool>& visite
     visited[idx] = true;
 
     for(int& i: graph.nodes[idx]->edges) {
-        if(!visited[idx]) {
-            topological_sort_helper(i, visited, order);
+        if(!visited[i]) {
+            topological_sort_helper(graph, i, visited, order);
         }
     }
     order.push_back(graph.nodes[idx]->val);
