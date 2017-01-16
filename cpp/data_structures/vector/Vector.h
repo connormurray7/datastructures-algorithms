@@ -1,5 +1,4 @@
-#ifndef VECTOR_H
-#define VECTOR_H
+#pragma once
 
 #include <memory>
 
@@ -96,4 +95,5 @@ private:
     T* arr;
         //Underlying array.
 };
-#endif
+
+#include "Vector-inl.h"

@@ -1,4 +1,5 @@
-#include "HashSet.h"
+#pragma once
+
 #include <iostream>
 
 template<typename T, typename H>

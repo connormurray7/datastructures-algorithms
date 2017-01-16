@@ -1,9 +1,7 @@
-#include "HashNode.h"
-#include <vector>
-#include <memory>
+#pragma once
 
-#ifndef BUCKET_H
-#define BUCKET_H
+#include "HashNode.h"
+#include <memory>
 
 template<typename T>
 class Bucket {
@@ -61,4 +59,3 @@ private:
 };
 
 #include "Bucket-inl.h"
-#endif

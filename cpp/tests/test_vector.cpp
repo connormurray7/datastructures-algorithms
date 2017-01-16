@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "../data_structures/vector/Vector.cpp"
+#include "../data_structures/vector/Vector.h"
 #include <string>
 
 TEST_CASE("Test push_back", "[Vector]" ) {

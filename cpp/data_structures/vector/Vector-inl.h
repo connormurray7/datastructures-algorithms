@@ -1,4 +1,5 @@
-#include "Vector.h"
+#pragma once
+
 #include <stdexcept>
 #include <memory>
 

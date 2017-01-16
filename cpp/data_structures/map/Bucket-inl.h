@@ -1,4 +1,5 @@
-#include "Bucket.h"
+#pragma once
+
 #include <vector>
 
 template<typename T>

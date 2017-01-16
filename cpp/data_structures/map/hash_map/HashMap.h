@@ -96,4 +96,5 @@ private:
 
 };
 
+#include "HashMap-inl.h"
 #endif

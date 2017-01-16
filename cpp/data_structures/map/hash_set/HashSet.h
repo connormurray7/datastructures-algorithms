@@ -1,8 +1,7 @@
+#pragma once
+
 #include <vector>
 #include "../Bucket.h"
-
-#ifndef HASHSET_H
-#define HASHSET_H
 
 template<typename T, typename H = std::hash<T>>
 class HashSet {
@@ -84,4 +83,4 @@ private:
 
 };
 
-#endif
+#include "HashSet-inl.h"
