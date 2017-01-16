@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "../data_structures/map/Bucket.cpp"
+#include "../data_structures/map/Bucket.h"
 #include "../data_structures/map/hash_set/HashSet.cpp"
 #include <string>
 

@@ -26,7 +26,6 @@ BinaryTree.o: ../data_structures/tree/binary_tree/BinaryTree.cpp
 BinaryHeap.o: ../data_structures/tree/binary_heap/BinaryTree.cpp
 HashSet.o: ../data_structures/map/hash_set/HashSet.cpp
 HashMap.o: ../data_structures/map/hash_map/HashMap.cpp
-Bucket.o: ../data_structures/map/Bucket.cpp
 Trie.o: ../data_structures/trie/Trie.cpp
 Graph.o: ../data_structures/graph/Graph.cpp
 

@@ -60,4 +60,5 @@ private:
         //Returns node for associated key.
 };
 
+#include "Bucket-inl.h"
 #endif
