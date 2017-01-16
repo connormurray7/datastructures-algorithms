@@ -1,5 +1,4 @@
-#ifndef BINARY_TREE_H
-#define BINARY_TREE_H
+#pragma once
 
 #include "../TreeNode.h"
 #include <vector>
@@ -78,4 +77,5 @@ private:
         //dereferences the pointers and compares. Useful for
         //std::sort.
 };
-#endif
+
+#include "BinaryTree-inl.h"

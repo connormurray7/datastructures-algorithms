@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "../data_structures/tree/binary_tree/BinaryTree.cpp"
+#include "../data_structures/tree/binary_tree/BinaryTree.h"
 #include <string>
 
 using std::string;

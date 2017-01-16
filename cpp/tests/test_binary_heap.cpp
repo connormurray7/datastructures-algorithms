@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "../data_structures/tree/binary_heap/BinaryHeap.cpp"
+#include "../data_structures/tree/binary_heap/BinaryHeap.h"
 #include <string>
 
 using std::string;

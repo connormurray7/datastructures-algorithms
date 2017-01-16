@@ -1,4 +1,4 @@
-#include "Trie.h"
+#pragma once
 
 template<typename T>
 Trie<T>::Trie() {

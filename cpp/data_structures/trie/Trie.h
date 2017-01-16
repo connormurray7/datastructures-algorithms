@@ -1,8 +1,7 @@
+#pragma once
+
 #include "TrieNode.h"
 #include <string>
-
-#ifndef TRIE_H
-#define TRIE_H
 
 template<typename T>
 class Trie {
@@ -66,4 +65,4 @@ private:
         //Root of the tree.
 };
 
-#endif
+#include "Trie-inl.h"

@@ -1,4 +1,4 @@
-CXX		= clang++
+CXX		    = clang++
 SOURCES		= $(wildcard *.cpp)
 OBJECTS		= $(SOURCES:%.cpp=%.o)
 EXECUTABLE	= main

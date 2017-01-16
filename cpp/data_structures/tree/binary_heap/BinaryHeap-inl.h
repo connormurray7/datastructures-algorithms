@@ -1,4 +1,5 @@
-#include "BinaryHeap.h"
+#pragma once
+
 #include <memory>
 #include <utility>
 

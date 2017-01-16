@@ -1,11 +1,9 @@
+#pragma once
+
 #include "../TreeNode.h"
 #include <vector>
 #include <memory>
 #include <functional>
-
-
-#ifndef BINARY_HEAP_H
-#define BINARY_HEAP_H
 
 template<typename K, typename V, typename C = std::less<K>>
 class BinaryHeap {
@@ -61,4 +59,4 @@ private:
         //default is std::less<K>
 };
 
-#endif
+#include "BinaryHeap-inl.h"

@@ -1,4 +1,5 @@
-#include "BinaryTree.h"
+#pragma once
+
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
