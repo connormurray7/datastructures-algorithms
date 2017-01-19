@@ -3,33 +3,15 @@
 #include "../TreeNode.h"
 #include <vector>
 
-/* Simple Binary Tree implementation
- * does not include balancing. Most
- * operations are O(log n), O(n) worst
- * case.
- */
-
 template<typename K, typename V>
 class BinaryTree {
 public:
 
-    //==============================================//
-    //        Constructors and Destructor
-    //==============================================//
-
     BinaryTree();
-        //Requires nothing, creates empty BT
+        //Empty binary tree
 
     BinaryTree(BinaryTree<K,V> &tree_in);
         //Requires a vector of node pointers
-
-    ~BinaryTree();
-        //Requires nothing, does nothing, shared_ptrs
-        //delete the data for us.
-
-    //==============================================//
-    //                 Map functions
-    //==============================================//
 
     V& at(const K& key);
         //Requires the K, returns value associated to key.
@@ -52,10 +34,6 @@ public:
         //O(1)
 
 private:
-
-    //==============================================//
-    //           Implementation Details 
-    //==============================================//
 
     std::shared_ptr<TreeNode<K,V>> root;
         //Templated root node

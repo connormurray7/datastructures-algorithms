@@ -10,20 +10,13 @@ class Graph {
 public:
     
     typedef std::shared_ptr<GraphNode<T>> node_ptr;
-    //==============================================//
-    //         Constructors and Destructor
-    //==============================================//
 
     Graph(bool directed);
-        //Default ctor, creates empty graph. 
         //Must specify whether it is a directed or 
         //undirected graph.
 
     Graph(const Graph& other);
-        //Copy ctor, shallow copy
-
-    ~Graph();
-        //Dtor, shared_ptrs take care of memory release.
+        //Shallow copy
 
     int add_node(const T& val);
         //Appends node to nodes vector and returns the 

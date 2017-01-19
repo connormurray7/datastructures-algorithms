@@ -7,23 +7,11 @@ template<typename T, typename H = std::hash<T>>
 class HashSet {
 public:
 
-    //==============================================//
-    //         Constructors and Destructor
-    //==============================================//
-
     HashSet();
-        //Requires nothing, creates empty hash set.
+        //Empty HashSet
 
     HashSet(const HashSet& other);
-        //Copy constructor, shallow copy.
-
-    ~HashSet();
-        //Does nothing, std::vector on stack
-        //(stores keys) on the heap.
-
-    //==============================================//
-    //             Standard functions
-    //==============================================//
+        //Shallow copy.
 
     void insert(const T& key);
         //Adds key to the set.
@@ -44,10 +32,6 @@ public:
         //True if no elements.
 
 private:
-
-    //==============================================//
-    //           Implementation Details 
-    //==============================================//
 
     unsigned int num_elements = 0;
         //Number of elements in container

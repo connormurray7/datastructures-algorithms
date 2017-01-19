@@ -7,22 +7,14 @@ template<typename T>
 class Trie {
 public:
 
-    //==============================================//
-    //         Constructors and Destructor
-    //==============================================//
-
     Trie();
-        //Requires nothing, creates empty trie.
+        //Empty Trie
 
     Trie(const Trie& other);
-        //Copy constructor, shallow copy.
+        //Shallow copy.
 
     ~Trie();
         //Does nothing unique ptr takes care of deletion.
-
-    //==============================================//
-    //             Member functions
-    //==============================================//
 
     T& operator[](const std::string& key);
         //Returns val for associated key,
@@ -51,10 +43,6 @@ public:
         //O(p) time where p is len of prefix.
 
 private:
-
-    //==============================================//
-    //           Implementation Details 
-    //==============================================//
 
     std::shared_ptr<TrieNode<T>> find_node(const std::string& key, bool create_path);
         //Traverses tree, returns node for key.

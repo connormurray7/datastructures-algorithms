@@ -7,19 +7,11 @@ template<typename T>
 class Bucket {
 public:
 
-    //==============================================//
-    //         Constructors and Destructor
-    //==============================================//
-
     Bucket();
-        //Default ctor, creates empty bucket.
+        //Empty bucket
 
     Bucket(HashNode<T>& n);
         //Emplaces node in new bucket.
-
-    //==============================================//
-    //             Member functions
-    //==============================================//
 
     void add(std::shared_ptr<HashNode<T>> node);
         //Appends node to end of node linked list.

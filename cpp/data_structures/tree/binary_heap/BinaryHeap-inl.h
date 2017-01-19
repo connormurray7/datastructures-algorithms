@@ -18,9 +18,6 @@ BinaryHeap<K,V,C>::BinaryHeap(const BinaryHeap& other) {
 }
 
 template<typename K, typename V, typename C>
-BinaryHeap<K,V,C>::~BinaryHeap() {}
-
-template<typename K, typename V, typename C>
 void BinaryHeap<K,V,C>::push(const K& key, const V& val) {
     heap.push_back(std::make_unique<TreeNode<K,V>>(key, val));
     fix_up(heap.size()-1);

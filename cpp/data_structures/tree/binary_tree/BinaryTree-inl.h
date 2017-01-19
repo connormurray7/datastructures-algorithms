@@ -14,7 +14,6 @@ BinaryTree<K,V>::BinaryTree() {
     num_nodes = 0;
 }
 
-//Shallow copy for now.
 template<typename K, typename V>
 BinaryTree<K,V>::BinaryTree(BinaryTree<K,V> &tree_in) {
     auto data = tree_in.get_nodes();
@@ -22,10 +21,6 @@ BinaryTree<K,V>::BinaryTree(BinaryTree<K,V> &tree_in) {
     root = build_tree(data, 0, data.size());
 }
 
-template<typename K, typename V>
-BinaryTree<K,V>::~BinaryTree() {}
-
-//  Standard map functions  //
 template<typename K, typename V>
 V& BinaryTree<K,V>::at(const K& key) {
     auto node = find_node(key);

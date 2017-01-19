@@ -20,9 +20,6 @@ HashMap<K,V,H>::HashMap(const HashMap& other) {
 }
 
 template<typename K, typename V, typename H>
-HashMap<K,V,H>::~HashMap() {}
-
-template<typename K, typename V, typename H>
 V& HashMap<K,V,H>::operator[](const K& key) const {
     std::shared_ptr<HashNode<K>> n = table[get_idx(key)].get_node(key);
     return static_cast<HashMapNode<K,V>*>(n.get())->val;

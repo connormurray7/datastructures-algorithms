@@ -7,7 +7,7 @@ Trie<T>::Trie() {
 
 template<typename T>
 Trie<T>::Trie(const Trie& other) {
-    root = other.root; //shallow copy.
+    root = other.root;
 }
 
 template<typename T>

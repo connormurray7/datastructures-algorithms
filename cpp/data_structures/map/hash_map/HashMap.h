@@ -8,23 +8,11 @@ template<typename K, typename V, typename H = std::hash<K>>
 class HashMap {
 public:
 
-    //==============================================//
-    //         Constructors and Destructor
-    //==============================================//
-
     HashMap();
-        //Requires nothing, creates empty hash map.
+        //Empty map.
 
     HashMap(const HashMap& other);
-        //Copy constructor, shallow copy.
-
-    ~HashMap();
-        //Does nothing, std::vector on stack
-        //(stores key, vals) on the heap.
-
-    //==============================================//
-    //             Member functions
-    //==============================================//
+        //Shallow copy.
 
     V& operator[](const K& key) const;
         //Gets element for key, if exists.
@@ -55,10 +43,6 @@ public:
         //True if no elements.
 
 private:
-
-    //==============================================//
-    //           Implementation Details 
-    //==============================================//
 
     unsigned int num_elements = 0;
         //Number of elements in container
@@ -97,4 +81,5 @@ private:
 };
 
 #include "HashMap-inl.h"
+
 #endif

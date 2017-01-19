@@ -9,19 +9,11 @@ template<typename K, typename V, typename C = std::less<K>>
 class BinaryHeap {
 public:
 
-    //==============================================//
-    //         Constructors and Destructor
-    //==============================================//
-
     BinaryHeap();
-        //Requires nothing, creates empty heap.
+        //Empty heap.
 
     BinaryHeap(const BinaryHeap& other);
-        //Copy constructor, shallow copy
-
-    ~BinaryHeap();
-        //Does nothing, unique_ptrs take care of
-        //deallocation.
+        //Shallow copy
 
     void push(const K& key, const V& val);
         //Emplaces val with associated key on heap

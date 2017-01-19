@@ -12,9 +12,6 @@ Graph<T>::Graph(const Graph<T>& other) {
 }
 
 template<typename T>
-Graph<T>::~Graph() {}
-
-template<typename T>
 int Graph<T>::add_node(const T& val) {
     int num = nodes.size();
     nodes.push_back(std::make_shared<GraphNode<T>>(val));

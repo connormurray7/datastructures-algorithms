@@ -6,10 +6,6 @@ template<typename T>
 class Vector {
 public:
 
-    //==============================================//
-    //        Constructors and Destructor
-    //==============================================//
-
     Vector();
         //Requires nothing, creates empty Vector.
 
@@ -18,10 +14,6 @@ public:
 
     ~Vector();
         //Frees memory of underlying array.
-
-    //==============================================//
-    //           Standard functions
-    //==============================================//
 
     T& operator[](unsigned int idx) const;
         //Requires a valid index.
@@ -73,10 +65,6 @@ public:
         //end of the vecotr.
 
 private:
-
-    //==============================================//
-    //           Implementation Details 
-    //==============================================//
 
     unsigned int capacity = 1;
         //Size of the underlying array

@@ -21,9 +21,6 @@ HashSet<T,H>::HashSet(const HashSet& other) {
 }
 
 template<typename T, typename H>
-HashSet<T,H>::~HashSet() {}
-
-template<typename T, typename H>
 void HashSet<T,H>::insert(const T& key) {
     ++num_elements;
     if(too_full())  {
