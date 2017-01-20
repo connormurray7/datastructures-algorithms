@@ -1,8 +1,7 @@
+#pragma once 
+
 #include "../HashNode.h"
 #include <memory>
-
-#ifndef HASHMAPNODE_H
-#define HASHMAPNODE_H
 
 template<typename K, typename V>
 class HashMapNode : public HashNode<K> {
@@ -14,5 +13,3 @@ public:
 
     V val;
 };
-
-#endif

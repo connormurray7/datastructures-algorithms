@@ -1,5 +1,4 @@
-#ifndef TREENODE_H
-#define TREENODE_H
+#pragma once
 
 #include <memory>
 
@@ -20,5 +19,3 @@ struct TreeNode {
     }
 
 };
-
-#endif

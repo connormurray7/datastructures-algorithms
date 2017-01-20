@@ -1,8 +1,7 @@
+#pragma once 
+
 #include <vector>
 #include "../Bucket.h"
-
-#ifndef HashMap_H
-#define HashMap_H
 
 template<typename K, typename V, typename H = std::hash<K>>
 class HashMap {
@@ -81,5 +80,3 @@ private:
 };
 
 #include "HashMap-inl.h"
-
-#endif

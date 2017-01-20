@@ -1,7 +1,6 @@
-#include <memory>
+#pragma once
 
-#ifndef HASHNODE_H
-#define HASHNODE_H
+#include <memory>
 
 template<typename T>
 class HashNode {
@@ -15,5 +14,3 @@ public:
     T key;
     std::shared_ptr<HashNode<T>> next;
 };
-
-#endif

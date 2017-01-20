@@ -1,10 +1,8 @@
+#pragma once
+
 #include <string>
 #include <vector>
 #include <memory>
-
-
-#ifndef TRIE_NODE_H
-#define TRIE_NODE_H
 
 #define ALPHABET_START 'a'
 
@@ -30,5 +28,3 @@ struct TrieNode {
     std::vector<std::shared_ptr<TrieNode<T>>> children;
     const static int ALPHABET_SIZE = 26;
 };
-
-#endif
