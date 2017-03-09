@@ -68,8 +68,6 @@ class ArrayTest(unittest.TestCase):
         self.assertEqual(h.peek(), 1)
         h.pop()
         self.assertEqual(h.peek(), 0)
-        h.pop()
-        self.assertEqual(h.peek(), None)
 
 if __name__ == '__main__':
     unittest.main()
