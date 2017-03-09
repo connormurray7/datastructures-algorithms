@@ -1,5 +1,5 @@
-Refreshing knowledge of data structures and algorithms by implementing them while going through The Algorithm Design Manual by *Skiena* 
+###Introduction
 
-Written in Python and C++
+Collection of data structures and algorithms written in C++ and Python. 
 
-Python iteration of the implementations are complete, C++ still a WIP.
+Mainly for refreshing knowledge of data structures and algorithms by implementing them while going through The Algorithm Design Manual by *Skiena*.
