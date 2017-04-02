@@ -1,4 +1,4 @@
-###Introduction
+### Introduction
 
 Collection of data structures and algorithms written in C++ and Python. 
 
@@ -6,10 +6,10 @@ Mainly for refreshing knowledge of data structures and algorithms by implementin
 
 ### Running tests
 
-####C++
+#### C++
 For C++, running `make run` in `cpp/tests`. The only dependency is the C++ standard library.
 
-####Python 
+#### Python 
 For Python it is recommended to use something like [nose](https://nose.readthedocs.io/en/latest/) for testing. To install 
 
 	pip3 install nose
